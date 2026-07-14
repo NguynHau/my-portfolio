@@ -17,19 +17,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. Fallback Mechanism for the Portrait Image
   const profileImages = document.querySelectorAll('.profile-image');
   profileImages.forEach(img => {
+    // Sequential fallback paths to handle local build, raw repository structure, and subpath deployment
+    const fallbacks = [
+      'anh2.jpg',
+      'public/anh2.jpg',
+      './public/anh2.jpg',
+      './anh2.jpg'
+    ];
+    let attemptIndex = 0;
+
     img.addEventListener('error', () => {
-      console.log('Image failed to load: ', img.src);
-      // Try fallback to local paths
-      const currentSrc = img.getAttribute('src');
-      if (currentSrc !== 'anh2.jpg') {
-        img.src = 'anh2.jpg';
+      console.log('Image failed to load on attempt:', attemptIndex, img.src);
+      attemptIndex++;
+      if (attemptIndex < fallbacks.length) {
+        img.setAttribute('src', fallbacks[attemptIndex]);
       } else {
-        // Fallback to stylized vector SVG placeholder if file is missing
+        // Fallback to stylized vector SVG placeholder if all paths are exhausted
         img.style.display = 'none';
         const parent = img.parentElement;
-        const placeholder = parent.querySelector('.profile-placeholder');
-        if (placeholder) {
-          placeholder.classList.remove('hidden');
+        if (parent) {
+          const placeholder = parent.querySelector('.profile-placeholder');
+          if (placeholder) {
+            placeholder.classList.remove('hidden');
+          }
         }
       }
     });
