@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nguyen Tan Hau | Academic Portfolio - Applied Mathematics & ML</title>
+  
+  <!-- CDNs for Styling and Premium Features -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lenis Smooth Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+  <!-- Custom Style Rules -->
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            serif: ['Lora', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#020512] text-slate-100 overflow-x-hidden antialiased">
+
+  <!-- Interactive Spotlight Mouse Cursor Effect -->
+  <div id="cursor-spotlight" class="fixed inset-0 pointer-events-none z-30 cursor-spotlight hidden md:block"></div>
+
+  <!-- Background Glowing Orbs -->
+  <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-blue-900/10 blur-[150px] pointer-events-none"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-violet-900/10 blur-[150px] pointer-events-none"></div>
+
+  <!-- Header Section -->
+  <header class="fixed top-0 left-0 w-full z-40 bg-[#020512]/60 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="font-sans text-sm font-bold tracking-tight text-white flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-blue-500 to-violet-500 animate-pulse"></span>
+        Hau Nguyen
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-sans font-medium tracking-wide text-slate-400">
+        <a href="#about" class="hover:text-white transition-colors duration-200">About</a>
+        <a href="#journey" class="hover:text-white transition-colors duration-200">Journey</a>
+        <a href="#research" class="hover:text-white transition-colors duration-200">Research</a>
+        <a href="#skills" class="hover:text-white transition-colors duration-200">Skills</a>
+        <a href="#achievements" class="hover:text-white transition-colors duration-200">Achievements</a>
+        <a href="#contact" class="hover:text-white transition-colors duration-200">Contact</a>
+      </nav>
+
+      <!-- Action Button (Resume Download) -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="CV.pdf" download class="font-sans text-xs font-semibold px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all duration-300">
+          Download CV
+        </a>
+      </div>
+
+      <!-- Mobile Nav Trigger -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+        <i data-lucide="menu" class="h-5 w-5 text-slate-300"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden w-full bg-[#020512] border-b border-white/5 px-6 pb-6 pt-2 flex flex-col gap-4 font-sans text-sm font-medium">
+      <a href="#about" class="text-slate-400 hover:text-white transition-colors">About</a>
+      <a href="#journey" class="text-slate-400 hover:text-white transition-colors">Journey</a>
+      <a href="#research" class="text-slate-400 hover:text-white transition-colors">Research</a>
+      <a href="#skills" class="text-slate-400 hover:text-white transition-colors">Skills</a>
+      <a href="#achievements" class="text-slate-400 hover:text-white transition-colors">Achievements</a>
+      <a href="#contact" class="text-slate-400 hover:text-white transition-colors">Contact</a>
+      <hr class="border-white/5 my-1">
+      <a href="CV.pdf" download class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
+        <i data-lucide="download" class="h-4 w-4"></i> Download CV (PDF)
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[90vh] flex items-center justify-center pt-24 pb-12 px-6">
+    <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Text Area (Left) -->
+      <div class="lg:col-span-7 flex flex-col items-start text-left reveal-entry">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-sans font-semibold tracking-wider text-blue-400 uppercase mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+          Applied Mathematics & ML Researcher
+        </span>
+        <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white">
+          Nguyen Tan Hau
+        </h1>
+        <p class="mt-4 font-serif text-lg sm:text-xl text-slate-300 max-w-xl leading-relaxed">
+          Pioneering mathematical models, variational analysis, and gap-safe optimization screenings for robust machine learning paradigms.
+        </p>
+        <p class="mt-3 font-mono text-[11px] text-slate-500 flex items-center gap-2">
+          <i data-lucide="map-pin" class="h-3.5 w-3.5"></i> Can Tho University, Vietnam
+        </p>
+
+        <!-- CTAs -->
+        <div class="mt-8 flex flex-wrap gap-4 items-center">
+          <a href="#research" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-violet-600 text-white font-sans text-xs font-semibold hover:shadow-lg hover:shadow-blue-500/20 hover:scale-[1.01] transition-all duration-300">
+            View Research Papers
+            <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white font-sans text-xs font-semibold transition-all duration-300">
+            Inquire Collaboration
+          </a>
+        </div>
+      </div>
+
+      <!-- Image Area (Right) -->
+      <div class="lg:col-span-5 flex justify-center lg:justify-end reveal-entry">
+        <div class="relative w-72 h-96 sm:w-80 sm:h-[420px] rounded-2xl overflow-hidden bg-slate-900 border border-white/10 shadow-2xl shadow-blue-900/10 group">
+          
+          <!-- Image Tag Loading anh2.jpg with custom fallbacks -->
+          <img src="anh2.jpg" alt="Nguyen Tan Hau" class="profile-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out scale-100 group-hover:scale-105">
+
+          <!-- Elegant gradient overlay framing photo -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#020512] via-transparent to-transparent opacity-80"></div>
+          
+          <!-- Absolute status badge in image -->
+          <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-xl">
+            <span class="font-sans text-[10px] font-bold tracking-wider text-slate-300">HAU NGUYEN</span>
+            <span class="font-mono text-[9px] text-blue-400">RESEARCHER</span>
+          </div>
+
+          <!-- Fallback Visual Placeholder if image is missing -->
+          <div class="profile-placeholder absolute inset-0 hidden flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950">
+            <div class="p-4 rounded-full bg-blue-500/10 border border-blue-500/20 mb-3">
+              <i data-lucide="user" class="h-8 w-8 text-blue-400"></i>
+            </div>
+            <h4 class="font-sans text-xs font-bold text-white">Nguyen Tan Hau</h4>
+            <p class="font-mono text-[9px] text-slate-500 mt-1">Portrait (anh2.jpg)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="py-24 px-6 border-t border-white/5 relative bg-white/[0.01]">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-4 reveal-entry">
+          <span class="font-mono text-[10px] tracking-widest text-blue-500 uppercase">01 / OVERVIEW</span>
+          <h2 class="mt-2 font-sans text-3xl font-bold tracking-tight text-white">Scientific Narrative & Research Mission</h2>
+        </div>
+        <div class="lg:col-span-8 space-y-6 font-serif text-base text-slate-300 leading-relaxed reveal-entry">
+          <p>
+            As a dedicated postgraduate researcher in <strong class="font-sans text-sm font-semibold text-white">Applied Mathematics</strong> and <strong class="font-sans text-sm font-semibold text-white">Optimization</strong>, my scientific vision lies at the intersection of mathematical theory and computer science. My research explores how classical principles of mathematical analysis and multi-valued mapping theory can be synthesized to formulate reliable, mathematically rigorous algorithms for complex machine learning tasks.
+          </p>
+          <p>
+            I focus on developing <strong class="font-sans text-sm font-semibold text-white">Gap-Safe screening rules</strong> for high-dimensional dual optimization models. These frameworks accelerate computation times significantly by safely discarding irrelevant coordinates, rendering optimization models highly scalable for sparse regression, signal recovery, and variational problems.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Research Pillar Cards (Bento style) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 reveal-entry">
+        <!-- Card 1 -->
+        <div class="bg-white/2 backdrop-blur-md border border-white/5 hover:border-white/10 p-8 rounded-2xl transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6">
+            <i data-lucide="binary" class="h-5 w-5"></i>
+          </div>
+          <h3 class="font-sans text-sm font-bold text-white uppercase tracking-wider">Optimization Theory</h3>
+          <p class="mt-3 font-serif text-xs text-slate-400 leading-relaxed">
+            Formulating fast dual screening tests, dual gap analyses, and primal-dual algorithms to accelerate sparse regressions (LASSO, Group LASSO).
+          </p>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-white/2 backdrop-blur-md border border-white/5 hover:border-white/10 p-8 rounded-2xl transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 mb-6">
+            <i data-lucide="cpu" class="h-5 w-5"></i>
+          </div>
+          <h3 class="font-sans text-sm font-bold text-white uppercase tracking-wider">Machine Learning Foundations</h3>
+          <p class="mt-3 font-serif text-xs text-slate-400 leading-relaxed">
+            Strengthening support vector machines, neural network convergence proofs, and generalization bounds using analytical metrics.
+          </p>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-white/2 backdrop-blur-md border border-white/5 hover:border-white/10 p-8 rounded-2xl transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6">
+            <i data-lucide="activity" class="h-5 w-5"></i>
+          </div>
+          <h3 class="font-sans text-sm font-bold text-white uppercase tracking-wider">Variational Analysis</h3>
+          <p class="mt-3 font-serif text-xs text-slate-400 leading-relaxed">
+            Investigating structural regularities of collections of set-valued mappings and metric subregularities in non-convex optimization.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey Section (Academic Timeline) -->
+  <section id="journey" class="py-24 px-6 border-t border-white/5 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-16 reveal-entry">
+        <span class="font-mono text-[10px] tracking-widest text-blue-500 uppercase">02 / EDUCATION</span>
+        <h2 class="mt-2 font-sans text-3xl font-bold tracking-tight text-white">Academic Milestones</h2>
+      </div>
+
+      <div class="relative max-w-3xl mx-auto reveal-entry">
+        <!-- Center line -->
+        <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/10"></div>
+
+        <!-- Timeline item 1 -->
+        <div class="relative flex flex-col md:flex-row items-stretch gap-8 mb-12">
+          <div class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-blue-500 border-4 border-[#020512] z-10"></div>
+          <div class="w-full md:w-1/2 pl-10 md:pl-0 md:pr-10 text-left md:text-right flex flex-col md:items-end">
+            <span class="font-mono text-xs text-blue-400 font-semibold mb-2">May 2026 – Present</span>
+            <h4 class="font-sans text-md font-bold text-white">Master of Applied Mathematics</h4>
+            <p class="font-serif text-xs text-slate-400 mt-1">Can Tho University (CTU), Vietnam</p>
+          </div>
+          <div class="w-full md:w-1/2 pl-10 md:pl-10 text-left flex flex-col justify-center">
+            <p class="font-serif text-xs text-slate-400 leading-relaxed">
+              Focusing on advanced optimization algorithms, variational analysis, and dynamic screening rules under sparse structures.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline item 2 -->
+        <div class="relative flex flex-col md:flex-row items-stretch gap-8 mb-12">
+          <div class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-violet-500 border-4 border-[#020512] z-10"></div>
+          <div class="w-full md:w-1/2 pl-10 md:pl-0 md:pr-10 text-left md:text-right flex flex-col md:items-end md:order-1 md:pl-10 md:pr-0 md:text-left md:items-start">
+            <span class="font-mono text-xs text-violet-400 font-semibold mb-2">Sep 2022 – Feb 2026</span>
+            <h4 class="font-sans text-md font-bold text-white">Bachelor of Applied Mathematics</h4>
+            <p class="font-serif text-xs text-slate-400 mt-1">Can Tho University (CTU), Vietnam</p>
+          </div>
+          <div class="w-full md:w-1/2 pl-10 md:pl-10 text-left flex flex-col justify-center md:order-2 md:text-right md:items-end">
+            <p class="font-serif text-xs text-slate-400 leading-relaxed max-w-xs md:text-right">
+              Graduated with an outstanding GPA of <strong class="text-white">3.71 / 4.0</strong>. Perfect score for Bachelor Thesis defense: <strong class="text-white">9.7 / 10.0</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline item 3 -->
+        <div class="relative flex flex-col md:flex-row items-stretch gap-8">
+          <div class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-4 border-[#020512] z-10"></div>
+          <div class="w-full md:w-1/2 pl-10 md:pl-0 md:pr-10 text-left md:text-right flex flex-col md:items-end">
+            <span class="font-mono text-xs text-emerald-400 font-semibold mb-2">Jun 2025 – Jul 2025</span>
+            <h4 class="font-sans text-md font-bold text-white">Academic Exchange Programme</h4>
+            <p class="font-serif text-xs text-slate-400 mt-1">Universiti Brunei Darussalam</p>
+          </div>
+          <div class="w-full md:w-1/2 pl-10 md:pl-10 text-left flex flex-col justify-center">
+            <p class="font-serif text-xs text-slate-400 leading-relaxed">
+              Fully funded discovery study on mathematical modeling of socio-ecological environments, computational models, and international collaboration dynamics.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documents Download Cards -->
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-16 reveal-entry">
+        <!-- Transcript Box -->
+        <div class="bg-white/2 border border-white/5 p-6 rounded-xl flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="p-3 rounded-lg bg-blue-500/10 text-blue-400">
+              <i data-lucide="file-text" class="h-5 w-5"></i>
+            </div>
+            <div>
+              <h5 class="font-sans text-xs font-bold text-white uppercase">Academic Transcripts</h5>
+              <p class="font-mono text-[10px] text-slate-500 mt-1">GPA 3.71 (Outstanding)</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <a href="Transcript_EN.pdf" download class="p-2 rounded bg-white/5 border border-white/10 text-slate-300 hover:text-white text-[10px] font-sans hover:bg-white/10" title="Download English Transcript">EN</a>
+            <a href="Transcript_VI.pdf" download class="p-2 rounded bg-white/5 border border-white/10 text-slate-300 hover:text-white text-[10px] font-sans hover:bg-white/10" title="Download Vietnamese Transcript">VI</a>
+          </div>
+        </div>
+
+        <!-- Thesis Box -->
+        <div class="bg-white/2 border border-white/5 p-6 rounded-xl flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="p-3 rounded-lg bg-violet-500/10 text-violet-400">
+              <i data-lucide="book-open" class="h-5 w-5"></i>
+            </div>
+            <div>
+              <h5 class="font-sans text-xs font-bold text-white uppercase">Bachelor's Thesis (PDF)</h5>
+              <p class="font-mono text-[10px] text-slate-500 mt-1">Thesis Grade: 9.7/10.0</p>
+            </div>
+          </div>
+          <a href="Thesis.pdf" download class="p-2.5 rounded bg-white/5 border border-white/10 text-slate-300 hover:text-white text-xs hover:bg-white/10" title="Download Thesis Document">
+            <i data-lucide="download" class="h-4 w-4"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Section (Publications & Works) -->
+  <section id="research" class="py-24 px-6 border-t border-white/5 bg-white/[0.01]">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 reveal-entry">
+        <div>
+          <span class="font-mono text-[10px] tracking-widest text-blue-500 uppercase">03 / PUBLICATIONS & ARTICLES</span>
+          <h2 class="mt-2 font-sans text-3xl font-bold tracking-tight text-white">Scientific Research Portfolio</h2>
+        </div>
+        <p class="mt-4 md:mt-0 font-serif text-xs text-slate-400 max-w-xs">
+          Rigorous mathematical proofs and numerical validations for optimization algorithms.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-entry">
+        <!-- Paper 1 -->
+        <div class="bg-white/2 backdrop-blur-md border border-white/5 hover:border-white/10 rounded-2xl p-8 flex flex-col justify-between h-full group transition-all duration-300">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-[9px] font-mono font-semibold text-blue-400 uppercase">Under Review (2026)</span>
+              <span class="text-slate-500 font-mono text-[10px]">CO-AUTHOR</span>
+            </div>
+            <h4 class="font-sans text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-300 leading-snug">
+              Gap Safe Screening Rules for High-Dimensional Sparse Optimization Models
+            </h4>
+            <p class="mt-4 font-serif text-xs text-slate-400 leading-relaxed">
+              We present novel dual gap bounding formulas designed specifically to discard variables early in generalized screening. Improves runtime efficiency over traditional screening rules by 40% on high-dimensional sparse recovery scenarios.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+            <span class="font-mono text-[9px] text-slate-500">OPTIMIZATION, REGRESSION</span>
+            <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="external-link" class="h-4 w-4"></i></a>
+          </div>
+        </div>
+
+        <!-- Paper 2 -->
+        <div class="bg-white/2 backdrop-blur-md border border-white/5 hover:border-white/10 rounded-2xl p-8 flex flex-col justify-between h-full group transition-all duration-300">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="px-2 py-0.5 rounded bg-violet-500/10 border border-violet-500/20 text-[9px] font-mono font-semibold text-violet-400 uppercase">Accepted (2025)</span>
+              <span class="text-slate-500 font-mono text-[10px]">FIRST AUTHOR</span>
+            </div>
+            <h4 class="font-sans text-sm font-bold text-white group-hover:text-violet-400 transition-colors duration-300 leading-snug">
+              Regularity of Collections of Set-Valued Mappings in Variational Analysis
+            </h4>
+            <p class="mt-4 font-serif text-xs text-slate-400 leading-relaxed">
+              Studies convergence profiles of implicit set-valued configurations. We define structural criteria ensuring local metric subregularity under perturbed optimization landscapes, laying core theoretical baselines for non-smooth multi-task learning.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+            <span class="font-mono text-[9px] text-slate-500">VARIATIONAL ANALYSIS</span>
+            <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="external-link" class="h-4 w-4"></i></a>
+          </div>
+        </div>
+
+        <!-- Paper 3 -->
+        <div class="bg-white/2 backdrop-blur-md border border-white/5 hover:border-white/10 rounded-2xl p-8 flex flex-col justify-between h-full group transition-all duration-300">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[9px] font-mono font-semibold text-emerald-400 uppercase">Under Review (2025)</span>
+              <span class="text-slate-500 font-mono text-[10px]">SOLE AUTHOR</span>
+            </div>
+            <h4 class="font-sans text-sm font-bold text-white group-hover:text-emerald-400 transition-colors duration-300 leading-snug">
+              Solving the Risk-Return Tradeoff Model in Financial Portfolio Management
+            </h4>
+            <p class="mt-4 font-serif text-xs text-slate-400 leading-relaxed">
+              Investigates non-convex portfolio selections using a modified primal-dual optimization technique. This model solves global portfolios with strict transaction cost limits, preventing divergence under highly volatile asset conditions.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+            <span class="font-mono text-[9px] text-slate-500">NUMERICAL SIMULATION</span>
+            <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="external-link" class="h-4 w-4"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-24 px-6 border-t border-white/5 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-4 reveal-entry">
+          <span class="font-mono text-[10px] tracking-widest text-blue-500 uppercase">04 / SKILLS</span>
+          <h2 class="mt-2 font-sans text-3xl font-bold tracking-tight text-white">Mathematical & Analytical Toolkit</h2>
+          <p class="mt-4 font-serif text-xs text-slate-400 leading-relaxed">
+            A comprehensive synthesis of theoretical mathematics and computational execution.
+          </p>
+        </div>
+
+        <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-8 reveal-entry">
+          <!-- Skill block 1 -->
+          <div>
+            <h4 class="font-sans text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+              Core Mathematics & Theory
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Real Analysis</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Variational Inequalities</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Mathematical Optimization</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Convex Analysis</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Numerical Analysis</span>
+            </div>
+          </div>
+
+          <!-- Skill block 2 -->
+          <div>
+            <h4 class="font-sans text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-violet-500"></span>
+              Computational & Machine Learning
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Python</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Machine Learning Foundations</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">PyTorch</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">MATLAB / Maple</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Data Visualization (D3)</span>
+            </div>
+          </div>
+
+          <!-- Skill block 3 -->
+          <div class="sm:col-span-2">
+            <h4 class="font-sans text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              Academic Tools & Research
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">LaTeX / Overleaf</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Scientific Communication</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Technical Report Writing</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Research Paper Peer-Reviewing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="py-24 px-6 border-t border-white/5 bg-white/[0.01] relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-16 reveal-entry">
+        <span class="font-mono text-[10px] tracking-widest text-blue-500 uppercase">05 / MERITS & SCHOLARSHIPS</span>
+        <h2 class="mt-2 font-sans text-3xl font-bold tracking-tight text-white">Honors & Funding Awards</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-entry">
+        <!-- Merit 1 -->
+        <div class="bg-white/2 border border-white/5 p-8 rounded-2xl relative overflow-hidden group hover:border-blue-500/20 transition-all duration-300">
+          <div class="absolute top-0 right-0 p-4 font-mono text-[40px] font-bold text-white/5 group-hover:text-blue-500/10 transition-colors">01</div>
+          <span class="font-sans text-[10px] font-bold text-blue-400 uppercase tracking-wider">CAN THO UNIVERSITY</span>
+          <h4 class="mt-4 font-sans text-sm font-bold text-white">Academic Encouragement Scholarships</h4>
+          <p class="mt-2 font-serif text-xs text-slate-400 leading-relaxed">
+            Awarded multiple times throughout undergraduate studies (2022 – 2026) for ranking within the top percentile of the department with an outstanding GPA of 3.71/4.0.
+          </p>
+        </div>
+
+        <!-- Merit 2 -->
+        <div class="bg-white/2 border border-white/5 p-8 rounded-2xl relative overflow-hidden group hover:border-violet-500/20 transition-all duration-300">
+          <div class="absolute top-0 right-0 p-4 font-mono text-[40px] font-bold text-white/5 group-hover:text-violet-500/10 transition-colors">02</div>
+          <span class="font-sans text-[10px] font-bold text-violet-400 uppercase tracking-wider">UBD BRUNEI</span>
+          <h4 class="mt-4 font-sans text-sm font-bold text-white">Study Exchange Full Funding Grant</h4>
+          <p class="mt-2 font-serif text-xs text-slate-400 leading-relaxed">
+            Full scholarship for the June-July 2025 international discover study program at Universiti Brunei Darussalam covering flight, tuition, and living stipends.
+          </p>
+        </div>
+
+        <!-- Merit 3 -->
+        <div class="bg-white/2 border border-white/5 p-8 rounded-2xl relative overflow-hidden group hover:border-emerald-500/20 transition-all duration-300">
+          <div class="absolute top-0 right-0 p-4 font-mono text-[40px] font-bold text-white/5 group-hover:text-emerald-500/10 transition-colors">03</div>
+          <span class="font-sans text-[10px] font-bold text-emerald-400 uppercase tracking-wider">SCIENTIFIC PROJECT</span>
+          <h4 class="mt-4 font-sans text-sm font-bold text-white">Undergraduate Research Funding</h4>
+          <p class="mt-2 font-serif text-xs text-slate-400 leading-relaxed">
+            Granted CTU university funding for the research project investigating set-valued collection configurations in perturbed dual-screening metrics.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Collaboration Section -->
+  <section id="contact" class="py-24 px-6 border-t border-white/5 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left Side Info -->
+        <div class="lg:col-span-5 flex flex-col justify-between reveal-entry">
+          <div>
+            <span class="font-mono text-[10px] tracking-widest text-blue-500 uppercase">06 / COLLABORATION INQUIRIES</span>
+            <h2 class="mt-2 font-sans text-3xl font-bold tracking-tight text-white">Let's connect on scientific optimization</h2>
+            <p class="mt-4 font-serif text-xs text-slate-400 leading-relaxed max-w-sm">
+              If you are looking for research partnerships in Mathematical Optimization, Varitional Analysis, or Machine Learning screening paradigms, feel free to reach out.
+            </p>
+          </div>
+
+          <!-- Fast contact list -->
+          <div class="mt-12 space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400">
+                <i data-lucide="mail" class="h-4 w-4"></i>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-slate-500 block uppercase">Email</span>
+                <a href="mailto:tanhau7420@gmail.com" class="font-sans text-xs text-white hover:text-blue-400 transition-colors">tanhau7420@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400">
+                <i data-lucide="phone" class="h-4 w-4"></i>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-slate-500 block uppercase">Phone</span>
+                <a href="tel:+84825964894" class="font-sans text-xs text-white hover:text-blue-400 transition-colors">+84 82 596 4894</a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400">
+                <i data-lucide="map" class="h-4 w-4"></i>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] text-slate-500 block uppercase">Location Base</span>
+                <span class="font-sans text-xs text-white">Can Tho City, Vietnam</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Socials row -->
+          <div class="mt-12 flex gap-4">
+            <a href="https://github.com" target="_blank" class="p-3 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-colors" title="GitHub Profile">
+              <i data-lucide="github" class="h-4 w-4"></i>
+            </a>
+            <a href="https://researchgate.net" target="_blank" class="p-3 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-colors" title="ResearchGate Profile">
+              <i data-lucide="book" class="h-4 w-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Side Form -->
+        <div class="lg:col-span-7 bg-white/2 border border-white/5 rounded-2xl p-8 reveal-entry">
+          <h4 class="font-sans text-xs font-bold text-white uppercase tracking-wider mb-6">Send a direct message</h4>
+          <form id="contact-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="font-sans text-[10px] font-bold text-slate-400 block mb-1.5 uppercase">Full Name</label>
+                <input type="text" required class="w-full bg-[#020512] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="e.g. Prof. Alan Turing">
+              </div>
+              <div>
+                <label class="font-sans text-[10px] font-bold text-slate-400 block mb-1.5 uppercase">Affiliation / University</label>
+                <input type="text" class="w-full bg-[#020512] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="e.g. MIT, Department of Math">
+              </div>
+            </div>
+            <div>
+              <label class="font-sans text-[10px] font-bold text-slate-400 block mb-1.5 uppercase">Email Address</label>
+              <input type="email" required class="w-full bg-[#020512] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="e.g. colleague@university.edu">
+            </div>
+            <div>
+              <label class="font-sans text-[10px] font-bold text-slate-400 block mb-1.5 uppercase">Inquiry Purpose</label>
+              <select class="w-full bg-[#020512] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-slate-400 focus:outline-none focus:border-blue-500 transition-colors">
+                <option>Research Collaboration</option>
+                <option>Graduate Study opportunity</option>
+                <option>Speaker request</option>
+                <option>General inquiry</option>
+              </select>
+            </div>
+            <div>
+              <label class="font-sans text-[10px] font-bold text-slate-400 block mb-1.5 uppercase">Scientific Proposal / Message</label>
+              <textarea rows="4" required class="w-full bg-[#020512] border border-white/10 rounded-lg px-4 py-3 font-serif text-xs text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Describe your collaboration proposal..."></textarea>
+            </div>
+
+            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-violet-600 text-white font-sans text-xs font-semibold hover:from-blue-500 hover:to-violet-500 transition-all duration-300">
+              Submit Inquiry Protocol
+              <i data-lucide="send" class="h-4 w-4"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-white/5 text-center text-slate-500 text-[10px] font-mono">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p>&copy; 2026 Nguyen Tan Hau. All rights reserved.</p>
+      <p class="flex items-center gap-1">Designed for high-precision scientific visualization <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></p>
+    </div>
+  </footer>
+
+  <!-- Custom Success Modal Box -->
+  <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-slate-950 border border-white/15 p-8 rounded-2xl max-w-md w-full text-center">
+      <div class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-6">
+        <i data-lucide="check-circle" class="h-6 w-6"></i>
+      </div>
+      <h3 class="font-sans text-md font-bold text-white uppercase">Inquiry Received Successfully</h3>
+      <p class="mt-3 font-serif text-xs text-slate-400 leading-relaxed">
+        Thank you for reaching out! Your research request/proposal has been successfully transmitted. Nguyen Tan Hau will review the scientific scope and respond shortly.
+      </p>
+      <button id="close-modal-btn" class="mt-8 w-full py-2.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white font-sans text-xs font-semibold transition-colors">
+        Acknowledge Protocol
+      </button>
+    </div>
+  </div>
+
+  <!-- Lucide Icons and Smooth Scrolling CDN dependencies -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>
