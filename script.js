@@ -157,4 +157,91 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     requestAnimationFrame(raf);
   }
+
+  // 8. Navigation Active Section Tracker with Smooth Liquid Glass Slider
+  const navLinks = document.querySelectorAll('nav a');
+  const navIndicator = document.getElementById('nav-indicator');
+  const sections = Array.from(navLinks).map(link => {
+    const targetId = link.getAttribute('href');
+    return targetId ? document.querySelector(targetId) : null;
+  }).filter(Boolean);
+
+  function updateActiveNav() {
+    let currentActive = null;
+
+    // Determine which section is currently active
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      if (window.scrollY >= top - 250) { // Offset for header height and safety margins
+        currentActive = section;
+      }
+    });
+
+    // Handle scroll to top or hero area
+    if (window.scrollY < 200) {
+      currentActive = null;
+    }
+
+    // Special case: if scrolled to the absolute bottom, select the last section (Contact)
+    if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 100) {
+      currentActive = sections[sections.length - 1];
+    }
+
+    let matched = false;
+    navLinks.forEach(link => {
+      const targetId = link.getAttribute('href');
+      if (currentActive && targetId === `#${currentActive.id}`) {
+        link.classList.add('active', 'text-white');
+        link.classList.remove('text-slate-400');
+        matched = true;
+        
+        // Move sliding background glass indicator
+        if (navIndicator) {
+          navIndicator.style.left = `${link.offsetLeft}px`;
+          navIndicator.style.width = `${link.offsetWidth}px`;
+          navIndicator.style.height = `${link.offsetHeight}px`;
+          navIndicator.style.top = `${link.offsetTop}px`;
+          navIndicator.style.opacity = '1';
+        }
+      } else {
+        link.classList.remove('active', 'text-white');
+        link.classList.add('text-slate-400');
+      }
+    });
+
+    // If above all sections, hide the liquid glass indicator
+    if (!matched && navIndicator) {
+      navIndicator.style.opacity = '0';
+    }
+  }
+
+  // Update position on scroll
+  window.addEventListener('scroll', updateActiveNav);
+  
+  // Update position on resize (elements might change size or layout positions)
+  window.addEventListener('resize', updateActiveNav);
+
+  // Trigger position recalculation after a small delay to handle any content layout shifts
+  setTimeout(updateActiveNav, 150);
+
+  // Add instant click response so indicator glides immediately when navigation links are clicked
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.forEach(l => {
+        l.classList.remove('active', 'text-white');
+        l.classList.add('text-slate-400');
+      });
+      link.classList.add('active', 'text-white');
+      link.classList.remove('text-slate-400');
+      
+      if (navIndicator) {
+        navIndicator.style.left = `${link.offsetLeft}px`;
+        navIndicator.style.width = `${link.offsetWidth}px`;
+        navIndicator.style.height = `${link.offsetHeight}px`;
+        navIndicator.style.top = `${link.offsetTop}px`;
+        navIndicator.style.opacity = '1';
+      }
+    });
+  });
 });
