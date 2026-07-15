@@ -36,15 +36,11 @@
   <div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-violet-900/10 blur-[150px] pointer-events-none"></div>
 
   <!-- Header Section -->
-  <header class="fixed top-0 left-0 w-full z-40 bg-[#020512]/60 backdrop-blur-md border-b border-white/5">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="font-sans text-sm font-bold tracking-tight text-white flex items-center gap-2">
-        <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-blue-500 to-violet-500 animate-pulse"></span>
-        Tan-Hau Nguyen
-      </a>
-
+  <header class="fixed top-6 left-0 w-full z-40 pointer-events-none">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between md:justify-center relative">
+      
       <!-- Desktop Navigation Menu -->
-      <nav class="hidden md:flex relative items-center bg-white/[0.03] border border-white/5 backdrop-blur-md p-1.5 rounded-full gap-1 text-xs font-sans font-medium tracking-wide">
+      <nav class="hidden md:flex relative items-center bg-white/[0.03] border border-white/10 backdrop-blur-md p-1.5 rounded-full gap-1 text-xs font-sans font-medium tracking-wide pointer-events-auto shadow-2xl">
         <!-- Liquid Glass Active Indicator -->
         <div id="nav-indicator" class="absolute h-[32px] bg-white/[0.08] border border-white/10 backdrop-blur-lg rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none z-0"></div>
         
@@ -57,9 +53,9 @@
       </nav>
 
       <!-- Action Button (ORCID) -->
-      <div class="hidden md:flex items-center gap-4">
+      <div class="hidden md:flex items-center gap-4 pointer-events-auto absolute right-6 top-1/2 -translate-y-1/2">
         <!-- ORCID Badge -->
-        <a href="https://orcid.org/0009-0006-1357-8882" target="_blank" class="font-sans text-xs font-medium text-slate-400 hover:text-green-400 flex items-center gap-1.5 bg-white/5 px-4 py-2 rounded-full border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all">
+        <a href="https://orcid.org/0009-0006-1357-8882" target="_blank" class="font-sans text-xs font-medium text-slate-400 hover:text-green-400 flex items-center gap-1.5 bg-white/[0.03] px-4 py-2 rounded-full border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all shadow-2xl">
           <svg class="h-3.5 w-3.5 text-green-500 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.37 18.064H5.322V5.936H7.37v12.128zm-1.023-13.43a1.22 1.22 0 0 1-1.218-1.219c0-.671.548-1.218 1.218-1.218.671 0 1.219.547 1.219 1.218a1.22 1.22 0 0 1-1.219 1.219zm11.59 13.43h-2.181l-.16-1.517c-.896 1.121-2.228 1.688-3.992 1.688-2.616 0-4.634-1.89-4.634-4.814 0-3.003 2.124-4.851 4.754-4.851 1.716 0 2.94.575 3.821 1.642V5.936h2.046v12.128zm-5.351-1.854c1.552 0 2.821-.992 2.821-2.923 0-1.785-1.127-2.91-2.821-2.91-1.553 0-2.814 1.125-2.814 2.91 0 1.931 1.261 2.923 2.814 2.923z"/>
           </svg>
@@ -68,13 +64,13 @@
       </div>
 
       <!-- Mobile Nav Trigger -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+      <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md hover:bg-white/10 transition-colors pointer-events-auto ml-auto shadow-2xl">
         <i data-lucide="menu" class="h-5 w-5 text-slate-300"></i>
       </button>
     </div>
 
     <!-- Mobile Drawer Menu -->
-    <div id="mobile-menu" class="hidden md:hidden w-full bg-[#020512] border-b border-white/5 px-6 pb-6 pt-2 flex flex-col gap-4 font-sans text-sm font-medium">
+    <div id="mobile-menu" class="hidden md:hidden w-[calc(100%-3rem)] mx-auto bg-[#020512]/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 pb-6 pt-6 flex flex-col gap-4 font-sans text-sm font-medium mt-4 pointer-events-auto shadow-2xl">
       <a href="#about" class="text-slate-400 hover:text-white transition-colors">About</a>
       <a href="#journey" class="text-slate-400 hover:text-white transition-colors">Journey</a>
       <a href="#research" class="text-slate-400 hover:text-white transition-colors">Research</a>
@@ -96,13 +92,13 @@
       <div class="lg:col-span-7 flex flex-col items-start text-left reveal-entry">
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-sans font-semibold tracking-wider text-blue-400 uppercase mb-6">
           <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
-          Applied Mathematics & ML Researcher
+          Academic Portfolio
         </span>
         <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white">
           Nguyen Tan Hau
         </h1>
         <p class="mt-4 font-serif text-lg sm:text-xl text-slate-300 max-w-xl leading-relaxed">
-          Master's student in Applied Mathematics and research trainee with a focus on Data Science at Can Tho University, University of Science.
+          Master's student in Applied Mathematics and research trainee with a focus on Data Science at at the College of Natural Sciences, Can Tho University.
         </p>
         <p class="mt-3 font-mono text-xs text-slate-500 flex items-center gap-2">
           <i data-lucide="map-pin" class="h-3.5 w-3.5"></i> Can Tho University, Vietnam
@@ -284,7 +280,7 @@
               <i data-lucide="book-open" class="h-5 w-5"></i>
             </div>
             <div>
-              <h5 class="font-sans text-xs font-bold text-white uppercase">Bachelor's Thesis (PDF)</h5>
+              <h5 class="font-sans text-xs font-bold text-white uppercase">Bachelor's Thesis</h5>
               <p class="font-mono text-xs text-slate-500 mt-1">Thesis Grade: 9.7/10.0</p>
             </div>
           </div>
@@ -463,9 +459,9 @@
               <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">LaTeX / Overleaf</span>
               <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Typst</span>
               <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Markdown</span>
-              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Technical Report Writing</span>
+              <!-- <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Technical Report Writing</span>
               <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Scientific Communication</span>
-              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Peer Review</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Peer Review</span> -->
             </div>
           </div>
         </div>
@@ -546,7 +542,7 @@
           <!-- Central vertical line (visible on desktop) -->
           <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-white/0 via-white/10 to-white/0 -translate-x-1/2"></div>
 
-          <div class="space-y-8 md:space-y-12">
+          <div class="space-y-8 md:space-y-0">
             <!-- Item 1 (Left on desktop) -->
             <div class="relative flex flex-col md:flex-row items-start md:justify-between group">
               <!-- Dot -->
@@ -555,9 +551,9 @@
               <!-- Content Card (Left) -->
               <div class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 md:text-right reveal-entry">
                 <div class="bg-white/2 border border-white/5 p-5 rounded-xl hover:border-[#8b5cf6]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full text-left md:text-right">
-                  <span class="font-mono text-[11px] text-[#8b5cf6] font-semibold">2023 – 2025</span>
+                  <span class="font-mono text-[11px] text-[#8b5cf6] font-semibold">2023 – 2024</span>
                   <h5 class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide">“Student with 5 Good Criteria”</h5>
-                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left md:text-right">College of Natural Sciences award (awarded multiple academic years).</p>
+                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left md:text-right">College of Natural Sciences award.</p>
                   <div class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#8b5cf6] text-[10px] font-mono tracking-wider">
                     <i data-lucide="award" class="h-3.5 w-3.5"></i> FACULTY-LEVEL
                   </div>
@@ -569,39 +565,39 @@
             </div>
 
             <!-- Item 2 (Right on desktop) -->
-            <div class="relative flex flex-col md:flex-row items-start md:justify-between group">
+            <div class="relative flex flex-col md:flex-row items-start md:justify-between group md:-mt-[5rem]">
               <!-- Dot -->
-              <div class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#3b82f6] group-hover:bg-[#3b82f6] transition-all duration-300 z-10"></div>
+              <div class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#8b5cf6] group-hover:bg-[#8b5cf6] transition-all duration-300 z-10"></div>
               
               <!-- Spacer for desktop (Left) -->
               <div class="hidden md:block w-[calc(50%-28px)]"></div>
               
               <!-- Content Card (Right) -->
               <div class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 reveal-entry">
-                <div class="bg-white/2 border border-white/5 p-5 rounded-xl hover:border-[#3b82f6]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full">
-                  <span class="font-mono text-[11px] text-[#3b82f6] font-semibold">Apr 2024</span>
-                  <h5 class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide">Machine Learning: Foundations & Applications</h5>
-                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left">Rigorous foundations in mathematical learning, optimization proofs, and algorithmic limits.</p>
-                  <div class="mt-3 flex items-center gap-1.5 text-[#3b82f6] text-[10px] font-mono tracking-wider">
-                    <i data-lucide="award" class="h-3.5 w-3.5"></i> SPECIALIZED
+                <div class="bg-white/2 border border-white/5 p-5 rounded-xl hover:border-[#8b5cf6]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full">
+                  <span class="font-mono text-[11px] text-[#8b5cf6] font-semibold">2024 – 2025</span>
+                  <h5 class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide">“Student with 5 Good Criteria”</h5>
+                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left">College of Natural Sciences award.</p>
+                  <div class="mt-3 flex items-center gap-1.5 text-[#8b5cf6] text-[10px] font-mono tracking-wider">
+                    <i data-lucide="award" class="h-3.5 w-3.5"></i> FACULTY-LEVEL
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Item 3 (Left on desktop) -->
-            <div class="relative flex flex-col md:flex-row items-start md:justify-between group">
+            <div class="relative flex flex-col md:flex-row items-start md:justify-between group md:-mt-[5rem]">
               <!-- Dot -->
-              <div class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#10b981] group-hover:bg-[#10b981] transition-all duration-300 z-10"></div>
+              <div class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#3b82f6] group-hover:bg-[#3b82f6] transition-all duration-300 z-10"></div>
               
               <!-- Content Card (Left) -->
               <div class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 md:text-right reveal-entry">
-                <div class="bg-white/2 border border-white/5 p-5 rounded-xl hover:border-[#10b981]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full text-left md:text-right">
-                  <span class="font-mono text-[11px] text-[#10b981] font-semibold">2024 – 2025</span>
-                  <h5 class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide">“Student with 5 Good Criteria”</h5>
-                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left md:text-right">Can Tho University-level award recognizing academic excellence, morals, and volunteerism.</p>
-                  <div class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#10b981] text-[10px] font-mono tracking-wider">
-                    <i data-lucide="award" class="h-3.5 w-3.5"></i> UNIVERSITY-LEVEL
+                <div class="bg-white/2 border border-white/5 p-5 rounded-xl hover:border-[#3b82f6]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full text-left md:text-right">
+                  <span class="font-mono text-[11px] text-[#3b82f6] font-semibold">Apr 2024</span>
+                  <h5 class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide">Machine Learning: Foundations & Applications</h5>
+                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left md:text-right">Rigorous foundations in mathematical learning, optimization proofs, and algorithmic limits.</p>
+                  <div class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#3b82f6] text-[10px] font-mono tracking-wider">
+                    <i data-lucide="award" class="h-3.5 w-3.5"></i> SPECIALIZED
                   </div>
                 </div>
               </div>
@@ -611,38 +607,38 @@
             </div>
 
             <!-- Item 4 (Right on desktop) -->
-            <div class="relative flex flex-col md:flex-row items-start md:justify-between group">
+            <div class="relative flex flex-col md:flex-row items-start md:justify-between group md:-mt-[5rem]">
               <!-- Dot -->
-              <div class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#f59e0b] group-hover:bg-[#f59e0b] transition-all duration-300 z-10"></div>
+              <div class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#10b981] group-hover:bg-[#10b981] transition-all duration-300 z-10"></div>
               
               <!-- Spacer for desktop (Left) -->
               <div class="hidden md:block w-[calc(50%-28px)]"></div>
               
               <!-- Content Card (Right) -->
               <div class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 reveal-entry">
-                <div class="bg-white/2 border border-white/5 p-5 rounded-xl hover:border-[#f59e0b]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full">
-                  <span class="font-mono text-[11px] text-[#f59e0b] font-semibold">Jun 2025</span>
-                  <h5 class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide">Green Stewardship Certificate</h5>
-                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left">Completed during the discover study exchange program at Universiti Brunei Darussalam, Brunei, focused on biodiversity preservation and sustainable development.</p>
-                  <div class="mt-3 flex items-center gap-1.5 text-[#f59e0b] text-[10px] font-mono tracking-wider">
-                    <i data-lucide="award" class="h-3.5 w-3.5"></i> INTERNATIONAL
+                <div class="bg-white/2 border border-white/5 p-5 rounded-xl hover:border-[#10b981]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full">
+                  <span class="font-mono text-[11px] text-[#10b981] font-semibold">2024 – 2025</span>
+                  <h5 class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide">“Student with 5 Good Criteria”</h5>
+                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left">Can Tho University-level award recognizing academic excellence, morals, and volunteerism.</p>
+                  <div class="mt-3 flex items-center gap-1.5 text-[#10b981] text-[10px] font-mono tracking-wider">
+                    <i data-lucide="award" class="h-3.5 w-3.5"></i> UNIVERSITY-LEVEL
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Item 5 (Left on desktop) -->
-            <div class="relative flex flex-col md:flex-row items-start md:justify-between group">
+            <div class="relative flex flex-col md:flex-row items-start md:justify-between group md:-mt-[5rem]">
               <!-- Dot -->
-              <div class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#f43f5e] group-hover:bg-[#f43f5e] transition-all duration-300 z-10"></div>
+              <div class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#f59e0b] group-hover:bg-[#f59e0b] transition-all duration-300 z-10"></div>
               
               <!-- Content Card (Left) -->
               <div class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 md:text-right reveal-entry">
-                <div class="bg-white/2 border border-white/5 p-5 rounded-xl hover:border-[#f43f5e]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full text-left md:text-right">
-                  <span class="font-mono text-[11px] text-[#f43f5e] font-semibold">Jun 2025</span>
-                  <h5 class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide">Future Ocean Changemakers Youth Forum</h5>
-                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left md:text-right">International delegate representation at the youth forum in Brunei, presenting mathematical modelling of environmental ecology and coastal sustainability.</p>
-                  <div class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#f43f5e] text-[10px] font-mono tracking-wider">
+                <div class="bg-white/2 border border-white/5 p-5 rounded-xl hover:border-[#f59e0b]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full text-left md:text-right">
+                  <span class="font-mono text-[11px] text-[#f59e0b] font-semibold">Jun 2025</span>
+                  <h5 class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide">Green Stewardship Certificate</h5>
+                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left md:text-right">Completed during the discover study exchange program at Universiti Brunei Darussalam, Brunei, focused on biodiversity preservation and sustainable development.</p>
+                  <div class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#f59e0b] text-[10px] font-mono tracking-wider">
                     <i data-lucide="award" class="h-3.5 w-3.5"></i> INTERNATIONAL
                   </div>
                 </div>
@@ -653,24 +649,45 @@
             </div>
 
             <!-- Item 6 (Right on desktop) -->
-            <div class="relative flex flex-col md:flex-row items-start md:justify-between group">
+            <div class="relative flex flex-col md:flex-row items-start md:justify-between group md:-mt-[5rem]">
               <!-- Dot -->
-              <div class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#6366f1] group-hover:bg-[#6366f1] transition-all duration-300 z-10"></div>
+              <div class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#f43f5e] group-hover:bg-[#f43f5e] transition-all duration-300 z-10"></div>
               
               <!-- Spacer for desktop (Left) -->
               <div class="hidden md:block w-[calc(50%-28px)]"></div>
               
               <!-- Content Card (Right) -->
               <div class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 reveal-entry">
-                <div class="bg-white/2 border border-white/5 p-5 rounded-xl hover:border-[#6366f1]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full">
+                <div class="bg-white/2 border border-white/5 p-5 rounded-xl hover:border-[#f43f5e]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full">
+                  <span class="font-mono text-[11px] text-[#f43f5e] font-semibold">Jun 2025</span>
+                  <h5 class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide">Future Ocean Changemakers Youth Forum</h5>
+                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left">International delegate representation at the youth forum in Brunei, presenting mathematical modelling of environmental ecology and coastal sustainability.</p>
+                  <div class="mt-3 flex items-center gap-1.5 text-[#f43f5e] text-[10px] font-mono tracking-wider">
+                    <i data-lucide="award" class="h-3.5 w-3.5"></i> INTERNATIONAL
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 7 (Left on desktop) -->
+            <div class="relative flex flex-col md:flex-row items-start md:justify-between group md:-mt-[5rem]">
+              <!-- Dot -->
+              <div class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#6366f1] group-hover:bg-[#6366f1] transition-all duration-300 z-10"></div>
+              
+              <!-- Content Card (Left) -->
+              <div class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 md:text-right reveal-entry">
+                <div class="bg-white/2 border border-white/5 p-5 rounded-xl hover:border-[#6366f1]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full text-left md:text-right">
                   <span class="font-mono text-[11px] text-[#6366f1] font-semibold">Dec 2025</span>
                   <h5 class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide">Winter School on Quantum Computation</h5>
-                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left">Organized by VIASM & HCMUT – VNU. Advanced theory on quantum computational logic.</p>
-                  <div class="mt-3 flex items-center gap-1.5 text-[#6366f1] text-[10px] font-mono tracking-wider">
+                  <p class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left md:text-right">Organized by VIASM & HCMUT – VNU. Advanced theory on quantum computational logic.</p>
+                  <div class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#6366f1] text-[10px] font-mono tracking-wider">
                     <i data-lucide="award" class="h-3.5 w-3.5"></i> GRADUATE-LEVEL
                   </div>
                 </div>
               </div>
+              
+              <!-- Spacer for desktop (Right) -->
+              <div class="hidden md:block w-[calc(50%-28px)]"></div>
             </div>
           </div>
         </div>
