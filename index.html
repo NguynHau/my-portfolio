@@ -1,0 +1,1830 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Nguyen Tan Hau | Academic Portfolio - Applied Mathematics & ML
+    </title>
+
+    <!-- CDNs for Styling and Premium Features -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lenis Smooth Scroll -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.1.18/dist/lenis.css"
+    />
+    <!-- Custom Style Rules -->
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Space Grotesk", "sans-serif"],
+              serif: ["Lora", "serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+    
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-[#020512] text-slate-100 overflow-x-hidden antialiased">
+    <!-- Interactive Spotlight Mouse Cursor Effect -->
+    <div
+      id="cursor-spotlight"
+      class="fixed inset-0 pointer-events-none z-30 cursor-spotlight hidden md:block"
+    ></div>
+
+    <!-- Background Glowing Orbs -->
+    <div
+      class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-blue-900/10 blur-[150px] pointer-events-none"
+    ></div>
+    <div
+      class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-violet-900/10 blur-[150px] pointer-events-none"
+    ></div>
+
+    <!-- Header Section -->
+    <header class="fixed top-6 left-0 w-full z-40 pointer-events-none">
+      <div
+        class="max-w-[1400px] w-full mx-auto px-6 flex items-center justify-between relative"
+      >
+        <!-- Left Group: Lang & Theme Switcher -->
+        <div class="hidden lg:flex items-center gap-4 z-10 w-[22%] shrink-0">
+          <!-- Language Switcher -->
+          <div
+            id="lang-switcher"
+            class="glass-island relative flex items-center bg-white/5 border border-white/5 backdrop-blur-2xl backdrop-saturate-150 p-1.5 rounded-full gap-1 pointer-events-auto shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+          >
+            <div
+              id="lang-indicator"
+              class="absolute h-[32px] bg-white/10 border border-white/10 backdrop-blur-3xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.2)] rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none z-0"
+            ></div>
+
+            <button
+              id="lang-en-btn"
+              class="relative z-10 px-3 h-8 flex items-center justify-center rounded-full text-white transition-colors duration-300 font-sans text-[11px] font-bold tracking-wider"
+              aria-label="English"
+            >
+              EN
+            </button>
+            <button
+              id="lang-vi-btn"
+              class="relative z-10 px-3 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-white transition-colors duration-300 font-sans text-[11px] font-bold tracking-wider"
+              aria-label="Vietnamese"
+            >
+              VI
+            </button>
+          </div>
+
+          <!-- Theme Switcher -->
+          <div
+            id="theme-switcher"
+            class="glass-island relative flex items-center bg-white/5 border border-white/10 backdrop-blur-2xl backdrop-saturate-150 p-1.5 rounded-full gap-1 pointer-events-auto shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+          >
+            <div
+              id="theme-indicator"
+              class="absolute h-[32px] w-[32px] bg-white/10 border border-white/20 backdrop-blur-3xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.2)] rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none z-0"
+            ></div>
+
+            <button
+              id="theme-light-btn"
+              class="relative z-10 w-8 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-white transition-colors duration-300"
+              aria-label="Light theme"
+            >
+              <i data-lucide="sun" class="h-4 w-4"></i>
+            </button>
+            <button
+              id="theme-dark-btn"
+              class="relative z-10 w-8 h-8 flex items-center justify-center rounded-full text-white transition-colors duration-300"
+              aria-label="Dark theme"
+            >
+              <i data-lucide="moon" class="h-4 w-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Center Group: Desktop Navigation Menu -->
+        <div class="hidden lg:flex justify-center z-10 w-[56%] shrink-0">
+          <!-- Desktop Navigation Menu -->
+          <nav
+            class="glass-island relative flex items-center bg-white/5 border border-white/10 backdrop-blur-2xl backdrop-saturate-150 p-1.5 rounded-full gap-1 text-xs font-sans font-medium tracking-wide pointer-events-auto shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+          >
+            <!-- Liquid Glass Active Indicator -->
+            <div
+              id="nav-indicator"
+              class="absolute h-[32px] bg-white/10 border border-white/20 backdrop-blur-3xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.2)] rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none z-0"
+            ></div>
+
+            <a
+              href="#about"
+              class="relative z-10 px-3 xl:px-4 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-white transition-colors duration-300"
+              >About</a
+            >
+            <a
+              href="#journey"
+              class="relative z-10 px-3 xl:px-4 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-white transition-colors duration-300"
+              >Journey</a
+            >
+            <a
+              href="#research"
+              class="relative z-10 px-3 xl:px-4 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-white transition-colors duration-300"
+              >Research</a
+            >
+            <a
+              href="#skills"
+              class="relative z-10 px-3 xl:px-4 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-white transition-colors duration-300"
+              >Skills</a
+            >
+            <a
+              href="#achievements"
+              class="relative z-10 px-3 xl:px-4 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-white transition-colors duration-300"
+              >Achievements</a
+            >
+            <a
+              href="#contact"
+              class="relative z-10 px-3 xl:px-4 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-white transition-colors duration-300"
+              >Contact</a
+            >
+          </nav>
+        </div>
+
+        <!-- Right Group: ORCID Island -->
+        <div class="hidden lg:flex relative justify-end z-10 w-[22%] shrink-0">
+          <div
+            class="glass-island flex items-center bg-white/5 border border-white/10 backdrop-blur-2xl backdrop-saturate-150 p-1.5 rounded-full pointer-events-auto shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+          >
+            <a
+              href="https://orcid.org/0009-0006-1357-8882"
+              target="_blank"
+              class="relative z-10 px-4 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-green-400 transition-colors duration-300 gap-1.5 font-sans text-xs font-medium"
+            >
+              <svg
+                class="h-3.5 w-3.5 text-green-500 fill-current"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.37 18.064H5.322V5.936H7.37v12.128zm-1.023-13.43a1.22 1.22 0 0 1-1.218-1.219c0-.671.548-1.218 1.218-1.218.671 0 1.219.547 1.219 1.218a1.22 1.22 0 0 1-1.219 1.219zm11.59 13.43h-2.181l-.16-1.517c-.896 1.121-2.228 1.688-3.992 1.688-2.616 0-4.634-1.89-4.634-4.814 0-3.003 2.124-4.851 4.754-4.851 1.716 0 2.94.575 3.821 1.642V5.936h2.046v12.128zm-5.351-1.854c1.552 0 2.821-.992 2.821-2.923 0-1.785-1.127-2.91-2.821-2.91-1.553 0-2.814 1.125-2.814 2.91 0 1.931 1.261 2.923 2.814 2.923z"
+                />
+              </svg>
+              ORCID: 0009-0006-1357-8882
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile Nav Trigger -->
+        <button
+          id="mobile-menu-btn"
+          class="glass-island lg:hidden p-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-2xl backdrop-saturate-150 hover:bg-white/10 transition-colors pointer-events-auto shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+        >
+          <i data-lucide="menu" class="h-5 w-5 text-slate-300"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Drawer Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden w-[calc(100%-3rem)] mx-auto bg-[#020512]/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 pb-6 pt-6 flex flex-col gap-4 font-sans text-sm font-medium mt-4 pointer-events-auto shadow-2xl"
+      >
+        <a
+          href="#about"
+          class="text-slate-400 hover:text-white transition-colors"
+          >About</a
+        >
+        <a
+          href="#journey"
+          class="text-slate-400 hover:text-white transition-colors"
+          >Journey</a
+        >
+        <a
+          href="#research"
+          class="text-slate-400 hover:text-white transition-colors"
+          >Research</a
+        >
+        <a
+          href="#skills"
+          class="text-slate-400 hover:text-white transition-colors"
+          >Skills</a
+        >
+        <a
+          href="#achievements"
+          class="text-slate-400 hover:text-white transition-colors"
+          >Achievements</a
+        >
+        <a
+          href="#contact"
+          class="text-slate-400 hover:text-white transition-colors"
+          >Contact</a
+        >
+        <hr class="border-white/5 my-1" />
+        <a
+          href="https://orcid.org/0009-0006-1357-8882"
+          target="_blank"
+          class="text-green-400 hover:text-green-300 flex items-center gap-1.5 py-1"
+        >
+          ORCID: 0009-0006-1357-8882
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-[90vh] flex items-center justify-center pt-24 pb-12 px-6"
+    >
+      <div
+        class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+      >
+        <!-- Text Area (Left) -->
+        <div
+          class="lg:col-span-7 flex flex-col items-start text-left reveal-entry"
+        >
+          <span
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-sans font-semibold tracking-wider text-blue-400 uppercase mb-6"
+          >
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"
+            ></span>
+            Academic Portfolio
+          </span>
+          <h1
+            class="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white"
+          >
+            Nguyen Tan Hau
+          </h1>
+          <p
+            class="mt-4 font-serif text-lg sm:text-xl text-slate-300 max-w-xl leading-relaxed"
+          >
+            Master's student in Applied Mathematics and research trainee with a
+            focus on Data Science at at the College of Natural Sciences, Can Tho
+            University.
+          </p>
+          <p
+            class="mt-3 font-mono text-xs text-slate-500 flex items-center gap-2"
+          >
+            <i data-lucide="map-pin" class="h-3.5 w-3.5"></i> Can Tho
+            University, Vietnam
+          </p>
+
+          <!-- CTAs -->
+          <div class="mt-8 flex flex-wrap gap-4 items-center">
+            <a
+              href="#research"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-violet-600 text-white font-sans text-xs font-semibold hover:shadow-lg hover:shadow-blue-500/20 hover:scale-[1.01] transition-all duration-300"
+            >
+              View Research Papers
+              <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </a>
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white font-sans text-xs font-semibold transition-all duration-300"
+            >
+              Inquire Collaboration
+            </a>
+          </div>
+        </div>
+
+        <!-- Image Area (Right) -->
+        <div
+          class="lg:col-span-5 flex justify-center lg:justify-end reveal-entry"
+        >
+          <div
+            class="relative w-72 h-96 sm:w-80 sm:h-[420px] rounded-2xl overflow-hidden bg-slate-900 border border-white/10 shadow-2xl shadow-blue-900/10 group"
+          >
+            <!-- Image Tag Loading anh2.jpg with custom fallbacks -->
+            <img
+              src="./anh2.jpg"
+              alt="Nguyen Tan Hau"
+              class="profile-image w-full h-full object-cover transition-all duration-700 ease-out scale-100 group-hover:scale-105"
+            />
+
+            <!-- Elegant gradient overlay framing photo -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-[#020512] via-transparent to-transparent opacity-80"
+            ></div>
+
+            <!-- Absolute status badge in image -->
+            <div
+              class="absolute bottom-4 left-4 right-4 flex items-center justify-between bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-xl"
+            >
+              <span
+                class="font-sans text-xs font-bold tracking-wider text-slate-300"
+                >TAN-HAU NGUYEN</span
+              >
+              <span class="font-mono text-[11px] text-blue-400"
+                >RESEARCHER</span
+              >
+            </div>
+
+            <!-- Fallback Visual Placeholder if image is missing -->
+            <div
+              class="profile-placeholder absolute inset-0 hidden flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950"
+            >
+              <div
+                class="p-4 rounded-full bg-blue-500/10 border border-blue-500/20 mb-3"
+              >
+                <i data-lucide="user" class="h-8 w-8 text-blue-400"></i>
+              </div>
+              <h4 class="font-sans text-xs font-bold text-white">
+                Nguyen Tan Hau
+              </h4>
+              <p class="font-mono text-[11px] text-slate-500 mt-1">
+                Portrait (anh2.jpg)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section
+      id="about"
+      class="py-24 px-6 border-t border-white/5 relative bg-white/[0.01]"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div class="lg:col-span-4 reveal-entry">
+            <span
+              class="font-mono text-xs tracking-widest text-blue-500 uppercase"
+              >01 / OVERVIEW</span
+            >
+            <h2
+              class="mt-2 font-sans text-3xl font-bold tracking-tight text-white"
+            >
+              Scientific Narrative & Research Mission
+            </h2>
+          </div>
+          <div
+            class="lg:col-span-8 space-y-6 font-serif text-base text-slate-300 leading-relaxed reveal-entry"
+          >
+            <p class="text-left">
+              As a postgraduate researcher in
+              <strong class="font-sans text-sm font-semibold text-white"
+                >Applied Mathematics</strong
+              >
+              and
+              <strong class="font-sans text-sm font-semibold text-white"
+                >Optimization</strong
+              >, I develop mathematically rigorous optimization methods for
+              machine learning. My research focuses on
+              <strong class="font-sans text-sm font-semibold text-white"
+                >Gap-Safe screening rules</strong
+              >
+              for high-dimensional optimization, enabling faster and more
+              scalable algorithms for sparse regression, signal recovery, and
+              related optimization problems.
+            </p>
+          </div>
+        </div>
+
+        <!-- Core Research Pillar Cards (Bento style) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 reveal-entry">
+          <!-- Card 1 -->
+          <div
+            class="bg-white/2 backdrop-blur-md border border-white/5 hover:border-white/10 p-8 rounded-2xl transition-all duration-300"
+          >
+            <div
+              class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6"
+            >
+              <i data-lucide="binary" class="h-5 w-5"></i>
+            </div>
+            <h3
+              class="font-sans text-sm font-bold text-white uppercase tracking-wider"
+            >
+              Optimization Theory
+            </h3>
+            <p class="mt-3 font-serif text-xs text-slate-400 leading-relaxed">
+              Formulating fast dual screening tests, dual gap analyses, and
+              primal-dual algorithms to accelerate sparse regressions (LASSO,
+              Group LASSO).
+            </p>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="bg-white/2 backdrop-blur-md border border-white/5 hover:border-white/10 p-8 rounded-2xl transition-all duration-300"
+          >
+            <div
+              class="w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 mb-6"
+            >
+              <i data-lucide="cpu" class="h-5 w-5"></i>
+            </div>
+            <h3
+              class="font-sans text-sm font-bold text-white uppercase tracking-wider"
+            >
+              Machine Learning Foundations
+            </h3>
+            <p class="mt-3 font-serif text-xs text-slate-400 leading-relaxed">
+              Strengthening support vector machines, neural network convergence
+              proofs, and generalization bounds using analytical metrics.
+            </p>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="bg-white/2 backdrop-blur-md border border-white/5 hover:border-white/10 p-8 rounded-2xl transition-all duration-300"
+          >
+            <div
+              class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6"
+            >
+              <i data-lucide="database" class="h-5 w-5"></i>
+            </div>
+            <h3
+              class="font-sans text-sm font-bold text-white uppercase tracking-wider"
+            >
+              Data Science
+            </h3>
+            <p class="mt-3 font-serif text-xs text-slate-400 leading-relaxed">
+              Applying statistical modeling, machine learning algorithms, and
+              high-dimensional data analysis to extract actionable insights and
+              optimize predictive performance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Journey Section (Academic Timeline) -->
+    <section id="journey" class="py-24 px-6 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-xl mx-auto mb-16 reveal-entry">
+          <span
+            class="font-mono text-xs tracking-widest text-blue-500 uppercase"
+            >02 / EDUCATION</span
+          >
+          <h2
+            class="mt-2 font-sans text-3xl font-bold tracking-tight text-white"
+          >
+            Academic Milestones
+          </h2>
+        </div>
+
+        <div class="relative max-w-3xl mx-auto reveal-entry">
+          <!-- Center line -->
+          <div
+            class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/10"
+          ></div>
+
+          <!-- Timeline item 1: Bachelor of Applied Mathematics (Sep 2022 – Feb 2026) -->
+          <div
+            class="relative flex flex-col md:flex-row items-stretch gap-8 mb-12"
+          >
+            <div
+              class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-violet-500 border-4 border-[#020512] z-10"
+            ></div>
+            <div
+              class="w-full md:w-1/2 pl-10 md:pl-0 md:pr-10 text-left md:text-right flex flex-col md:items-end"
+            >
+              <span class="font-mono text-xs text-violet-400 font-semibold mb-2"
+                >Sep 2022 – Feb 2026</span
+              >
+              <h4 class="font-sans text-md font-bold text-white">
+                Bachelor of Applied Mathematics
+              </h4>
+              <p class="font-serif text-xs text-slate-400 mt-1">
+                Can Tho University (CTU), Vietnam
+              </p>
+            </div>
+            <div
+              class="w-full md:w-1/2 pl-10 md:pl-10 text-left flex flex-col justify-center"
+            >
+              <p
+                class="font-serif text-xs text-slate-400 leading-relaxed max-w-sm"
+              >
+                Graduated with an outstanding GPA of
+                <strong class="text-white">3.71 / 4.0</strong> (Excellent).
+                Defense of Bachelor Thesis graded with a perfect score:
+                <strong class="text-white">9.7 / 10.0</strong>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline item 2: Student Exchange Program (Jun 2025) -->
+          <div
+            class="relative flex flex-col md:flex-row items-stretch gap-8 mb-12"
+          >
+            <div
+              class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-4 border-[#020512] z-10"
+            ></div>
+            <div
+              class="w-full md:w-1/2 pl-10 md:pl-0 md:pr-10 text-left md:text-right flex flex-col md:items-end md:order-1 md:pl-10 md:pr-0 md:text-left md:items-start"
+            >
+              <span
+                class="font-mono text-xs text-emerald-400 font-semibold mb-2"
+                >Jun 2025</span
+              >
+              <h4 class="font-sans text-md font-bold text-white">
+                Student Exchange Program
+              </h4>
+              <p class="font-serif text-xs text-slate-400 mt-1">
+                Universiti Brunei Darussalam
+              </p>
+            </div>
+            <div
+              class="w-full md:w-1/2 pl-10 md:pl-10 text-left flex flex-col justify-center md:order-2 md:text-left md:items-start"
+            >
+              <p
+                class="font-serif text-xs text-slate-400 leading-relaxed max-w-sm text-left"
+              >
+                Fully funded discovery study on mathematical modeling of
+                socio-ecological environments, computational models, and
+                international collaboration dynamics.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline item 3: Master of Applied Mathematics (May 2026 – Present) -->
+          <div class="relative flex flex-col md:flex-row items-stretch gap-8">
+            <div
+              class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-blue-500 border-4 border-[#020512] z-10"
+            ></div>
+            <div
+              class="w-full md:w-1/2 pl-10 md:pl-0 md:pr-10 text-left md:text-right flex flex-col md:items-end"
+            >
+              <span class="font-mono text-xs text-blue-400 font-semibold mb-2"
+                >May 2026 – Present</span
+              >
+              <h4 class="font-sans text-md font-bold text-white">
+                Master of Applied Mathematics
+              </h4>
+              <p class="font-serif text-xs text-slate-400 mt-1">
+                Can Tho University (CTU), Vietnam
+              </p>
+            </div>
+            <div
+              class="w-full md:w-1/2 pl-10 md:pl-10 text-left flex flex-col justify-center"
+            >
+              <p
+                class="font-serif text-xs text-slate-400 leading-relaxed max-w-sm"
+              >
+                Focusing on advanced optimization algorithms, variational
+                analysis, and dynamic screening rules under sparse structures.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documents Download Cards -->
+        <div
+          class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-16 reveal-entry"
+        >
+          <!-- Transcript Box -->
+          <div
+            class="bg-white/2 border border-white/5 p-6 rounded-xl flex items-center justify-between"
+          >
+            <div class="flex items-center gap-4">
+              <div class="p-3 rounded-lg bg-blue-500/10 text-blue-400">
+                <i data-lucide="file-text" class="h-5 w-5"></i>
+              </div>
+              <div>
+                <h5 class="font-sans text-xs font-bold text-white uppercase">
+                  Academic Transcripts
+                </h5>
+                <p class="font-mono text-xs text-slate-500 mt-1">
+                  GPA 3.71 (Outstanding)
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <a
+                href="https://drive.google.com/file/d/1vpqlPNcT0PqSL2IoTsAiIBjYr-hFZYxX/view?usp=sharing"
+                target="_blank"
+                class="p-2 rounded bg-white/5 border border-white/10 text-slate-300 hover:text-white text-xs font-sans hover:bg-white/10 inline-flex items-center gap-1"
+                title="View English Transcript"
+                >EN
+                <i data-lucide="external-link" class="h-3 w-3 text-blue-400"></i
+              ></a>
+              <a
+                href="https://drive.google.com/file/d/1QKghqoaoujGIscl0zOaoKZvDqjnC893m/view?usp=sharing"
+                target="_blank"
+                class="p-2 rounded bg-white/5 border border-white/10 text-slate-300 hover:text-white text-xs font-sans hover:bg-white/10 inline-flex items-center gap-1"
+                title="View Vietnamese Transcript"
+                >VI
+                <i data-lucide="external-link" class="h-3 w-3 text-blue-400"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Thesis Box -->
+          <div
+            class="bg-white/2 border border-white/5 p-6 rounded-xl flex items-center justify-between"
+          >
+            <div class="flex items-center gap-4">
+              <div class="p-3 rounded-lg bg-violet-500/10 text-violet-400">
+                <i data-lucide="book-open" class="h-5 w-5"></i>
+              </div>
+              <div>
+                <h5 class="font-sans text-xs font-bold text-white uppercase">
+                  Bachelor's Thesis
+                </h5>
+                <p class="font-mono text-xs text-slate-500 mt-1">
+                  Thesis Grade: 9.7/10.0
+                </p>
+              </div>
+            </div>
+            <a
+              href="https://drive.google.com/file/d/1FTsgyybsdV6t-p85U1HoLVcbLpm9ZyLr/view?usp=sharing"
+              target="_blank"
+              class="text-slate-300 hover:text-white transition-colors flex items-center gap-1.5 font-sans text-xs bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/10"
+              title="View Thesis Document"
+            >
+              <i
+                data-lucide="external-link"
+                class="h-3.5 w-3.5 text-violet-400"
+              ></i>
+              View Thesis
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Section (Publications & Works) -->
+    <section
+      id="research"
+      class="py-24 px-6 border-t border-white/5 bg-white/[0.01]"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 reveal-entry"
+        >
+          <div>
+            <span
+              class="font-mono text-xs tracking-widest text-blue-500 uppercase"
+              >03 / PUBLICATIONS & ARTICLES</span
+            >
+            <h2
+              class="mt-2 font-sans text-3xl font-bold tracking-tight text-white"
+            >
+              Scientific Research Portfolio
+            </h2>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-entry">
+          <!-- Paper 1: Gap Safe Screening Rules for Robust SVM -->
+          <div
+            class="bg-white/2 backdrop-blur-md border border-white/5 hover:border-white/10 rounded-2xl p-8 flex flex-col justify-between h-full group transition-all duration-300"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="flex flex-wrap gap-1.5">
+                  <span
+                    class="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-[11px] font-mono font-semibold text-blue-400 uppercase"
+                    >Under Review (2026)</span
+                  >
+                  <span
+                    class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono font-semibold text-emerald-400 uppercase"
+                    >MAI LAB</span
+                  >
+                </div>
+                <span class="text-slate-500 font-mono text-xs"
+                  >FIRST AUTHOR</span
+                >
+              </div>
+              <h4
+                class="font-sans text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-300 leading-snug"
+              >
+                Gap Safe Screening Rules for Fast Training of Robust Support
+                Vector Machines under Feature Noise
+              </h4>
+              <p
+                class="mt-4 font-serif text-xs text-slate-400 leading-relaxed text-left"
+              >
+                Developed a safe screening framework for robust support vector
+                machines (R-SVM) under feature uncertainty, demonstrating
+                substantial training acceleration and computational savings.
+              </p>
+              <div class="mt-4 pt-4 border-t border-white/5">
+                <span
+                  class="font-sans text-xs font-semibold text-slate-400 block uppercase mb-1"
+                  >Contributions:</span
+                >
+                <p
+                  class="font-serif text-[11px] text-slate-500 leading-relaxed"
+                >
+                  Methodology, Software, Formal Analysis, Investigation,
+                  Visualization, Writing – Original Draft, Writing – Review &
+                  Editing.
+                </p>
+              </div>
+            </div>
+            <div
+              class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between"
+            >
+              <span class="font-mono text-[11px] text-slate-500"
+                >SVM, SCREENING, OPTIMIZATION</span
+              >
+              <a
+                href="https://drive.google.com/file/d/1Hr_HS2js9r8kj59ZnZsw81_MhkHg_8jg/view?usp=sharing"
+                target="_blank"
+                class="text-slate-300 hover:text-white transition-colors flex items-center gap-1.5 font-sans text-xs bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/10"
+              >
+                <i
+                  data-lucide="file-text"
+                  class="h-3.5 w-3.5 text-blue-400"
+                ></i>
+                PDF
+              </a>
+            </div>
+          </div>
+
+          <!-- Paper 2: Regularity of Collections of Set-Valued Mappings -->
+          <div
+            class="bg-white/2 backdrop-blur-md border border-white/5 hover:border-white/10 rounded-2xl p-8 flex flex-col justify-between h-full group transition-all duration-300"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span
+                  class="px-2 py-0.5 rounded bg-violet-500/10 border border-violet-500/20 text-[11px] font-mono font-semibold text-violet-400 uppercase"
+                  >Accepted (2025)</span
+                >
+                <span class="text-slate-500 font-mono text-xs">CO-AUTHOR</span>
+              </div>
+              <span
+                class="text-[11px] font-mono text-violet-400/80 tracking-wider block uppercase mb-1.5"
+                >Student Scientific Research Project (University-level)</span
+              >
+              <h4
+                class="font-sans text-sm font-bold text-white group-hover:text-violet-400 transition-colors duration-300 leading-snug"
+              >
+                Regularity of Collections of Set-Valued Mappings
+                <span class="text-slate-400 font-normal text-xs font-sans"
+                  >(translated from Vietnamese)</span
+                >
+              </h4>
+              <p
+                class="mt-4 font-serif text-xs text-slate-400 leading-relaxed mb-4 text-left"
+              >
+                Proposed and investigated new regularity and transversality
+                properties for collections of set-valued mappings, extending
+                corresponding concepts for collections of sets.
+              </p>
+              <p
+                class="font-serif text-xs text-slate-400 leading-relaxed text-left"
+              >
+                Established geometric and metric characterizations, particularly
+                for convex-valued mappings, using modern tools from variational
+                analysis and nonsmooth optimization.
+              </p>
+            </div>
+            <div
+              class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between"
+            >
+              <span class="font-mono text-[11px] text-slate-500"
+                >VARIATIONAL ANALYSIS</span
+              >
+              <a
+                href="https://drive.google.com/file/d/1TGoMVdPAfn9pevYwV4SNwLtAOy0aCZo8/view?usp=sharing"
+                target="_blank"
+                class="text-slate-300 hover:text-white transition-colors flex items-center gap-1.5 font-sans text-xs bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/10"
+              >
+                <i
+                  data-lucide="file-text"
+                  class="h-3.5 w-3.5 text-violet-400"
+                ></i>
+                PDF
+              </a>
+            </div>
+          </div>
+
+          <!-- Paper 3: Solving Risk-Return Tradeoff Model with Galois Connection -->
+          <div
+            class="bg-white/2 backdrop-blur-md border border-white/5 hover:border-white/10 rounded-2xl p-8 flex flex-col justify-between h-full group transition-all duration-300"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="flex flex-wrap gap-1.5">
+                  <span
+                    class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[11px] font-mono font-semibold text-amber-400 uppercase"
+                    >Under Review (2025)</span
+                  >
+                  <span
+                    class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono font-semibold text-emerald-400 uppercase"
+                    >MAI LAB</span
+                  >
+                </div>
+                <span class="text-slate-500 font-mono text-xs">CO-AUTHOR</span>
+              </div>
+              <h4
+                class="font-sans text-sm font-bold text-white group-hover:text-amber-400 transition-colors duration-300 leading-snug"
+              >
+                Solving Risk-Return Tradeoff Model with Galois Connection
+              </h4>
+              <p
+                class="mt-4 font-serif text-xs text-slate-400 leading-relaxed text-left"
+              >
+                Investigates non-convex risk-return selection configurations
+                using Galois connections. Implements stable mathematical
+                pairings to prevent volatility divergence under highly volatile
+                asset conditions.
+              </p>
+            </div>
+            <div
+              class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between"
+            >
+              <span class="font-mono text-[11px] text-slate-500"
+                >GALOIS CONNECTION, PORTFOLIO</span
+              >
+              <a
+                href="https://drive.google.com/file/d/1pB4SkXS5nD2aWeobBj1XnQsYBPrhxOAH/view?usp=sharing"
+                target="_blank"
+                class="text-slate-300 hover:text-white transition-colors flex items-center gap-1.5 font-sans text-xs bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/10"
+              >
+                <i
+                  data-lucide="file-text"
+                  class="h-3.5 w-3.5 text-amber-400"
+                ></i>
+                PDF
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 px-6 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div class="lg:col-span-4 reveal-entry">
+            <span
+              class="font-mono text-xs tracking-widest text-blue-500 uppercase"
+              >04 / SKILLS</span
+            >
+            <h2
+              class="mt-2 font-sans text-3xl font-bold tracking-tight text-white"
+            >
+              Mathematical & Analytical Toolkit
+            </h2>
+          </div>
+
+          <div
+            class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-8 reveal-entry"
+          >
+            <!-- Skill block 1 -->
+            <div>
+              <h4
+                class="font-sans text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                Core Mathematics & Theory
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >Functional Analysis</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >Machine Learning</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >Statistical Analysis</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >Mathematical Optimization</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >Convex Analysis</span
+                >
+              </div>
+            </div>
+
+            <!-- Skill block 2 -->
+            <div>
+              <h4
+                class="font-sans text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-violet-500"></span>
+                Computational & Data Science
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >Python</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >R Language</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >C/C++</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >SQL</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >MATLAB</span
+                >
+              </div>
+            </div>
+
+            <!-- Skill block 3 -->
+            <div>
+              <h4
+                class="font-sans text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                Development Tools & Vibe Coding
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >HTML5</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >CSS3</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >JavaScript</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >Vibe Coding</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >VS Code</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >Git / GitHub</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >Google Colab</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >Power BI</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >SPSS</span
+                >
+              </div>
+            </div>
+
+            <!-- Skill block 4 -->
+            <div>
+              <h4
+                class="font-sans text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                Academic Writing & Research Standards
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >LaTeX / Overleaf</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >Typst</span
+                >
+                <span
+                  class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
+                  >Markdown</span
+                >
+                <!-- <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Technical Report Writing</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Scientific Communication</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300">Peer Review</span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section
+      id="achievements"
+      class="py-24 px-6 border-t border-white/5 bg-white/[0.01] relative"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-xl mx-auto mb-16 reveal-entry">
+          <span
+            class="font-mono text-xs tracking-widest text-blue-500 uppercase"
+            >05 / MERITS & SCHOLARSHIPS</span
+          >
+          <h2
+            class="mt-2 font-sans text-3xl font-bold tracking-tight text-white"
+          >
+            Honors & Funding Awards
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-entry">
+          <!-- Merit 1 -->
+          <div
+            class="bg-white/2 backdrop-blur-md border border-white/5 p-8 rounded-2xl relative overflow-hidden group hover:border-blue-500/30 hover:bg-white/4 transition-all duration-300 flex flex-col justify-between h-full"
+          >
+            <div>
+              <div
+                class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6"
+              >
+                <i data-lucide="graduation-cap" class="h-5 w-5"></i>
+              </div>
+              <span
+                class="font-sans text-xs font-bold text-blue-400 uppercase tracking-wider block"
+                >2022 – 2025</span
+              >
+              <h4
+                class="mt-3 font-sans text-sm font-bold text-white leading-snug"
+              >
+                Academic Encouragement Scholarships
+              </h4>
+              <p
+                class="mt-3 font-serif text-xs text-slate-400 leading-relaxed text-left"
+              >
+                Awarded multiple times throughout undergraduate studies
+                (2022–2023; 2024–2025) for ranking within the top percentile of
+                the Applied Mathematics department.
+              </p>
+            </div>
+            <div
+              class="mt-6 pt-4 border-t border-white/5 flex items-center gap-1.5 text-blue-400 text-xs font-mono uppercase"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+              Department Excellence
+            </div>
+          </div>
+
+          <!-- Merit 2 -->
+          <div
+            class="bg-white/2 backdrop-blur-md border border-white/5 p-8 rounded-2xl relative overflow-hidden group hover:border-[#10b981]/30 hover:bg-white/4 transition-all duration-300 flex flex-col justify-between h-full"
+          >
+            <div>
+              <div
+                class="w-10 h-10 rounded-xl bg-[#10b981]/10 border border-[#10b981]/20 text-[#10b981] flex items-center justify-center mb-6"
+              >
+                <i data-lucide="search" class="h-5 w-5"></i>
+              </div>
+              <span
+                class="font-sans text-xs font-bold text-[#10b981] uppercase tracking-wider block"
+                >Year 2025</span
+              >
+              <h4
+                class="mt-3 font-sans text-sm font-bold text-white leading-snug"
+              >
+                University Research Grant
+              </h4>
+              <p
+                class="mt-3 font-serif text-xs text-slate-400 leading-relaxed text-left"
+              >
+                Granted Can Tho University scientific research funding for the
+                student project investigating configurations of set-valued
+                mappings.
+              </p>
+            </div>
+            <div
+              class="mt-6 pt-4 border-t border-white/5 flex items-center gap-1.5 text-[#10b981] text-xs font-mono uppercase"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-[#10b981]"></span>
+              Research Funding
+            </div>
+          </div>
+
+          <!-- Merit 3 -->
+          <div
+            class="bg-white/2 backdrop-blur-md border border-white/5 p-8 rounded-2xl relative overflow-hidden group hover:border-violet-500/30 hover:bg-white/4 transition-all duration-300 flex flex-col justify-between h-full"
+          >
+            <div>
+              <div
+                class="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center mb-6"
+              >
+                <i data-lucide="globe" class="h-5 w-5"></i>
+              </div>
+              <span
+                class="font-sans text-xs font-bold text-violet-400 uppercase tracking-wider block"
+                >Jun 2025</span
+              >
+              <h4
+                class="mt-3 font-sans text-sm font-bold text-white leading-snug"
+              >
+                Study Exchange Full Funding Grant
+              </h4>
+              <p
+                class="mt-3 font-serif text-xs text-slate-400 leading-relaxed text-left"
+              >
+                Full scholarship by Can Tho University for the discover study
+                exchange program at Universiti Brunei Darussalam covering
+                flight, tuition, and living stipends.
+              </p>
+            </div>
+            <div
+              class="mt-6 pt-4 border-t border-white/5 flex items-center gap-1.5 text-violet-400 text-xs font-mono uppercase"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-violet-500"></span> Study
+              Abroad Scholarship
+            </div>
+          </div>
+        </div>
+
+        <!-- Certificates & Licenses Subsection -->
+        <div class="mt-24 reveal-entry">
+          <div class="text-center max-w-xl mx-auto mb-8">
+            <span
+              class="font-mono text-xs tracking-widest text-[#10b981] uppercase"
+              >06 / CERTIFICATES & CREDENTIALS</span
+            >
+            <h3
+              class="mt-2 font-sans text-2xl font-bold tracking-tight text-white"
+            >
+              Professional Licenses & Certifications
+            </h3>
+          </div>
+
+          <!-- Vertical Timeline Wrapper -->
+          <div class="relative max-w-4xl mx-auto mt-12 py-8 px-4 sm:px-6">
+            <!-- Central vertical line (visible on desktop) -->
+            <div
+              class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-white/0 via-white/10 to-white/0 -translate-x-1/2"
+            ></div>
+
+            <div class="space-y-8 md:space-y-0">
+              <!-- Item 1 (Left on desktop) -->
+              <div
+                class="relative flex flex-col md:flex-row items-start md:justify-between group"
+              >
+                <!-- Dot -->
+                <div
+                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#8b5cf6] group-hover:bg-[#8b5cf6] transition-all duration-300 z-10"
+                ></div>
+
+                <!-- Content Card (Left) -->
+                <div
+                  class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 md:text-right reveal-entry"
+                >
+                  <div
+                    class="bg-white/2 backdrop-blur-md border border-white/5 p-5 rounded-xl hover:border-[#8b5cf6]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full text-left md:text-right"
+                  >
+                    <span
+                      class="font-mono text-[11px] text-[#8b5cf6] font-semibold"
+                      >2023 – 2024</span
+                    >
+                    <h5
+                      class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide"
+                    >
+                      Student with 5 Good Criteria
+                    </h5>
+                    <p
+                      class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left md:text-right"
+                    >
+                      College of Natural Sciences award.
+                    </p>
+                    <div
+                      class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#8b5cf6] text-[10px] font-mono tracking-wider"
+                    >
+                      <i data-lucide="award" class="h-3.5 w-3.5"></i>
+                      FACULTY-LEVEL
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Spacer for desktop (Right) -->
+                <div class="hidden md:block w-[calc(50%-28px)]"></div>
+              </div>
+
+              <!-- Item 2 (Right on desktop) -->
+              <div
+                class="relative flex flex-col md:flex-row items-start md:justify-between group md:-mt-[5rem]"
+              >
+                <!-- Dot -->
+                <div
+                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#3b82f6] group-hover:bg-[#3b82f6] transition-all duration-300 z-10"
+                ></div>
+
+                <!-- Spacer for desktop (Left) -->
+                <div class="hidden md:block w-[calc(50%-28px)]"></div>
+
+                <!-- Content Card (Right) -->
+                <div
+                  class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 reveal-entry"
+                >
+                  <div
+                    class="bg-white/2 backdrop-blur-md border border-white/5 p-5 rounded-xl hover:border-[#3b82f6]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full"
+                  >
+                    <span
+                      class="font-mono text-[11px] text-[#3b82f6] font-semibold"
+                      >Apr 2024</span
+                    >
+                    <h5
+                      class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide"
+                    >
+                      Machine Learning: Foundations & Applications
+                    </h5>
+                    <p
+                      class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left"
+                    >
+                      Rigorous foundations in mathematical learning,
+                      optimization proofs, and algorithmic limits.
+                    </p>
+                    <div
+                      class="mt-3 flex items-center gap-1.5 text-[#3b82f6] text-[10px] font-mono tracking-wider"
+                    >
+                      <i data-lucide="award" class="h-3.5 w-3.5"></i>
+                      SPECIALIZED
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 3 (Left on desktop) -->
+              <div
+                class="relative flex flex-col md:flex-row items-start md:justify-between group md:-mt-[5rem]"
+              >
+                <!-- Dot -->
+                <div
+                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#8b5cf6] group-hover:bg-[#8b5cf6] transition-all duration-300 z-10"
+                ></div>
+
+                <!-- Content Card (Left) -->
+                <div
+                  class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 md:text-right reveal-entry"
+                >
+                  <div
+                    class="bg-white/2 backdrop-blur-md border border-white/5 p-5 rounded-xl hover:border-[#8b5cf6]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full text-left md:text-right"
+                  >
+                    <span
+                      class="font-mono text-[11px] text-[#8b5cf6] font-semibold"
+                      >2024 – 2025</span
+                    >
+                    <h5
+                      class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide"
+                    >
+                      Student with 5 Good Criteria
+                    </h5>
+                    <p
+                      class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left md:text-right"
+                    >
+                      College of Natural Sciences award.
+                    </p>
+                    <div
+                      class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#8b5cf6] text-[10px] font-mono tracking-wider"
+                    >
+                      <i data-lucide="award" class="h-3.5 w-3.5"></i>
+                      FACULTY-LEVEL
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Spacer for desktop (Right) -->
+                <div class="hidden md:block w-[calc(50%-28px)]"></div>
+              </div>
+
+              <!-- Item 4 (Right on desktop) -->
+              <div
+                class="relative flex flex-col md:flex-row items-start md:justify-between group md:-mt-[5rem]"
+              >
+                <!-- Dot -->
+                <div
+                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#10b981] group-hover:bg-[#10b981] transition-all duration-300 z-10"
+                ></div>
+
+                <!-- Spacer for desktop (Left) -->
+                <div class="hidden md:block w-[calc(50%-28px)]"></div>
+
+                <!-- Content Card (Right) -->
+                <div
+                  class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 reveal-entry"
+                >
+                  <div
+                    class="bg-white/2 backdrop-blur-md border border-white/5 p-5 rounded-xl hover:border-[#10b981]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full"
+                  >
+                    <span
+                      class="font-mono text-[11px] text-[#10b981] font-semibold"
+                      >2024 – 2025</span
+                    >
+                    <h5
+                      class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide"
+                    >
+                      “Student with 5 Good Criteria”
+                    </h5>
+                    <p
+                      class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left"
+                    >
+                      Can Tho University-level award recognizing academic
+                      excellence, morals, and volunteerism.
+                    </p>
+                    <div
+                      class="mt-3 flex items-center gap-1.5 text-[#10b981] text-[10px] font-mono tracking-wider"
+                    >
+                      <i data-lucide="award" class="h-3.5 w-3.5"></i>
+                      UNIVERSITY-LEVEL
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 5 (Left on desktop) -->
+              <div
+                class="relative flex flex-col md:flex-row items-start md:justify-between group md:-mt-[5rem]"
+              >
+                <!-- Dot -->
+                <div
+                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#f59e0b] group-hover:bg-[#f59e0b] transition-all duration-300 z-10"
+                ></div>
+
+                <!-- Content Card (Left) -->
+                <div
+                  class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 md:text-right reveal-entry"
+                >
+                  <div
+                    class="bg-white/2 backdrop-blur-md border border-white/5 p-5 rounded-xl hover:border-[#f59e0b]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full text-left md:text-right"
+                  >
+                    <span
+                      class="font-mono text-[11px] text-[#f59e0b] font-semibold"
+                      >Jun 2025</span
+                    >
+                    <h5
+                      class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide"
+                    >
+                      Green Stewardship Certificate
+                    </h5>
+                    <p
+                      class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left md:text-right"
+                    >
+                      Completed during the discover study exchange program at
+                      Universiti Brunei Darussalam, Brunei, focused on
+                      biodiversity preservation and sustainable development.
+                    </p>
+                    <div
+                      class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#f59e0b] text-[10px] font-mono tracking-wider"
+                    >
+                      <i data-lucide="award" class="h-3.5 w-3.5"></i>
+                      INTERNATIONAL
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Spacer for desktop (Right) -->
+                <div class="hidden md:block w-[calc(50%-28px)]"></div>
+              </div>
+
+              <!-- Item 6 (Right on desktop) -->
+              <div
+                class="relative flex flex-col md:flex-row items-start md:justify-between group md:-mt-[5rem]"
+              >
+                <!-- Dot -->
+                <div
+                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#f43f5e] group-hover:bg-[#f43f5e] transition-all duration-300 z-10"
+                ></div>
+
+                <!-- Spacer for desktop (Left) -->
+                <div class="hidden md:block w-[calc(50%-28px)]"></div>
+
+                <!-- Content Card (Right) -->
+                <div
+                  class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 reveal-entry"
+                >
+                  <div
+                    class="bg-white/2 backdrop-blur-md border border-white/5 p-5 rounded-xl hover:border-[#f43f5e]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full"
+                  >
+                    <span
+                      class="font-mono text-[11px] text-[#f43f5e] font-semibold"
+                      >Jun 2025</span
+                    >
+                    <h5
+                      class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide"
+                    >
+                      Future Ocean Changemakers Youth Forum
+                    </h5>
+                    <p
+                      class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left"
+                    >
+                      International delegate representation at the youth forum
+                      in Brunei, presenting mathematical modelling of
+                      environmental ecology and coastal sustainability.
+                    </p>
+                    <div
+                      class="mt-3 flex items-center gap-1.5 text-[#f43f5e] text-[10px] font-mono tracking-wider"
+                    >
+                      <i data-lucide="award" class="h-3.5 w-3.5"></i>
+                      INTERNATIONAL
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 7 (Left on desktop) -->
+              <div
+                class="relative flex flex-col md:flex-row items-start md:justify-between group md:-mt-[5rem]"
+              >
+                <!-- Dot -->
+                <div
+                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#6366f1] group-hover:bg-[#6366f1] transition-all duration-300 z-10"
+                ></div>
+
+                <!-- Content Card (Left) -->
+                <div
+                  class="w-full md:w-[calc(50%-28px)] pl-10 md:pl-0 md:text-right reveal-entry"
+                >
+                  <div
+                    class="bg-white/2 backdrop-blur-md border border-white/5 p-5 rounded-xl hover:border-[#6366f1]/30 transition-all duration-300 hover:bg-white/3 inline-block w-full text-left md:text-right"
+                  >
+                    <span
+                      class="font-mono text-[11px] text-[#6366f1] font-semibold"
+                      >Dec 2025</span
+                    >
+                    <h5
+                      class="font-sans text-xs font-bold text-white uppercase mt-1 tracking-wide"
+                    >
+                      Winter School on Quantum Computation
+                    </h5>
+                    <p
+                      class="font-serif text-[11px] text-slate-400 mt-2 leading-relaxed text-left md:text-right"
+                    >
+                      Organized by VIASM & HCMUT – VNU. Advanced theory on
+                      quantum computational logic.
+                    </p>
+                    <div
+                      class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#6366f1] text-[10px] font-mono tracking-wider"
+                    >
+                      <i data-lucide="award" class="h-3.5 w-3.5"></i>
+                      GRADUATE-LEVEL
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Spacer for desktop (Right) -->
+                <div class="hidden md:block w-[calc(50%-28px)]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Collaboration Section -->
+    <section id="contact" class="py-24 px-6 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <!-- Left Side Info -->
+          <div class="lg:col-span-5 flex flex-col justify-between reveal-entry">
+            <div>
+              <span
+                class="font-mono text-xs tracking-widest text-blue-500 uppercase"
+                >06 / COLLABORATION INQUIRIES</span
+              >
+              <h2
+                class="mt-2 font-sans text-3xl font-bold tracking-tight text-white"
+              >
+                Let's connect on scientific optimization
+              </h2>
+              <p
+                class="mt-4 font-serif text-xs text-slate-400 leading-relaxed max-w-sm"
+              >
+                If you are looking for research partnerships in Mathematical
+                Optimization, Varitional Analysis, or Machine Learning screening
+                paradigms, feel free to reach out.
+              </p>
+            </div>
+
+            <!-- Fast contact list -->
+            <div class="mt-12 space-y-4">
+              <!-- Email -->
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400"
+                >
+                  <svg
+                    class="h-4 w-4 stroke-current fill-none"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="font-mono text-xs text-slate-500 block uppercase"
+                    >Email</span
+                  >
+                  <a
+                    href="mailto:nthau.work@gmail.com"
+                    class="font-sans text-xs text-white hover:text-blue-400 transition-colors"
+                    >nthau.work@gmail.com</a
+                  >
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400"
+                >
+                  <svg
+                    class="h-4 w-4 stroke-current fill-none"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="font-mono text-xs text-slate-500 block uppercase"
+                    >Phone</span
+                  >
+                  <a
+                    href="tel:+84825964894"
+                    class="font-sans text-xs text-white hover:text-blue-400 transition-colors"
+                    >+84 82 596 4894</a
+                  >
+                </div>
+              </div>
+
+              <!-- LinkedIn -->
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400"
+                >
+                  <svg
+                    class="h-4 w-4 stroke-current fill-none"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                    ></path>
+                    <rect width="4" height="12" x="2" y="9"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <span class="font-mono text-xs text-slate-500 block uppercase"
+                    >LinkedIn</span
+                  >
+                  <a
+                    href="https://www.linkedin.com/in/tan-hau-nguyen-bba3943b7/"
+                    target="_blank"
+                    class="font-sans text-xs text-white hover:text-blue-400 transition-colors"
+                    >linkedin.com/in/tan-hau-nguyen-bba3943b7</a
+                  >
+                </div>
+              </div>
+
+              <!-- GitHub -->
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400"
+                >
+                  <svg
+                    class="h-4 w-4 stroke-current fill-none"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                    ></path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="font-mono text-xs text-slate-500 block uppercase"
+                    >GitHub</span
+                  >
+                  <a
+                    href="https://github.com/NguynHau"
+                    target="_blank"
+                    class="font-sans text-xs text-white hover:text-blue-400 transition-colors"
+                    >github.com/NguynHau</a
+                  >
+                </div>
+              </div>
+
+              <!-- Instagram -->
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400"
+                >
+                  <svg
+                    class="h-4 w-4 stroke-current fill-none"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      width="20"
+                      height="20"
+                      x="2"
+                      y="2"
+                      rx="5"
+                      ry="5"
+                    ></rect>
+                    <path
+                      d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                    ></path>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                  </svg>
+                </div>
+                <div>
+                  <span class="font-mono text-xs text-slate-500 block uppercase"
+                    >Instagram</span
+                  >
+                  <a
+                    href="https://www.instagram.com/nguynhau__/"
+                    target="_blank"
+                    class="font-sans text-xs text-white hover:text-rose-400 transition-colors"
+                    >@nguynhau__</a
+                  >
+                </div>
+              </div>
+
+              <!-- ResearchGate -->
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400"
+                >
+                  <svg
+                    class="h-4 w-4 stroke-current fill-none"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"
+                    ></path>
+                    <path d="M6 6h10M6 10h10M6 14h10"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="font-mono text-xs text-slate-500 block uppercase"
+                    >ResearchGate</span
+                  >
+                  <a
+                    href="https://researchgate.net"
+                    target="_blank"
+                    class="font-sans text-xs text-white hover:text-blue-400 transition-colors"
+                    >ResearchGate Profile</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side Form -->
+          <div
+            class="lg:col-span-7 bg-white/2 border border-white/5 rounded-2xl p-8 reveal-entry"
+          >
+            <h4
+              class="font-sans text-xs font-bold text-white uppercase tracking-wider mb-6"
+            >
+              Send a direct message
+            </h4>
+            <form id="contact-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    class="font-sans text-xs font-bold text-slate-400 block mb-1.5 uppercase"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    required
+                    class="w-full bg-[#020512] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    placeholder="e.g. Prof. Alan Turing"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="font-sans text-xs font-bold text-slate-400 block mb-1.5 uppercase"
+                    >Affiliation / University</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full bg-[#020512] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    placeholder="e.g. MIT, Department of Math"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  class="font-sans text-xs font-bold text-slate-400 block mb-1.5 uppercase"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  required
+                  class="w-full bg-[#020512] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  placeholder="e.g. colleague@university.edu"
+                />
+              </div>
+              <div>
+                <label
+                  class="font-sans text-xs font-bold text-slate-400 block mb-1.5 uppercase"
+                  >Inquiry Purpose</label
+                >
+                <select
+                  class="w-full bg-[#020512] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-slate-400 focus:outline-none focus:border-blue-500 transition-colors"
+                >
+                  <option>Research Collaboration</option>
+                  <option>Graduate Study opportunity</option>
+                  <option>Speaker request</option>
+                  <option>General inquiry</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="font-sans text-xs font-bold text-slate-400 block mb-1.5 uppercase"
+                  >Scientific Proposal / Message</label
+                >
+                <textarea
+                  rows="4"
+                  required
+                  class="w-full bg-[#020512] border border-white/10 rounded-lg px-4 py-3 font-serif text-xs text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  placeholder="Describe your collaboration proposal..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-violet-600 text-white font-sans text-xs font-semibold hover:from-blue-500 hover:to-violet-500 transition-all duration-300"
+              >
+                Submit Inquiry Protocol
+                <i data-lucide="send" class="h-4 w-4"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="py-12 border-t border-white/5 text-center text-slate-500 text-xs font-mono"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4"
+      >
+        <p>&copy; 2026 Nguyen Tan Hau. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Custom Success Modal Box -->
+    <div
+      id="success-modal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300"
+    >
+      <div
+        class="bg-slate-950 border border-white/15 p-8 rounded-2xl max-w-md w-full text-center"
+      >
+        <div
+          class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-6"
+        >
+          <i data-lucide="check-circle" class="h-6 w-6"></i>
+        </div>
+        <h3 class="font-sans text-md font-bold text-white uppercase">
+          Inquiry Received Successfully
+        </h3>
+        <p class="mt-3 font-serif text-xs text-slate-400 leading-relaxed">
+          Thank you for reaching out! Your research request/proposal has been
+          successfully transmitted. Nguyen Tan Hau will review the scientific
+          scope and respond shortly.
+        </p>
+        <button
+          id="close-modal-btn"
+          class="mt-8 w-full py-2.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white font-sans text-xs font-semibold transition-colors"
+        >
+          Acknowledge Protocol
+        </button>
+      </div>
+    </div>
+
+    <!-- Lucide Icons and Smooth Scrolling CDN dependencies -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <!-- Main Script -->
+    <script type="module" src="./script.js"></script>
+    <script type="module" src="i18n/i18n.js"></script>
+  </body>
+</html>
