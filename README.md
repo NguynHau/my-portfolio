@@ -45,7 +45,7 @@ Dự án Portfolio cá nhân trực quan, hiện đại, tối giản và chuyê
 
 ---
 
-## 🛠️ Các ngôn ngữ sử dụng & Lý do lựa chọn
+## 🛠️ Các ngôn ngữ sử dụng
 
 Dự án sử dụng sự kết hợp tối ưu giữa các công nghệ Web hiện đại và ngôn ngữ lập trình kịch bản bổ trợ:
 
