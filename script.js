@@ -244,4 +244,44 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 9. Theme Switcher Logic
+  const themeLightBtn = document.getElementById('theme-light-btn');
+  const themeDarkBtn = document.getElementById('theme-dark-btn');
+  const themeIndicator = document.getElementById('theme-indicator');
+  const htmlEl = document.documentElement;
+
+  function updateThemeIndicator(isLight) {
+    if (themeIndicator && themeLightBtn && themeDarkBtn) {
+      const activeBtn = isLight ? themeLightBtn : themeDarkBtn;
+      const inactiveBtn = isLight ? themeDarkBtn : themeLightBtn;
+      
+      themeIndicator.style.left = `${activeBtn.offsetLeft}px`;
+      themeIndicator.style.width = `${activeBtn.offsetWidth}px`;
+      
+      activeBtn.classList.add('text-white');
+      activeBtn.classList.remove('text-slate-400');
+      
+      inactiveBtn.classList.remove('text-white');
+      inactiveBtn.classList.add('text-slate-400');
+    }
+  }
+
+  if (themeLightBtn && themeDarkBtn) {
+    themeLightBtn.addEventListener('click', () => {
+      htmlEl.classList.add('light-mode');
+      updateThemeIndicator(true);
+    });
+    
+    themeDarkBtn.addEventListener('click', () => {
+      htmlEl.classList.remove('light-mode');
+      updateThemeIndicator(false);
+    });
+
+    // initialize state
+    setTimeout(() => {
+      const isLight = htmlEl.classList.contains('light-mode');
+      updateThemeIndicator(isLight);
+    }, 100);
+  }
 });

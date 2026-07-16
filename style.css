@@ -1,39 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
 /* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #020512;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
+::-webkit-scrollbar {  width: 8px;}
+::-webkit-scrollbar-track {  background: #020512;}
+::-webkit-scrollbar-thumb {  background: rgba(255, 255, 255, 0.1);  border-radius: 4px;}
+::-webkit-scrollbar-thumb:hover {  background: rgba(255, 255, 255, 0.2);}
 
 /* Custom Base Styles */
-html {
-  scroll-behavior: auto !important; /* Managed by Lenis smooth scroll */
+html {  scroll-behavior: auto !important; /* Managed by Lenis smooth scroll */}
+
+/* Light Mode Global Inversion Strategy */
+html.light-mode {  filter: invert(1) hue-rotate(180deg);  background-color: #110700; }
+html.light-mode body {  background-color: #110700;}
+
+/* Revert images, videos, svgs to preserve their original colors */
+html.light-mode img,
+html.light-mode video,
+html.light-mode svg,
+html.light-mode [data-lucide],
+html.light-mode .lucide {  filter: invert(1) hue-rotate(180deg);}
+
+/* Prevent backdrop blur elements from getting weird */
+html.light-mode .backdrop-blur-2xl,
+html.light-mode .backdrop-blur-3xl,
+html.light-mode .backdrop-blur-md {
+  background: rgba(0, 0, 0, 0.05); /* slightly darken for contrast in inverted mode */
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
-body {
-  background-color: #020512;
-  color: #f1f5f9;
-  font-family: 'Lora', serif;
-}
+body {  background-color: #020512;  color: #f1f5f9;  font-family: 'Lora', serif;}
 
 /* Shimmer shine animation on images */
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-.animate-shimmer {
-  animation: shimmer 3s infinite linear;
-}
+@keyframes shimmer {  0% { transform: translateX(-100%); }  100% { transform: translateX(100%); }}
+.animate-shimmer {  animation: shimmer 3s infinite linear;}
 
 /* Radial spotlight cursor wrapper */
 .cursor-spotlight {
@@ -42,16 +40,26 @@ body {
 
 /* Reveal entry state for observer scroll effects */
 .reveal-entry {
-  opacity: 0;
-  filter: blur(10px);
-  transform: translateY(30px);
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-              filter 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;  filter: blur(10px);  transform: translateY(30px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+               filter 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+               transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-entry.active {  opacity: 1;  filter: blur(0px);  transform: translateY(0);}
+
+/* Glassmorphism Islands */
+.glass-island {
+  background: rgba(255, 255, 255, 0.21) !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(4.8px) !important;
+  -webkit-backdrop-filter: blur(4.8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
 }
 
-.reveal-entry.active {
-  opacity: 1;
-  filter: blur(0px);
-  transform: translateY(0);
+/* Glass Island highlight frame for Light Mode */
+html.light-mode .glass-island {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15), inset 0 1px 1px rgba(0, 0, 0, 0.2) !important;
 }
