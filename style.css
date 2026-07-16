@@ -23,8 +23,8 @@ html.light-mode .lucide {  filter: invert(1) hue-rotate(180deg);}
 html.light-mode .backdrop-blur-2xl,
 html.light-mode .backdrop-blur-3xl,
 html.light-mode .backdrop-blur-md {
-  background: rgba(0, 0, 0, 0.05); /* slightly darken for contrast in inverted mode */
-  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.05) !important; /* slightly darken for contrast in inverted mode */
+  border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 body {  background-color: #020512;  color: #f1f5f9;  font-family: 'Lora', serif;}
