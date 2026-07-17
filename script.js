@@ -605,6 +605,27 @@ document.addEventListener('DOMContentLoaded', () => {
       active: false
     };
 
+    // High-performance Spatial Uniform Grid pre-allocated buffers
+    let gridHead = new Int32Array(0);
+    let particleNext = new Int32Array(0);
+
+    function ensureGridCapacity(numCells, numParticles) {
+      if (gridHead.length < numCells) {
+        const newSize = Math.max(gridHead.length * 2, numCells, 128);
+        gridHead = new Int32Array(newSize);
+      }
+      if (particleNext.length < numParticles) {
+        const newSize = Math.max(particleNext.length * 2, numParticles, 256);
+        particleNext = new Int32Array(newSize);
+      }
+    }
+
+    // Pre-allocated nearest neighbors buffer to completely eliminate GC overhead and allocations in loop
+    const MAX_NEAREST = 64;
+    const nearestParticleRefs = new Array(MAX_NEAREST);
+    const nearestDistSqs = new Float32Array(MAX_NEAREST);
+    const nearestDists = new Float32Array(MAX_NEAREST);
+
     // Resize handler
     function resizeCanvas() {
       width = window.innerWidth;
@@ -707,34 +728,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Constellation network rendering
       if (mouse.active && mouse.x !== null) {
-        const candidates = [];
         const radiusSq = starConfig.radius * starConfig.radius;
-        const starSize = starConfig.size;
+        const starSize = Math.min(starConfig.size, MAX_NEAREST);
         const starRadius = starConfig.radius;
 
-        // Step 1: Pre-filter by squared distance (extremely fast, avoids Math.sqrt)
+        // Build Spatial Uniform Grid dynamically
+        const cellSize = Math.max(50, starRadius);
+        const cols = Math.ceil(width / cellSize);
+        const rows = Math.ceil(height / cellSize);
+        const numCells = cols * rows;
+
+        ensureGridCapacity(numCells, particles.length);
+
+        // Reset grid pointers
+        gridHead.fill(-1, 0, numCells);
+
+        // Populate spatial grid
         for (let i = 0; i < particles.length; i++) {
           const p = particles[i];
-          const dx = p.x - mouse.x;
-          const dy = p.y - mouse.y;
-          const distSq = dx * dx + dy * dy;
-          if (distSq < radiusSq) {
-            candidates.push({ particle: p, distSq: distSq });
-          }
+          const cx = Math.floor(p.x / cellSize);
+          const cy = Math.floor(p.y / cellSize);
+          
+          const clampedCx = cx < 0 ? 0 : (cx >= cols ? cols - 1 : cx);
+          const clampedCy = cy < 0 ? 0 : (cy >= rows ? rows - 1 : cy);
+          
+          const cellIndex = clampedCy * cols + clampedCx;
+          particleNext[i] = gridHead[cellIndex];
+          gridHead[cellIndex] = i;
         }
 
-        // Step 2: Sort only the close candidates (usually < 15 items, extremely fast)
-        candidates.sort((a, b) => a.distSq - b.distSq);
+        // Search neighboring cells of the mouse (3x3 area)
+        const mx = Math.floor(mouse.x / cellSize);
+        const my = Math.floor(mouse.y / cellSize);
 
-        // Step 3: Lazy-evaluate Math.sqrt only for the selected nearest stars
-        const nearestPoints = [];
-        const limit = Math.min(candidates.length, starSize);
-        for (let i = 0; i < limit; i++) {
-          const item = candidates[i];
-          nearestPoints.push({
-            particle: item.particle,
-            dist: Math.sqrt(item.distSq)
-          });
+        const startX = Math.max(0, mx - 1);
+        const endX = Math.min(cols - 1, mx + 1);
+        const startY = Math.max(0, my - 1);
+        const endY = Math.min(rows - 1, my + 1);
+
+        let nearestCount = 0;
+
+        for (let cy = startY; cy <= endY; cy++) {
+          for (let cx = startX; cx <= endX; cx++) {
+            const cellIndex = cy * cols + cx;
+            let pIdx = gridHead[cellIndex];
+            while (pIdx !== -1) {
+              const p = particles[pIdx];
+              const dx = p.x - mouse.x;
+              const dy = p.y - mouse.y;
+              const distSq = dx * dx + dy * dy;
+
+              if (distSq < radiusSq) {
+                // Keep the top K sorted nearest points directly (O(K))
+                let insertIdx = nearestCount;
+                while (insertIdx > 0 && nearestDistSqs[insertIdx - 1] > distSq) {
+                  insertIdx--;
+                }
+                if (insertIdx < starSize) {
+                  const shiftLimit = Math.min(nearestCount, starSize - 1);
+                  for (let j = shiftLimit; j > insertIdx; j--) {
+                    nearestDistSqs[j] = nearestDistSqs[j - 1];
+                    nearestParticleRefs[j] = nearestParticleRefs[j - 1];
+                  }
+                  nearestDistSqs[insertIdx] = distSq;
+                  nearestParticleRefs[insertIdx] = p;
+                  if (nearestCount < starSize) {
+                    nearestCount++;
+                  }
+                }
+              }
+              pIdx = particleNext[pIdx];
+            }
+          }
         }
 
         // Use cached, high-performance pre-parsed RGB values
@@ -742,11 +807,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const g = starConfig.g;
         const b = starConfig.b;
 
-        // If we found candidates for the constellation
-        if (nearestPoints.length > 0) {
-          nearestPoints.forEach((item, index) => {
-            const p = item.particle;
-            
+        // If we found candidates for the constellation, process and render them
+        if (nearestCount > 0) {
+          // Lazy-evaluate Math.sqrt only for selected points
+          for (let i = 0; i < nearestCount; i++) {
+            nearestDists[i] = Math.sqrt(nearestDistSqs[i]);
+          }
+
+          for (let index = 0; index < nearestCount; index++) {
+            const p = nearestParticleRefs[index];
+            const dist = nearestDists[index];
+
             // Brighten and expand active constellation stars
             p.radius = p.baseRadius * 2.5;
 
@@ -763,7 +834,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fill();
 
             // Link from mouse to active star
-            const alpha = (1 - (item.dist / starRadius)).toFixed(2);
+            const alpha = (1 - (dist / starRadius)).toFixed(2);
             ctx.beginPath();
             ctx.moveTo(mouse.x, mouse.y);
             ctx.lineTo(p.x, p.y);
@@ -771,31 +842,30 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.lineWidth = 1.2;
             ctx.stroke();
 
-            // Intercluster node-to-node line connections (creates the "constellation" web shapes!)
-            nearestPoints.forEach((other, otherIdx) => {
-              if (otherIdx > index) { // Avoid duplicate lines
-                const ndx = other.particle.x - p.x;
-                const ndy = other.particle.y - p.y;
-                const ndistSq = ndx * ndx + ndy * ndy;
-                const thresholdSq = radiusSq * 0.64; // threshold = (radius * 0.8)^2
-                
-                // If they are within each other's field, connect them
-                if (ndistSq < thresholdSq) {
-                  const ndist = Math.sqrt(ndistSq);
-                  // Calculate opacity based on both points' distances and proximity to each other
-                  const otherAlpha = (1 - (other.dist / starRadius));
-                  const lineAlpha = parseFloat(alpha) * otherAlpha * (1 - (ndist / (starRadius * 0.8)));
-                  
-                  ctx.beginPath();
-                  ctx.moveTo(p.x, p.y);
-                  ctx.lineTo(other.particle.x, other.particle.y);
-                  ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${(lineAlpha * 0.45).toFixed(2)})`;
-                  ctx.lineWidth = 0.8;
-                  ctx.stroke();
-                }
+            // Intercluster node-to-node line connections
+            for (let otherIdx = index + 1; otherIdx < nearestCount; otherIdx++) {
+              const otherP = nearestParticleRefs[otherIdx];
+              const otherDist = nearestDists[otherIdx];
+
+              const ndx = otherP.x - p.x;
+              const ndy = otherP.y - p.y;
+              const ndistSq = ndx * ndx + ndy * ndy;
+              const thresholdSq = radiusSq * 0.64; // threshold = (radius * 0.8)^2
+
+              if (ndistSq < thresholdSq) {
+                const ndist = Math.sqrt(ndistSq);
+                const otherAlpha = (1 - (otherDist / starRadius));
+                const lineAlpha = parseFloat(alpha) * otherAlpha * (1 - (ndist / (starRadius * 0.8)));
+
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(otherP.x, otherP.y);
+                ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${(lineAlpha * 0.45).toFixed(2)})`;
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
               }
-            });
-          });
+            }
+          }
         }
       }
 
