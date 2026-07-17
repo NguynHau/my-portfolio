@@ -242,6 +242,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeLightBtn = document.getElementById('theme-light-btn');
   const themeDarkBtn = document.getElementById('theme-dark-btn');
   const themeIndicator = document.getElementById('theme-indicator');
+  
+  const mobileThemeLightBtn = document.getElementById('mobile-theme-light-btn');
+  const mobileThemeDarkBtn = document.getElementById('mobile-theme-dark-btn');
   const htmlEl = document.documentElement;
 
   function updateThemeIndicator(isLight) {
@@ -258,6 +261,23 @@ document.addEventListener('DOMContentLoaded', () => {
       inactiveBtn.classList.remove('text-white');
       inactiveBtn.classList.add('text-slate-400');
     }
+
+    // Update mobile active state
+    if (mobileThemeLightBtn && mobileThemeDarkBtn) {
+      if (isLight) {
+        mobileThemeLightBtn.classList.add('text-white', 'bg-white/10', 'border', 'border-white/15', 'shadow-[inset_0_1px_2px_rgba(255,255,255,0.15)]');
+        mobileThemeLightBtn.classList.remove('text-slate-400', 'bg-transparent', 'border-transparent', 'shadow-none');
+        
+        mobileThemeDarkBtn.classList.remove('text-white', 'bg-white/10', 'border', 'border-white/15', 'shadow-[inset_0_1px_2px_rgba(255,255,255,0.15)]');
+        mobileThemeDarkBtn.classList.add('text-slate-400', 'bg-transparent', 'border-transparent', 'shadow-none');
+      } else {
+        mobileThemeDarkBtn.classList.add('text-white', 'bg-white/10', 'border', 'border-white/15', 'shadow-[inset_0_1px_2px_rgba(255,255,255,0.15)]');
+        mobileThemeDarkBtn.classList.remove('text-slate-400', 'bg-transparent', 'border-transparent', 'shadow-none');
+        
+        mobileThemeLightBtn.classList.remove('text-white', 'bg-white/10', 'border', 'border-white/15', 'shadow-[inset_0_1px_2px_rgba(255,255,255,0.15)]');
+        mobileThemeLightBtn.classList.add('text-slate-400', 'bg-transparent', 'border-transparent', 'shadow-none');
+      }
+    }
   }
 
   if (themeLightBtn && themeDarkBtn) {
@@ -270,6 +290,20 @@ document.addEventListener('DOMContentLoaded', () => {
       htmlEl.classList.remove('light-mode');
       updateThemeIndicator(false);
     });
+
+    if (mobileThemeLightBtn) {
+      mobileThemeLightBtn.addEventListener('click', () => {
+        htmlEl.classList.add('light-mode');
+        updateThemeIndicator(true);
+      });
+    }
+
+    if (mobileThemeDarkBtn) {
+      mobileThemeDarkBtn.addEventListener('click', () => {
+        htmlEl.classList.remove('light-mode');
+        updateThemeIndicator(false);
+      });
+    }
 
     // initialize state
     setTimeout(() => {

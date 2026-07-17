@@ -59,6 +59,9 @@ function updateLangIndicator(lang) {
   const enBtn = document.getElementById('lang-en-btn');
   const indicator = document.getElementById('lang-indicator');
   
+  const mobileViBtn = document.getElementById('mobile-lang-vi-btn');
+  const mobileEnBtn = document.getElementById('mobile-lang-en-btn');
+  
   if (viBtn && enBtn && indicator) {
     if (lang === 'vi') {
       viBtn.classList.add('text-white');
@@ -82,6 +85,23 @@ function updateLangIndicator(lang) {
       indicator.style.height = `${enBtn.offsetHeight}px`;
     }
   }
+
+  // Update mobile active state
+  if (mobileViBtn && mobileEnBtn) {
+    if (lang === 'vi') {
+      mobileViBtn.classList.add('text-white', 'bg-white/10', 'border', 'border-white/15', 'shadow-[inset_0_1px_2px_rgba(255,255,255,0.15)]');
+      mobileViBtn.classList.remove('text-slate-400', 'bg-transparent', 'border-transparent', 'shadow-none');
+      
+      mobileEnBtn.classList.remove('text-white', 'bg-white/10', 'border', 'border-white/15', 'shadow-[inset_0_1px_2px_rgba(255,255,255,0.15)]');
+      mobileEnBtn.classList.add('text-slate-400', 'bg-transparent', 'border-transparent', 'shadow-none');
+    } else {
+      mobileEnBtn.classList.add('text-white', 'bg-white/10', 'border', 'border-white/15', 'shadow-[inset_0_1px_2px_rgba(255,255,255,0.15)]');
+      mobileEnBtn.classList.remove('text-slate-400', 'bg-transparent', 'border-transparent', 'shadow-none');
+      
+      mobileViBtn.classList.remove('text-white', 'bg-white/10', 'border', 'border-white/15', 'shadow-[inset_0_1px_2px_rgba(255,255,255,0.15)]');
+      mobileViBtn.classList.add('text-slate-400', 'bg-transparent', 'border-transparent', 'shadow-none');
+    }
+  }
 }
 
 function init() {
@@ -92,9 +112,13 @@ function init() {
   
   const viBtn = document.getElementById('lang-vi-btn');
   const enBtn = document.getElementById('lang-en-btn');
+  const mobileViBtn = document.getElementById('mobile-lang-vi-btn');
+  const mobileEnBtn = document.getElementById('mobile-lang-en-btn');
   
   if (viBtn) viBtn.addEventListener('click', () => translateTo('vi'));
   if (enBtn) enBtn.addEventListener('click', () => translateTo('en'));
+  if (mobileViBtn) mobileViBtn.addEventListener('click', () => translateTo('vi'));
+  if (mobileEnBtn) mobileEnBtn.addEventListener('click', () => translateTo('en'));
 
   window.addEventListener('resize', () => {
     updateLangIndicator(currentLang);

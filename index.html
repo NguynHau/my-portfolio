@@ -219,7 +219,49 @@
           class="text-slate-400 hover:text-white transition-colors"
           >Contact</a
         >
-        <hr class="border-white/5 my-1" />
+        <!-- Language & Theme Selector Row for Mobile -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-2.5 border-t border-b border-white/5 my-1">
+          <!-- Mobile Language Switcher -->
+          <div class="flex items-center justify-between sm:justify-start gap-3">
+            <span class="text-[11px] text-slate-500 uppercase tracking-wider font-mono">Language:</span>
+            <div class="flex bg-white/5 border border-white/10 rounded-full p-1 gap-1">
+              <button
+                id="mobile-lang-en-btn"
+                class="px-3.5 py-1 rounded-full text-[11px] font-bold font-sans transition-all duration-300"
+              >
+                EN
+              </button>
+              <button
+                id="mobile-lang-vi-btn"
+                class="px-3.5 py-1 rounded-full text-[11px] font-bold font-sans transition-all duration-300"
+              >
+                VI
+              </button>
+            </div>
+          </div>
+          
+          <!-- Mobile Theme Switcher -->
+          <div class="flex items-center justify-between sm:justify-start gap-3">
+            <span class="text-[11px] text-slate-500 uppercase tracking-wider font-mono">Theme:</span>
+            <div class="flex bg-white/5 border border-white/10 rounded-full p-1 gap-1">
+              <button
+                id="mobile-theme-light-btn"
+                class="w-7 h-7 flex items-center justify-center rounded-full text-slate-400 hover:text-white transition-all duration-300"
+                aria-label="Light theme"
+              >
+                <i data-lucide="sun" class="h-3.5 w-3.5"></i>
+              </button>
+              <button
+                id="mobile-theme-dark-btn"
+                class="w-7 h-7 flex items-center justify-center rounded-full text-slate-400 hover:text-white transition-all duration-300"
+                aria-label="Dark theme"
+              >
+                <i data-lucide="moon" class="h-3.5 w-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
         <a
           href="https://orcid.org/0009-0006-1357-8882"
           target="_blank"
@@ -1867,7 +1909,7 @@
     </div>
 
     <!-- Glassmorphism Tuning Panel -->
-    <div id="glass-tuner" class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 font-sans text-xs">
+    <div id="glass-tuner" class="fixed bottom-6 right-6 z-[99] flex flex-col items-end gap-3 font-sans text-xs pointer-events-none">
       <!-- Tuner Toggle Button -->
       <button
         id="glass-tuner-toggle"
@@ -1880,7 +1922,7 @@
       <!-- Tuning Card -->
       <div
         id="glass-tuner-card"
-        class="hidden w-80 bg-slate-950/95 border border-white/10 p-5 rounded-2xl shadow-2xl backdrop-blur-xl flex flex-col gap-4 text-slate-300 transition-all duration-300 animate-fade-in pointer-events-auto"
+        class="hidden w-80 max-w-[calc(100vw-2rem)] max-h-[80vh] overflow-y-auto bg-slate-950/95 border border-white/10 p-5 rounded-2xl shadow-2xl backdrop-blur-xl flex flex-col gap-4 text-slate-300 transition-all duration-300 animate-fade-in pointer-events-auto custom-scrollbar"
       >
         <div class="flex items-center justify-between border-b border-white/5 pb-2">
           <h4 class="font-bold text-[13px] tracking-wider text-white uppercase flex items-center gap-2">
@@ -1893,7 +1935,7 @@
         </div>
 
         <!-- Sliders -->
-        <div class="max-h-[300px] overflow-y-auto pr-1.5 flex flex-col gap-3.5 custom-scrollbar">
+        <div class="max-h-[200px] sm:max-h-[300px] overflow-y-auto pr-1.5 flex flex-col gap-3.5 custom-scrollbar">
           <!-- 1. Background Opacity -->
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
