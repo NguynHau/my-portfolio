@@ -1,12 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+html {
+  font-size: 16px !important; /* Mobile: Increased by 2px (from 14px) */
+  scroll-behavior: auto !important; /* Managed by Lenis smooth scroll */
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 22px !important; /* Computer: Increased by 2px (from 20px) to make everything larger and more readable */
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {  width: 8px;}
 ::-webkit-scrollbar-track {  background: #0a0a0a;}
 ::-webkit-scrollbar-thumb {  background: rgba(255, 255, 255, 0.1);  border-radius: 4px;}
 ::-webkit-scrollbar-thumb:hover {  background: rgba(255, 255, 255, 0.2);}
-
-/* Custom Base Styles */
-html {  scroll-behavior: auto !important; /* Managed by Lenis smooth scroll */}
 
 /* Light Mode Global Inversion Strategy */
 html.light-mode {  filter: invert(1) hue-rotate(180deg);  background-color: #110700; }
