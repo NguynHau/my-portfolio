@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
     innerReflection: '0.15',
     glowSize: '0',
     glowOpacity: '0.20',
-    glowColor: '#a8a29e',
+    glowColor: '#8b5cf6',
     constellationSize: '8',
     starDensity: '80',
     starSpeed: '0.5',
@@ -546,14 +546,14 @@ document.addEventListener('DOMContentLoaded', () => {
           // Visual confirmation
           const originalHTML = btnSaveSettings.innerHTML;
           btnSaveSettings.innerHTML = `<i data-lucide="check" class="h-3.5 w-3.5"></i> Đã lưu thành công!`;
-          btnSaveSettings.classList.remove('bg-emerald-600', 'hover:bg-zinc-400');
+          btnSaveSettings.classList.remove('bg-emerald-600', 'hover:bg-emerald-500');
           btnSaveSettings.classList.add('bg-teal-600');
           if (window.lucide) window.lucide.createIcons();
           
           setTimeout(() => {
             btnSaveSettings.innerHTML = originalHTML;
             btnSaveSettings.classList.remove('bg-teal-600');
-            btnSaveSettings.classList.add('bg-emerald-600', 'hover:bg-zinc-400');
+            btnSaveSettings.classList.add('bg-emerald-600', 'hover:bg-emerald-500');
             if (window.lucide) window.lucide.createIcons();
           }, 2000);
         } catch (e) {

@@ -40,10 +40,10 @@
 
     <!-- Background Glowing Orbs -->
     <div
-      class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-zinc-800/20 blur-[150px] pointer-events-none"
+      class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-white/5 blur-[150px] pointer-events-none"
     ></div>
     <div
-      class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-stone-800/20 blur-[150px] pointer-events-none"
+      class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-white/5 blur-[150px] pointer-events-none"
     ></div>
 
     <!-- Header Section -->
@@ -52,7 +52,7 @@
         class="max-w-[1400px] w-full mx-auto px-6 flex items-center justify-between relative"
       >
         <!-- Left Group: Lang & Theme Switcher -->
-        <div class="flex items-center gap-2 lg:gap-4 z-10 w-auto lg:w-[20%] shrink-0 justify-start scale-90 origin-left sm:scale-100">
+        <div class="hidden lg:flex items-center gap-4 z-10 w-[20%] shrink-0 flex items-center justify-start">
           <!-- Language Switcher -->
           <div
             id="lang-switcher"
@@ -284,10 +284,10 @@
           class="lg:col-span-7 flex flex-col items-start text-left reveal-entry"
         >
           <span
-            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-400/10 border border-slate-400/20 text-xs font-sans font-semibold tracking-wider text-slate-300 uppercase mb-6"
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-sans font-semibold tracking-wider text-blue-400 uppercase mb-6"
           >
             <span
-              class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse"
+              class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"
             ></span>
             Academic Portfolio
           </span>
@@ -314,7 +314,7 @@
           <div class="mt-8 flex flex-wrap gap-4 items-center">
             <a
               href="#research"
-              class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-zinc-700 to-stone-700 text-white font-sans text-xs font-semibold hover:shadow-lg hover:shadow-slate-400/20 hover:scale-[1.01] transition-all duration-300"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-black font-sans text-xs font-semibold hover:shadow-lg hover:shadow-white/10 hover:bg-neutral-200 hover:scale-[1.01] transition-all duration-300"
             >
               View Research Papers
               <i data-lucide="arrow-right" class="h-4 w-4"></i>
@@ -333,7 +333,7 @@
           class="lg:col-span-5 flex justify-center lg:justify-end reveal-entry"
         >
           <div
-            class="relative w-72 h-96 sm:w-80 sm:h-[420px] rounded-2xl overflow-hidden bg-slate-900 border border-white/10 shadow-2xl shadow-blue-900/10 group"
+            class="relative w-72 h-96 sm:w-80 sm:h-[420px] rounded-2xl overflow-hidden bg-slate-900 border border-white/10 shadow-2xl shadow-black/50 group"
           >
             <!-- Image Tag Loading anh2.jpg with custom fallbacks -->
             <img
@@ -355,7 +355,7 @@
                 class="font-sans text-xs font-bold tracking-wider text-slate-300"
                 >TAN-HAU NGUYEN</span
               >
-              <span class="font-mono text-[11px] text-slate-300"
+              <span class="font-mono text-[11px] text-blue-400"
                 >RESEARCHER</span
               >
             </div>
@@ -365,9 +365,9 @@
               class="profile-placeholder absolute inset-0 hidden flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950"
             >
               <div
-                class="p-4 rounded-full bg-slate-400/10 border border-slate-400/20 mb-3"
+                class="p-4 rounded-full bg-blue-500/10 border border-blue-500/20 mb-3"
               >
-                <i data-lucide="user" class="h-8 w-8 text-slate-300"></i>
+                <i data-lucide="user" class="h-8 w-8 text-blue-400"></i>
               </div>
               <h4 class="font-sans text-xs font-bold text-white">
                 Nguyen Tan Hau
@@ -390,7 +390,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div class="lg:col-span-4 reveal-entry">
             <span
-              class="font-mono text-xs tracking-widest text-slate-400 uppercase"
+              class="font-mono text-xs tracking-widest text-blue-500 uppercase"
               >01 / OVERVIEW</span
             >
             <h2
@@ -430,7 +430,7 @@
           >
             <div class="flex items-center gap-4 mb-6">
               <div
-                class="w-10 h-10 shrink-0 rounded-lg bg-slate-400/10 border border-slate-400/20 flex items-center justify-center text-slate-300"
+                class="w-10 h-10 shrink-0 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400"
               >
                 <i data-lucide="binary" class="h-5 w-5"></i>
               </div>
@@ -452,7 +452,7 @@
           >
             <div class="flex items-center gap-4 mb-6">
               <div
-                class="w-10 h-10 shrink-0 rounded-lg bg-stone-400/10 border border-stone-400/20 flex items-center justify-center text-stone-300"
+                class="w-10 h-10 shrink-0 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400"
               >
                 <i data-lucide="cpu" class="h-5 w-5"></i>
               </div>
@@ -473,7 +473,7 @@
           >
             <div class="flex items-center gap-4 mb-6">
               <div
-                class="w-10 h-10 shrink-0 rounded-lg bg-zinc-400/10 border border-zinc-400/20 flex items-center justify-center text-zinc-300"
+                class="w-10 h-10 shrink-0 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400"
               >
                 <i data-lucide="database" class="h-5 w-5"></i>
               </div>
@@ -498,7 +498,7 @@
       <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-xl mx-auto mb-16 reveal-entry">
           <span
-            class="font-mono text-xs tracking-widest text-slate-400 uppercase"
+            class="font-mono text-xs tracking-widest text-blue-500 uppercase"
             >02 / EDUCATION</span
           >
           <h2
@@ -519,12 +519,12 @@
             class="relative flex flex-col md:flex-row items-stretch gap-8 mb-12"
           >
             <div
-              class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-stone-400 border-4 border-[#0a0a0a] z-10"
+              class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-violet-500 border-4 border-[#0a0a0a] z-10"
             ></div>
             <div
               class="w-full md:w-1/2 pl-10 md:pl-0 md:pr-10 text-left md:text-right flex flex-col md:items-end"
             >
-              <span class="font-mono text-xs text-stone-300 font-semibold mb-2"
+              <span class="font-mono text-xs text-violet-400 font-semibold mb-2"
                 >Sep 2022 – Feb 2026</span
               >
               <h4 class="font-sans text-md font-bold text-white">
@@ -553,13 +553,13 @@
             class="relative flex flex-col md:flex-row items-stretch gap-8 mb-12"
           >
             <div
-              class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-zinc-400 border-4 border-[#0a0a0a] z-10"
+              class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-4 border-[#0a0a0a] z-10"
             ></div>
             <div
               class="w-full md:w-1/2 pl-10 md:pl-0 md:pr-10 text-left md:text-right flex flex-col md:items-end md:order-1 md:pl-10 md:pr-0 md:text-left md:items-start"
             >
               <span
-                class="font-mono text-xs text-zinc-300 font-semibold mb-2"
+                class="font-mono text-xs text-emerald-400 font-semibold mb-2"
                 >Jun 2025</span
               >
               <h4 class="font-sans text-md font-bold text-white">
@@ -585,12 +585,12 @@
           <!-- Timeline item 3: Master of Applied Mathematics (May 2026 – Present) -->
           <div class="relative flex flex-col md:flex-row items-stretch gap-8">
             <div
-              class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-slate-400 border-4 border-[#0a0a0a] z-10"
+              class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-blue-500 border-4 border-[#0a0a0a] z-10"
             ></div>
             <div
               class="w-full md:w-1/2 pl-10 md:pl-0 md:pr-10 text-left md:text-right flex flex-col md:items-end"
             >
-              <span class="font-mono text-xs text-slate-300 font-semibold mb-2"
+              <span class="font-mono text-xs text-blue-400 font-semibold mb-2"
                 >May 2026 – Present</span
               >
               <h4 class="font-sans text-md font-bold text-white">
@@ -622,7 +622,7 @@
             class="liquid-glass p-6 rounded-xl flex items-center justify-between"
           >
             <div class="flex items-center gap-4">
-              <div class="p-3 rounded-lg bg-slate-400/10 text-slate-300">
+              <div class="p-3 rounded-lg bg-blue-500/10 text-blue-400">
                 <i data-lucide="file-text" class="h-5 w-5"></i>
               </div>
               <div>
@@ -641,7 +641,7 @@
                 class="p-2 rounded bg-white/5 border border-white/10 text-slate-300 hover:text-white text-xs font-sans hover:bg-white/10 inline-flex items-center gap-1"
                 title="View English Transcript"
                 >EN
-                <i data-lucide="external-link" class="h-3 w-3 text-slate-300"></i
+                <i data-lucide="external-link" class="h-3 w-3 text-blue-400"></i
               ></a>
               <a
                 href="https://drive.google.com/file/d/1QKghqoaoujGIscl0zOaoKZvDqjnC893m/view?usp=sharing"
@@ -649,7 +649,7 @@
                 class="p-2 rounded bg-white/5 border border-white/10 text-slate-300 hover:text-white text-xs font-sans hover:bg-white/10 inline-flex items-center gap-1"
                 title="View Vietnamese Transcript"
                 >VI
-                <i data-lucide="external-link" class="h-3 w-3 text-slate-300"></i
+                <i data-lucide="external-link" class="h-3 w-3 text-blue-400"></i
               ></a>
             </div>
           </div>
@@ -659,7 +659,7 @@
             class="liquid-glass p-6 rounded-xl flex items-center justify-between"
           >
             <div class="flex items-center gap-4">
-              <div class="p-3 rounded-lg bg-stone-400/10 text-stone-300">
+              <div class="p-3 rounded-lg bg-violet-500/10 text-violet-400">
                 <i data-lucide="book-open" class="h-5 w-5"></i>
               </div>
               <div>
@@ -679,7 +679,7 @@
             >
               <i
                 data-lucide="external-link"
-                class="h-3.5 w-3.5 text-stone-300"
+                class="h-3.5 w-3.5 text-violet-400"
               ></i>
               View Thesis
             </a>
@@ -699,7 +699,7 @@
         >
           <div>
             <span
-              class="font-mono text-xs tracking-widest text-slate-400 uppercase"
+              class="font-mono text-xs tracking-widest text-blue-500 uppercase"
               >03 / PUBLICATIONS & ARTICLES</span
             >
             <h2
@@ -719,11 +719,11 @@
               <div class="flex items-center justify-between mb-6">
                 <div class="flex flex-wrap gap-1.5">
                   <span
-                    class="px-2 py-0.5 rounded bg-slate-400/10 border border-slate-400/20 text-[11px] font-mono font-semibold text-slate-300 uppercase"
+                    class="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-[11px] font-mono font-semibold text-blue-400 uppercase"
                     >Under Review (2026)</span
                   >
                   <span
-                    class="px-2 py-0.5 rounded bg-zinc-400/10 border border-zinc-400/20 text-[11px] font-mono font-semibold text-zinc-300 uppercase"
+                    class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono font-semibold text-emerald-400 uppercase"
                     >MAI LAB</span
                   >
                 </div>
@@ -732,7 +732,7 @@
                 >
               </div>
               <h4
-                class="font-sans text-sm font-bold text-white group-hover:text-slate-300 transition-colors duration-300 leading-snug"
+                class="font-sans text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-300 leading-snug"
               >
                 Gap Safe Screening Rules for Fast Training of Robust Support
                 Vector Machines under Feature Noise
@@ -771,7 +771,7 @@
               >
                 <i
                   data-lucide="file-text"
-                  class="h-3.5 w-3.5 text-slate-300"
+                  class="h-3.5 w-3.5 text-blue-400"
                 ></i>
                 PDF
               </a>
@@ -785,17 +785,17 @@
             <div>
               <div class="flex items-center justify-between mb-6">
                 <span
-                  class="px-2 py-0.5 rounded bg-stone-400/10 border border-stone-400/20 text-[11px] font-mono font-semibold text-stone-300 uppercase"
+                  class="px-2 py-0.5 rounded bg-violet-500/10 border border-violet-500/20 text-[11px] font-mono font-semibold text-violet-400 uppercase"
                   >Accepted (2025)</span
                 >
                 <span class="text-slate-500 font-mono text-xs">CO-AUTHOR</span>
               </div>
               <span
-                class="text-[11px] font-mono text-stone-300/80 tracking-wider block uppercase mb-1.5"
+                class="text-[11px] font-mono text-violet-400/80 tracking-wider block uppercase mb-1.5"
                 >Student Scientific Research Project (University-level)</span
               >
               <h4
-                class="font-sans text-sm font-bold text-white group-hover:text-stone-300 transition-colors duration-300 leading-snug"
+                class="font-sans text-sm font-bold text-white group-hover:text-violet-400 transition-colors duration-300 leading-snug"
               >
                 Regularity of Collections of Set-Valued Mappings
                 <span class="text-slate-400 font-normal text-xs font-sans"
@@ -830,7 +830,7 @@
               >
                 <i
                   data-lucide="file-text"
-                  class="h-3.5 w-3.5 text-stone-300"
+                  class="h-3.5 w-3.5 text-violet-400"
                 ></i>
                 PDF
               </a>
@@ -849,7 +849,7 @@
                     >Under Review (2025)</span
                   >
                   <span
-                    class="px-2 py-0.5 rounded bg-zinc-400/10 border border-zinc-400/20 text-[11px] font-mono font-semibold text-zinc-300 uppercase"
+                    class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono font-semibold text-emerald-400 uppercase"
                     >MAI LAB</span
                   >
                 </div>
@@ -898,7 +898,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div class="lg:col-span-4 reveal-entry">
             <span
-              class="font-mono text-xs tracking-widest text-slate-400 uppercase"
+              class="font-mono text-xs tracking-widest text-blue-500 uppercase"
               >04 / SKILLS</span
             >
             <h2
@@ -916,7 +916,7 @@
               <h4
                 class="font-sans text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2"
               >
-                <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                 Core Mathematics & Theory
               </h4>
               <div class="flex flex-wrap gap-2">
@@ -944,7 +944,7 @@
               <h4
                 class="font-sans text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2"
               >
-                <span class="w-1.5 h-1.5 rounded-full bg-stone-400"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-violet-500"></span>
                 Computational & Data Science
               </h4>
               <div class="flex flex-wrap gap-2">
@@ -976,7 +976,7 @@
               <h4
                 class="font-sans text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2"
               >
-                <span class="w-1.5 h-1.5 rounded-full bg-zinc-400"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                 Development Tools & Vibe Coding
               </h4>
               <div class="flex flex-wrap gap-2">
@@ -1058,7 +1058,7 @@
       <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-xl mx-auto mb-16 reveal-entry">
           <span
-            class="font-mono text-xs tracking-widest text-slate-400 uppercase"
+            class="font-mono text-xs tracking-widest text-blue-500 uppercase"
             >05 / MERITS & SCHOLARSHIPS</span
           >
           <h2
@@ -1114,12 +1114,12 @@
               <div class="flex items-start gap-4 mb-6">
                 <div class="flex flex-col items-center">
                   <div
-                    class="w-10 h-10 shrink-0 rounded-xl bg-slate-400/10 border border-slate-400/20 text-slate-300 flex items-center justify-center"
+                    class="w-10 h-10 shrink-0 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center"
                   >
                     <i data-lucide="graduation-cap" class="h-5 w-5"></i>
                   </div>
                   <span
-                    class="font-sans text-[11px] font-bold text-slate-300 uppercase tracking-wider block mt-2 text-center"
+                    class="font-sans text-[11px] font-bold text-blue-400 uppercase tracking-wider block mt-2 text-center"
                     >2024 – 2025</span
                   >
                 </div>
@@ -1136,9 +1136,9 @@
               </p>
             </div>
             <div
-              class="mt-6 pt-4 border-t border-white/5 flex items-center gap-1.5 text-slate-300 text-xs font-mono uppercase"
+              class="mt-6 pt-4 border-t border-white/5 flex items-center gap-1.5 text-blue-400 text-xs font-mono uppercase"
             >
-              <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
               Department Excellence
             </div>
           </div>
@@ -1188,12 +1188,12 @@
               <div class="flex items-start gap-4 mb-6">
                 <div class="flex flex-col items-center">
                   <div
-                    class="w-10 h-10 shrink-0 rounded-xl bg-stone-400/10 border border-stone-400/20 text-stone-300 flex items-center justify-center"
+                    class="w-10 h-10 shrink-0 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center"
                   >
                     <i data-lucide="globe" class="h-5 w-5"></i>
                   </div>
                   <span
-                    class="font-sans text-[11px] font-bold text-stone-300 uppercase tracking-wider block mt-2 text-center"
+                    class="font-sans text-[11px] font-bold text-violet-400 uppercase tracking-wider block mt-2 text-center"
                     >Jun 2025</span
                   >
                 </div>
@@ -1212,9 +1212,9 @@
               </p>
             </div>
             <div
-              class="mt-6 pt-4 border-t border-white/5 flex items-center gap-1.5 text-stone-300 text-xs font-mono uppercase"
+              class="mt-6 pt-4 border-t border-white/5 flex items-center gap-1.5 text-violet-400 text-xs font-mono uppercase"
             >
-              <span class="w-1.5 h-1.5 rounded-full bg-stone-400"></span> Study
+              <span class="w-1.5 h-1.5 rounded-full bg-violet-500"></span> Study
               Abroad Scholarship
             </div>
           </div>
@@ -1248,7 +1248,7 @@
               >
                 <!-- Dot -->
                 <div
-                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#a8a29e] group-hover:bg-[#a8a29e] transition-all duration-300 z-10"
+                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#8b5cf6] group-hover:bg-[#8b5cf6] transition-all duration-300 z-10"
                 ></div>
 
                 <!-- Content Card (Left) -->
@@ -1259,7 +1259,7 @@
                     class="liquid-glass p-5 rounded-xl inline-block w-full text-left md:text-right"
                   >
                     <span
-                      class="font-mono text-[11px] text-[#a8a29e] font-semibold"
+                      class="font-mono text-[11px] text-[#8b5cf6] font-semibold"
                       >2023 – 2024</span
                     >
                     <h5
@@ -1273,7 +1273,7 @@
                       College of Natural Sciences award.
                     </p>
                     <div
-                      class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#a8a29e] text-[10px] font-mono tracking-wider"
+                      class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#8b5cf6] text-[10px] font-mono tracking-wider"
                     >
                       <i data-lucide="award" class="h-3.5 w-3.5"></i>
                       FACULTY-LEVEL
@@ -1291,7 +1291,7 @@
               >
                 <!-- Dot -->
                 <div
-                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#94a3b8] group-hover:bg-[#94a3b8] transition-all duration-300 z-10"
+                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#3b82f6] group-hover:bg-[#3b82f6] transition-all duration-300 z-10"
                 ></div>
 
                 <!-- Spacer for desktop (Left) -->
@@ -1305,7 +1305,7 @@
                     class="liquid-glass p-5 rounded-xl inline-block w-full"
                   >
                     <span
-                      class="font-mono text-[11px] text-[#94a3b8] font-semibold"
+                      class="font-mono text-[11px] text-[#3b82f6] font-semibold"
                       >Apr 2024</span
                     >
                     <h5
@@ -1320,7 +1320,7 @@
                       optimization proofs, and algorithmic limits.
                     </p>
                     <div
-                      class="mt-3 flex items-center gap-1.5 text-[#94a3b8] text-[10px] font-mono tracking-wider"
+                      class="mt-3 flex items-center gap-1.5 text-[#3b82f6] text-[10px] font-mono tracking-wider"
                     >
                       <i data-lucide="award" class="h-3.5 w-3.5"></i>
                       SPECIALIZED
@@ -1335,7 +1335,7 @@
               >
                 <!-- Dot -->
                 <div
-                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#a8a29e] group-hover:bg-[#a8a29e] transition-all duration-300 z-10"
+                  class="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-slate-950 border-2 border-[#8b5cf6] group-hover:bg-[#8b5cf6] transition-all duration-300 z-10"
                 ></div>
 
                 <!-- Content Card (Left) -->
@@ -1346,7 +1346,7 @@
                     class="liquid-glass p-5 rounded-xl inline-block w-full text-left md:text-right"
                   >
                     <span
-                      class="font-mono text-[11px] text-[#a8a29e] font-semibold"
+                      class="font-mono text-[11px] text-[#8b5cf6] font-semibold"
                       >2024 – 2025</span
                     >
                     <h5
@@ -1360,7 +1360,7 @@
                       College of Natural Sciences award.
                     </p>
                     <div
-                      class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#a8a29e] text-[10px] font-mono tracking-wider"
+                      class="mt-3 flex items-center justify-start md:justify-end gap-1.5 text-[#8b5cf6] text-[10px] font-mono tracking-wider"
                     >
                       <i data-lucide="award" class="h-3.5 w-3.5"></i>
                       FACULTY-LEVEL
@@ -1563,7 +1563,7 @@
           <div class="lg:col-span-5 flex flex-col justify-between reveal-entry">
             <div>
               <span
-                class="font-mono text-xs tracking-widest text-slate-400 uppercase"
+                class="font-mono text-xs tracking-widest text-blue-500 uppercase"
                 >06 / COLLABORATION INQUIRIES</span
               >
               <h2
@@ -1605,7 +1605,7 @@
                   >
                   <a
                     href="mailto:nthau.work@gmail.com"
-                    class="font-sans text-xs text-white hover:text-slate-300 transition-colors"
+                    class="font-sans text-xs text-white hover:text-blue-400 transition-colors"
                     >nthau.work@gmail.com</a
                   >
                 </div>
@@ -1635,7 +1635,7 @@
                   >
                   <a
                     href="tel:+84825964894"
-                    class="font-sans text-xs text-white hover:text-slate-300 transition-colors"
+                    class="font-sans text-xs text-white hover:text-blue-400 transition-colors"
                     >+84 82 596 4894</a
                   >
                 </div>
@@ -1668,7 +1668,7 @@
                   <a
                     href="https://www.linkedin.com/in/tan-hau-nguyen-bba3943b7/"
                     target="_blank"
-                    class="font-sans text-xs text-white hover:text-slate-300 transition-colors"
+                    class="font-sans text-xs text-white hover:text-blue-400 transition-colors"
                     >linkedin.com/in/tan-hau-nguyen-bba3943b7</a
                   >
                 </div>
@@ -1700,7 +1700,7 @@
                   <a
                     href="https://github.com/NguynHau"
                     target="_blank"
-                    class="font-sans text-xs text-white hover:text-slate-300 transition-colors"
+                    class="font-sans text-xs text-white hover:text-blue-400 transition-colors"
                     >github.com/NguynHau</a
                   >
                 </div>
@@ -1772,7 +1772,7 @@
                   <a
                     href="https://www.researchgate.net/profile/Tan-Hau-Nguyen?ev=hdr_xprf"
                     target="_blank"
-                    class="font-sans text-xs text-white hover:text-slate-300 transition-colors"
+                    class="font-sans text-xs text-white hover:text-blue-400 transition-colors"
                     >ResearchGate Profile</a
                   >
                 </div>
@@ -1799,7 +1799,7 @@
                   <input
                     type="text"
                     required
-                    class="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-white focus:outline-none focus:border-slate-400 transition-colors"
+                    class="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-white focus:outline-none focus:border-blue-500 transition-colors"
                     placeholder="e.g. Prof. Alan Turing"
                   />
                 </div>
@@ -1810,7 +1810,7 @@
                   >
                   <input
                     type="text"
-                    class="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-white focus:outline-none focus:border-slate-400 transition-colors"
+                    class="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-white focus:outline-none focus:border-blue-500 transition-colors"
                     placeholder="e.g. MIT, Department of Math"
                   />
                 </div>
@@ -1823,7 +1823,7 @@
                 <input
                   type="email"
                   required
-                  class="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-white focus:outline-none focus:border-slate-400 transition-colors"
+                  class="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-white focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="e.g. colleague@university.edu"
                 />
               </div>
@@ -1833,7 +1833,7 @@
                   >Inquiry Purpose</label
                 >
                 <select
-                  class="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-slate-400 focus:outline-none focus:border-slate-400 transition-colors"
+                  class="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 font-sans text-xs text-slate-400 focus:outline-none focus:border-blue-500 transition-colors"
                 >
                   <option>Research Collaboration</option>
                   <option>Graduate Study opportunity</option>
@@ -1849,14 +1849,14 @@
                 <textarea
                   rows="4"
                   required
-                  class="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 font-serif text-xs text-white focus:outline-none focus:border-slate-400 transition-colors"
+                  class="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 font-serif text-xs text-white focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="Describe your collaboration proposal..."
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-zinc-700 to-stone-700 text-white font-sans text-xs font-semibold hover:from-zinc-600 hover:to-stone-600 transition-all duration-300"
+                class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-white text-black font-sans text-xs font-semibold hover:bg-neutral-200 transition-all duration-300"
               >
                 Submit Inquiry Protocol
                 <i data-lucide="send" class="h-4 w-4"></i>
@@ -1887,7 +1887,7 @@
         class="bg-slate-950 border border-white/15 p-8 rounded-2xl max-w-md w-full text-center"
       >
         <div
-          class="w-12 h-12 rounded-full bg-zinc-400/10 border border-zinc-400/20 text-zinc-300 flex items-center justify-center mx-auto mb-6"
+          class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-6"
         >
           <i data-lucide="check-circle" class="h-6 w-6"></i>
         </div>
@@ -1909,11 +1909,11 @@
     </div>
 
     <!-- Glassmorphism Tuning Panel -->
-    <div id="glass-tuner" class="fixed bottom-6 right-6 z-[99] flex flex-col-reverse items-end gap-3 font-sans text-xs pointer-events-none">
+    <div id="glass-tuner" class="fixed bottom-6 right-6 z-[99] flex flex-col items-end gap-3 font-sans text-xs pointer-events-none">
       <!-- Tuner Toggle Button -->
       <button
         id="glass-tuner-toggle"
-        class="w-12 h-12 rounded-full bg-slate-900/85 border border-white/10 hover:border-[#a8a29e]/50 text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto"
+        class="w-12 h-12 rounded-full bg-slate-900/85 border border-white/10 hover:border-[#8b5cf6]/50 text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto"
         title="Tùy chỉnh Đảo Bay / Tune Glass Islands"
       >
         <i data-lucide="sliders" class="h-5 w-5"></i>
@@ -1922,11 +1922,11 @@
       <!-- Tuning Card -->
       <div
         id="glass-tuner-card"
-        class="hidden w-80 max-w-[calc(100vw-2rem)] bg-slate-950/95 border border-white/10 p-5 rounded-2xl shadow-2xl backdrop-blur-xl flex flex-col gap-4 text-slate-300 transition-all duration-300 animate-fade-in pointer-events-auto custom-scrollbar"
+        class="hidden w-80 max-w-[calc(100vw-2rem)] max-h-[80vh] overflow-y-auto bg-slate-950/95 border border-white/10 p-5 rounded-2xl shadow-2xl backdrop-blur-xl flex flex-col gap-4 text-slate-300 transition-all duration-300 animate-fade-in pointer-events-auto custom-scrollbar"
       >
         <div class="flex items-center justify-between border-b border-white/5 pb-2">
           <h4 class="font-bold text-[13px] tracking-wider text-white uppercase flex items-center gap-2">
-            <i data-lucide="sliders" class="h-4 w-4 text-[#a8a29e]"></i>
+            <i data-lucide="sliders" class="h-4 w-4 text-[#8b5cf6]"></i>
             TÙY CHỈNH ĐẢO BAY
           </h4>
           <button id="glass-tuner-close" class="text-slate-400 hover:text-white">
@@ -1940,7 +1940,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
               <span>Độ trong suốt nền / Bg Opacity</span>
-              <span id="val-bg-opacity" class="text-zinc-300 font-mono">0.00</span>
+              <span id="val-bg-opacity" class="text-emerald-400 font-mono">0.00</span>
             </div>
             <input
               type="range"
@@ -1949,7 +1949,7 @@
               max="1"
               step="0.01"
               value="0.00"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#a8a29e]"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
             />
           </div>
 
@@ -1957,7 +1957,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
               <span>Độ mờ nền / Backdrop Blur</span>
-              <span id="val-blur" class="text-zinc-300 font-mono">5.0px</span>
+              <span id="val-blur" class="text-emerald-400 font-mono">5.0px</span>
             </div>
             <input
               type="range"
@@ -1966,7 +1966,7 @@
               max="30"
               step="0.5"
               value="5.0"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#a8a29e]"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
             />
           </div>
 
@@ -1974,7 +1974,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
               <span>Độ trong suốt viền / Border Opacity</span>
-              <span id="val-border-opacity" class="text-zinc-300 font-mono">0.09</span>
+              <span id="val-border-opacity" class="text-emerald-400 font-mono">0.09</span>
             </div>
             <input
               type="range"
@@ -1983,7 +1983,7 @@
               max="1"
               step="0.01"
               value="0.09"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#a8a29e]"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
             />
           </div>
 
@@ -1991,7 +1991,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
               <span>Độ bão hòa màu / Saturation</span>
-              <span id="val-saturate" class="text-zinc-300 font-mono">95%</span>
+              <span id="val-saturate" class="text-emerald-400 font-mono">95%</span>
             </div>
             <input
               type="range"
@@ -2000,7 +2000,7 @@
               max="300"
               step="5"
               value="95"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#a8a29e]"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
             />
           </div>
 
@@ -2008,7 +2008,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
               <span>Độ đậm bóng đổ / Shadow Opacity</span>
-              <span id="val-shadow-opacity" class="text-zinc-300 font-mono">0.31</span>
+              <span id="val-shadow-opacity" class="text-emerald-400 font-mono">0.31</span>
             </div>
             <input
               type="range"
@@ -2017,7 +2017,7 @@
               max="1"
               step="0.01"
               value="0.31"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#a8a29e]"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
             />
           </div>
 
@@ -2025,7 +2025,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
               <span>Độ sáng bóng viền / Inner Shine</span>
-              <span id="val-inner-reflection" class="text-zinc-300 font-mono">0.15</span>
+              <span id="val-inner-reflection" class="text-emerald-400 font-mono">0.15</span>
             </div>
             <input
               type="range"
@@ -2034,7 +2034,7 @@
               max="1"
               step="0.01"
               value="0.15"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#a8a29e]"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
             />
           </div>
 
@@ -2042,7 +2042,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
               <span>Độ phủ sáng viền / Glow Size</span>
-              <span id="val-glow-size" class="text-zinc-300 font-mono">0px</span>
+              <span id="val-glow-size" class="text-emerald-400 font-mono">0px</span>
             </div>
             <input
               type="range"
@@ -2051,7 +2051,7 @@
               max="25"
               step="0.5"
               value="0"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#a8a29e]"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
             />
           </div>
 
@@ -2059,7 +2059,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
               <span>Độ sáng viền / Glow Opacity</span>
-              <span id="val-glow-opacity" class="text-zinc-300 font-mono">0.20</span>
+              <span id="val-glow-opacity" class="text-emerald-400 font-mono">0.20</span>
             </div>
             <input
               type="range"
@@ -2068,7 +2068,7 @@
               max="1"
               step="0.01"
               value="0.20"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#a8a29e]"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
             />
           </div>
 
@@ -2076,11 +2076,11 @@
           <div class="flex items-center justify-between gap-3 bg-white/5 p-2 rounded-xl border border-white/5">
             <span class="text-[11px] font-medium">Màu sáng viền / Glow Color</span>
             <div class="flex items-center gap-2">
-              <span id="val-glow-color" class="text-zinc-300 font-mono text-[10px]">#a8a29e</span>
+              <span id="val-glow-color" class="text-emerald-400 font-mono text-[10px]">#8b5cf6</span>
               <input
                 type="color"
                 id="range-glow-color"
-                value="#a8a29e"
+                value="#8b5cf6"
                 class="w-7 h-7 rounded border border-white/20 cursor-pointer bg-transparent"
               />
             </div>
@@ -2090,7 +2090,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
               <span>Số điểm chòm sao / Constellation Size</span>
-              <span id="val-constellation-size" class="text-zinc-300 font-mono">8</span>
+              <span id="val-constellation-size" class="text-emerald-400 font-mono">8</span>
             </div>
             <input
               type="range"
@@ -2099,7 +2099,7 @@
               max="15"
               step="1"
               value="8"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#a8a29e]"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
             />
           </div>
 
@@ -2107,7 +2107,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
               <span>Mật độ sao / Star Density</span>
-              <span id="val-star-density" class="text-zinc-300 font-mono">80</span>
+              <span id="val-star-density" class="text-emerald-400 font-mono">80</span>
             </div>
             <input
               type="range"
@@ -2116,7 +2116,7 @@
               max="180"
               step="5"
               value="80"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#a8a29e]"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
             />
           </div>
 
@@ -2124,7 +2124,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
               <span>Tốc độ sao / Star Speed</span>
-              <span id="val-star-speed" class="text-zinc-300 font-mono">0.5</span>
+              <span id="val-star-speed" class="text-emerald-400 font-mono">0.5</span>
             </div>
             <input
               type="range"
@@ -2133,7 +2133,7 @@
               max="2.5"
               step="0.05"
               value="0.5"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#a8a29e]"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
             />
           </div>
 
@@ -2141,7 +2141,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex justify-between text-[11px] font-medium">
               <span>Bán kính liên kết / Link Radius</span>
-              <span id="val-link-radius" class="text-zinc-300 font-mono">220px</span>
+              <span id="val-link-radius" class="text-emerald-400 font-mono">220px</span>
             </div>
             <input
               type="range"
@@ -2150,7 +2150,7 @@
               max="450"
               step="10"
               value="220"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#a8a29e]"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
             />
           </div>
         </div>
@@ -2165,7 +2165,7 @@
           <!-- Action Buttons -->
           <button
             id="btn-save-settings"
-            class="w-full py-2 px-3 rounded bg-emerald-600 hover:bg-zinc-400 text-white font-semibold flex items-center justify-center gap-1.5 transition-colors text-[11px]"
+            class="w-full py-2 px-3 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-semibold flex items-center justify-center gap-1.5 transition-colors text-[11px]"
           >
             <i data-lucide="save" class="h-3.5 w-3.5"></i> Lưu cấu hình / Save Settings
           </button>
@@ -2173,7 +2173,7 @@
           <div class="grid grid-cols-2 gap-2">
             <button
               id="btn-copy-css"
-              class="py-1.5 px-3 rounded bg-[#a8a29e] hover:bg-[#7c3aed] text-white font-semibold flex items-center justify-center gap-1 transition-colors text-[11px]"
+              class="py-1.5 px-3 rounded bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-semibold flex items-center justify-center gap-1 transition-colors text-[11px]"
             >
               <i data-lucide="copy" class="h-3 w-3"></i> Copy CSS
             </button>

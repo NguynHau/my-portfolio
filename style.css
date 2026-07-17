@@ -35,7 +35,7 @@ body {  background-color: #0a0a0a;  color: #f1f5f9;  font-family: 'Lora', serif;
 
 /* Radial spotlight cursor wrapper */
 .cursor-spotlight {
-  background: radial-gradient(400px circle at var(--x) var(--y), rgba(255, 255, 255, 0.04) 0%, rgba(200, 200, 200, 0.01) 50%, transparent 100%);
+  background: radial-gradient(400px circle at var(--x) var(--y), rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.03) 50%, transparent 100%);
 }
 
 /* Reveal entry state for observer scroll effects */
@@ -58,7 +58,7 @@ body {  background-color: #0a0a0a;  color: #f1f5f9;  font-family: 'Lora', serif;
   /* Premium Border & Glow Effects */
   --glass-inner-reflection: 0.15;
   --glass-glow-size: 0px;
-  --glass-glow-color: #a8a29e;
+  --glass-glow-color: #8b5cf6;
   --glass-glow-opacity: 0.20;
 }
 
