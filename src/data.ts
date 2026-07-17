@@ -8,7 +8,7 @@ export const PERSONAL_INFO = {
   phone: '(+84) 332-987-619',
   location: 'Can Tho, Vietnam',
   github: 'https://github.com/NguynHau',
-  researchGate: 'https://www.researchgate.net/profile/Tan-Hau-Nguyen',
+  researchGate: 'https://www.researchgate.net/profile/Tan-Hau-Nguyen?ev=hdr_xprf',
   objective: 'With a solid foundation in Applied Mathematics, I aim to pursue research in machine learning, focusing on its mathematical foundations and applications. At the same time, I develop expertise in Data Analysis and apply these methods to solve complex real-world problems. I am currently pursuing a Master’s degree to further strengthen my mathematical research capabilities.',
 };
 
