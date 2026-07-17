@@ -33,11 +33,10 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="bg-[#020512] text-slate-100 overflow-x-hidden antialiased">
-    <!-- Interactive Spotlight Mouse Cursor Effect -->
-    <div
-      id="cursor-spotlight"
-      class="fixed inset-0 pointer-events-none z-30 cursor-spotlight hidden md:block"
-    ></div>
+    <!-- Constellation Particles Background Canvas -->
+    <canvas id="constellation-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+
 
     <!-- Background Glowing Orbs -->
     <div
@@ -1996,6 +1995,74 @@
                 class="w-7 h-7 rounded border border-white/20 cursor-pointer bg-transparent"
               />
             </div>
+          </div>
+
+          <!-- 10. Constellation Size -->
+          <div class="flex flex-col gap-1.5">
+            <div class="flex justify-between text-[11px] font-medium">
+              <span>Số điểm chòm sao / Constellation Size</span>
+              <span id="val-constellation-size" class="text-emerald-400 font-mono">8</span>
+            </div>
+            <input
+              type="range"
+              id="range-constellation-size"
+              min="4"
+              max="15"
+              step="1"
+              value="8"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+            />
+          </div>
+
+          <!-- 11. Star Density -->
+          <div class="flex flex-col gap-1.5">
+            <div class="flex justify-between text-[11px] font-medium">
+              <span>Mật độ sao / Star Density</span>
+              <span id="val-star-density" class="text-emerald-400 font-mono">80</span>
+            </div>
+            <input
+              type="range"
+              id="range-star-density"
+              min="20"
+              max="180"
+              step="5"
+              value="80"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+            />
+          </div>
+
+          <!-- 12. Move Speed -->
+          <div class="flex flex-col gap-1.5">
+            <div class="flex justify-between text-[11px] font-medium">
+              <span>Tốc độ sao / Star Speed</span>
+              <span id="val-star-speed" class="text-emerald-400 font-mono">0.5</span>
+            </div>
+            <input
+              type="range"
+              id="range-star-speed"
+              min="0.1"
+              max="2.5"
+              step="0.05"
+              value="0.5"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+            />
+          </div>
+
+          <!-- 13. Link Radius -->
+          <div class="flex flex-col gap-1.5">
+            <div class="flex justify-between text-[11px] font-medium">
+              <span>Bán kính liên kết / Link Radius</span>
+              <span id="val-link-radius" class="text-emerald-400 font-mono">220px</span>
+            </div>
+            <input
+              type="range"
+              id="range-link-radius"
+              min="100"
+              max="450"
+              step="10"
+              value="220"
+              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+            />
           </div>
         </div>
 

@@ -5,14 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.lucide.createIcons();
   }
 
-  // 2. Interactive Cursor Spotlight Background
-  const cursorSpotlight = document.getElementById('cursor-spotlight');
-  if (cursorSpotlight) {
-    window.addEventListener('mousemove', (e) => {
-      cursorSpotlight.style.setProperty('--x', `${e.clientX}px`);
-      cursorSpotlight.style.setProperty('--y', `${e.clientY}px`);
-    });
-  }
+
 
   // 3. Fallback Mechanism for the Portrait Image
   const profileImages = document.querySelectorAll('.profile-image');
@@ -300,6 +293,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const rangeGlowOpacity = document.getElementById('range-glow-opacity');
   const rangeGlowColor = document.getElementById('range-glow-color');
 
+  // Constellation Sliders
+  const rangeConstellationSize = document.getElementById('range-constellation-size');
+  const rangeStarDensity = document.getElementById('range-star-density');
+  const rangeStarSpeed = document.getElementById('range-star-speed');
+  const rangeLinkRadius = document.getElementById('range-link-radius');
+
   const valBgOpacity = document.getElementById('val-bg-opacity');
   const valBlur = document.getElementById('val-blur');
   const valBorderOpacity = document.getElementById('val-border-opacity');
@@ -309,6 +308,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const valGlowSize = document.getElementById('val-glow-size');
   const valGlowOpacity = document.getElementById('val-glow-opacity');
   const valGlowColor = document.getElementById('val-glow-color');
+
+  // Constellation indicators
+  const valConstellationSize = document.getElementById('val-constellation-size');
+  const valStarDensity = document.getElementById('val-star-density');
+  const valStarSpeed = document.getElementById('val-star-speed');
+  const valLinkRadius = document.getElementById('val-link-radius');
 
   const cssPreview = document.getElementById('css-preview');
   const btnCopyCss = document.getElementById('btn-copy-css');
@@ -324,8 +329,22 @@ document.addEventListener('DOMContentLoaded', () => {
     innerReflection: '0.15',
     glowSize: '0',
     glowOpacity: '0.20',
-    glowColor: '#8b5cf6'
+    glowColor: '#8b5cf6',
+    constellationSize: '8',
+    starDensity: '80',
+    starSpeed: '0.5',
+    linkRadius: '220'
   };
+
+  // Shared Animation Config State
+  const starConfig = {
+    size: 8,
+    density: 80,
+    speed: 0.5,
+    radius: 220
+  };
+  
+  let initParticlesFn = null;
 
   function hexToRgba(hex, alpha) {
     hex = hex.replace('#', '');
@@ -365,6 +384,12 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const glowColorRgba = hexToRgba(glowColorHex, glowOpacity);
 
+      // Constellation states
+      const constellationSize = rangeConstellationSize ? parseInt(rangeConstellationSize.value, 10) : parseInt(defaultValues.constellationSize, 10);
+      const starDensity = rangeStarDensity ? parseInt(rangeStarDensity.value, 10) : parseInt(defaultValues.starDensity, 10);
+      const starSpeed = rangeStarSpeed ? parseFloat(rangeStarSpeed.value).toFixed(2) : parseFloat(defaultValues.starSpeed).toFixed(2);
+      const linkRadius = rangeLinkRadius ? parseInt(rangeLinkRadius.value, 10) : parseInt(defaultValues.linkRadius, 10);
+
       // Set CSS Variables on document root
       htmlEl.style.setProperty('--glass-bg-opacity', bgOpacity);
       htmlEl.style.setProperty('--glass-blur', `${blur}px`);
@@ -386,6 +411,23 @@ document.addEventListener('DOMContentLoaded', () => {
       if (valGlowSize) valGlowSize.textContent = `${glowSize}px`;
       if (valGlowOpacity) valGlowOpacity.textContent = glowOpacity;
       if (valGlowColor) valGlowColor.textContent = glowColorHex;
+
+      // Update constellation indicators
+      if (valConstellationSize) valConstellationSize.textContent = constellationSize;
+      if (valStarDensity) valStarDensity.textContent = starDensity;
+      if (valStarSpeed) valStarSpeed.textContent = starSpeed;
+      if (valLinkRadius) valLinkRadius.textContent = `${linkRadius}px`;
+
+      // Sync with global animation state
+      starConfig.size = constellationSize;
+      starConfig.density = starDensity;
+      starConfig.speed = parseFloat(starSpeed);
+      starConfig.radius = linkRadius;
+
+      // Reinitialize particles if density changes
+      if (initParticlesFn) {
+        initParticlesFn();
+      }
 
       // Update code preview
       if (cssPreview) {
@@ -417,6 +459,12 @@ document.addEventListener('DOMContentLoaded', () => {
           if (rangeGlowSize && settings.glowSize !== undefined) rangeGlowSize.value = settings.glowSize;
           if (rangeGlowOpacity && settings.glowOpacity !== undefined) rangeGlowOpacity.value = settings.glowOpacity;
           if (rangeGlowColor && settings.glowColor !== undefined) rangeGlowColor.value = settings.glowColor;
+
+          // Load Constellation
+          if (rangeConstellationSize && settings.constellationSize !== undefined) rangeConstellationSize.value = settings.constellationSize;
+          if (rangeStarDensity && settings.starDensity !== undefined) rangeStarDensity.value = settings.starDensity;
+          if (rangeStarSpeed && settings.starSpeed !== undefined) rangeStarSpeed.value = settings.starSpeed;
+          if (rangeLinkRadius && settings.linkRadius !== undefined) rangeLinkRadius.value = settings.linkRadius;
         }
       } catch (e) {
         console.error('Error loading saved glass settings:', e);
@@ -436,7 +484,13 @@ document.addEventListener('DOMContentLoaded', () => {
             innerReflection: rangeInnerReflection ? rangeInnerReflection.value : defaultValues.innerReflection,
             glowSize: rangeGlowSize ? rangeGlowSize.value : defaultValues.glowSize,
             glowOpacity: rangeGlowOpacity ? rangeGlowOpacity.value : defaultValues.glowOpacity,
-            glowColor: rangeGlowColor ? rangeGlowColor.value : defaultValues.glowColor
+            glowColor: rangeGlowColor ? rangeGlowColor.value : defaultValues.glowColor,
+
+            // Save Constellation Settings
+            constellationSize: rangeConstellationSize ? rangeConstellationSize.value : defaultValues.constellationSize,
+            starDensity: rangeStarDensity ? rangeStarDensity.value : defaultValues.starDensity,
+            starSpeed: rangeStarSpeed ? rangeStarSpeed.value : defaultValues.starSpeed,
+            linkRadius: rangeLinkRadius ? rangeLinkRadius.value : defaultValues.linkRadius
           };
           localStorage.setItem('glass-tuner-settings', JSON.stringify(settings));
           
@@ -462,7 +516,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add listeners to ranges
     const inputs = [
       rangeBgOpacity, rangeBlur, rangeBorderOpacity, rangeSaturate, rangeShadowOpacity,
-      rangeInnerReflection, rangeGlowSize, rangeGlowOpacity, rangeGlowColor
+      rangeInnerReflection, rangeGlowSize, rangeGlowOpacity, rangeGlowColor,
+      rangeConstellationSize, rangeStarDensity, rangeStarSpeed, rangeLinkRadius
     ];
     inputs.forEach(input => {
       if (input) {
@@ -482,6 +537,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (rangeGlowSize) rangeGlowSize.value = defaultValues.glowSize;
         if (rangeGlowOpacity) rangeGlowOpacity.value = defaultValues.glowOpacity;
         if (rangeGlowColor) rangeGlowColor.value = defaultValues.glowColor;
+
+        // Reset Constellation
+        if (rangeConstellationSize) rangeConstellationSize.value = defaultValues.constellationSize;
+        if (rangeStarDensity) rangeStarDensity.value = defaultValues.starDensity;
+        if (rangeStarSpeed) rangeStarSpeed.value = defaultValues.starSpeed;
+        if (rangeLinkRadius) rangeLinkRadius.value = defaultValues.linkRadius;
         
         updateGlassProperties();
       });
@@ -510,5 +571,220 @@ document.addEventListener('DOMContentLoaded', () => {
     // Boot-up initialization sequence
     loadSavedSettings();
     updateGlassProperties();
+  }
+
+  // --- CONSTELLATION BACKGROUND CANVAS ENGINE ---
+  const canvas = document.getElementById('constellation-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let width = 0;
+    let height = 0;
+
+    // Track mouse position
+    const mouse = {
+      x: null,
+      y: null,
+      targetX: null,
+      targetY: null,
+      active: false
+    };
+
+    // Resize handler
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      initParticles();
+    }
+
+    class Particle {
+      constructor(x, y) {
+        this.x = x !== undefined ? x : Math.random() * width;
+        this.y = y !== undefined ? y : Math.random() * height;
+        
+        // Random organic directions
+        const angle = Math.random() * Math.PI * 2;
+        const speedMultiplier = 0.15 + Math.random() * 0.7;
+        this.vx = Math.cos(angle) * speedMultiplier;
+        this.vy = Math.sin(angle) * speedMultiplier;
+        this.baseRadius = 1.0 + Math.random() * 1.3;
+        this.radius = this.baseRadius;
+        this.brightness = 0.10 + Math.random() * 0.35;
+      }
+
+      update() {
+        // Standard continuous random moving direction
+        this.x += this.vx * starConfig.speed;
+        this.y += this.vy * starConfig.speed;
+
+        // Wrap-around margins
+        if (this.x < -20) this.x = width + 20;
+        else if (this.x > width + 20) this.x = -20;
+        
+        if (this.y < -20) this.y = height + 20;
+        else if (this.y > height + 20) this.y = -20;
+      }
+
+      draw(isLightMode) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        if (isLightMode) {
+          ctx.fillStyle = `rgba(15, 23, 42, ${this.brightness * 0.55})`;
+        } else {
+          ctx.fillStyle = `rgba(255, 255, 255, ${this.brightness})`;
+        }
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      const targetCount = starConfig.density;
+      if (particles.length === 0) {
+        for (let i = 0; i < targetCount; i++) {
+          particles.push(new Particle());
+        }
+      } else {
+        // Dynamically add or remove particles for real-time slider sliding
+        while (particles.length < targetCount) {
+          particles.push(new Particle());
+        }
+        while (particles.length > targetCount) {
+          particles.pop();
+        }
+      }
+    }
+
+    // Set callback to sync with tuning slider updates
+    initParticlesFn = initParticles;
+
+    // Track mouse coordinates over the window instantly
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      mouse.active = true;
+    });
+
+    window.addEventListener('mouseleave', () => {
+      mouse.active = false;
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Check current theme - light mode does not need this constellation effect
+      const isLightMode = document.documentElement.classList.contains('light-mode');
+      if (isLightMode) {
+        requestAnimationFrame(animate);
+        return;
+      }
+      
+      // Update and draw faint background particles
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.update();
+        p.radius = p.baseRadius; // Reset to standard state
+        p.draw(isLightMode);
+      }
+
+      // Constellation network rendering
+      if (mouse.active && mouse.x !== null) {
+        const distances = [];
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          distances.push({ particle: p, dist: dist });
+        }
+
+        // Sort ascending to get closest stars
+        distances.sort((a, b) => a.dist - b.dist);
+
+        // Pick nearest points within user's Link Radius
+        const nearestPoints = [];
+        for (let i = 0; i < distances.length; i++) {
+          if (nearestPoints.length >= starConfig.size) break;
+          const item = distances[i];
+          if (item.dist < starConfig.radius) {
+            nearestPoints.push(item);
+          }
+        }
+
+        // Generate line color from the selected glow picker
+        const glowColorHex = rangeGlowColor ? rangeGlowColor.value : '#8b5cf6';
+        let r = 139, g = 92, b = 246; // default violet rgb
+        const hex = glowColorHex.replace('#', '');
+        if (hex.length === 6) {
+          r = parseInt(hex.substring(0, 2), 16);
+          g = parseInt(hex.substring(2, 4), 16);
+          b = parseInt(hex.substring(4, 6), 16);
+        }
+
+        // If we found candidates for the constellation
+        if (nearestPoints.length > 0) {
+          nearestPoints.forEach((item, index) => {
+            const p = item.particle;
+            
+            // Brighten and expand active constellation stars
+            p.radius = p.baseRadius * 2.5;
+
+            // Subtle halo around constellation points
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius * 2.2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.12)`;
+            ctx.fill();
+
+            // Active star core
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, 0.95)`;
+            ctx.fill();
+
+            // Link from mouse to active star
+            const alpha = (1 - (item.dist / starConfig.radius)).toFixed(2);
+            ctx.beginPath();
+            ctx.moveTo(mouse.x, mouse.y);
+            ctx.lineTo(p.x, p.y);
+            ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.65})`;
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+
+            // Intercluster node-to-node line connections (creates the "constellation" web shapes!)
+            nearestPoints.forEach((other, otherIdx) => {
+              if (otherIdx > index) { // Avoid duplicate lines
+                const ndx = other.particle.x - p.x;
+                const ndy = other.particle.y - p.y;
+                const ndist = Math.sqrt(ndx * ndx + ndy * ndy);
+                
+                // If they are within each other's field, connect them
+                if (ndist < starConfig.radius * 0.8) {
+                  // Calculate opacity based on both points' distances and proximity to each other
+                  const otherAlpha = (1 - (other.dist / starConfig.radius));
+                  const lineAlpha = parseFloat(alpha) * otherAlpha * (1 - (ndist / (starConfig.radius * 0.8)));
+                  
+                  ctx.beginPath();
+                  ctx.moveTo(p.x, p.y);
+                  ctx.lineTo(other.particle.x, other.particle.y);
+                  ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${(lineAlpha * 0.45).toFixed(2)})`;
+                  ctx.lineWidth = 0.8;
+                  ctx.stroke();
+                }
+              }
+            });
+          });
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    // Set up canvas sizing
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    animate();
   }
 });
