@@ -21,10 +21,14 @@ function translateTo(lang) {
     
     const origText = originalTexts.get(node);
     const origTrimmed = origText.trim();
+    const normalizedKey = origTrimmed.replace(/\s+/g, ' ');
     
     if (lang === 'vi') {
-      if (translations[origTrimmed]) {
-        node.nodeValue = origText.replace(origTrimmed, translations[origTrimmed]);
+      const translation = translations[origTrimmed] || translations[normalizedKey];
+      if (translation) {
+        const leadingWs = origText.match(/^\s*/)[0];
+        const trailingWs = origText.match(/\s*$/)[0];
+        node.nodeValue = leadingWs + translation + trailingWs;
       }
     } else {
       node.nodeValue = origText;

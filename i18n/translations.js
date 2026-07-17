@@ -164,7 +164,9 @@ export const translations = {
   "nthau.work@gmail.com": "nthau.work@gmail.com",
   "© 2026 Nguyen Tan Hau. All rights reserved.": "© 2026 Nguyễn Tấn Hậu. Đã đăng ký bản quyền.",
   "Student with 5 Good Criteria": "Sinh viên 5 Tốt",
-  "Accepted": "Chấp nhận đăng"
+  "Accepted": "Chấp nhận đăng",
+  "Accepted (2025)": "Được chấp nhận (2025)",
+  "“Student with 5 Good Criteria”": "“Sinh viên 5 Tốt”"
 };
 
 // Placeholders

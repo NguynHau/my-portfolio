@@ -284,4 +284,231 @@ document.addEventListener('DOMContentLoaded', () => {
       updateThemeIndicator(isLight);
     }, 100);
   }
+
+  // 10. Glassmorphism Tuner Logic
+  const tunerToggle = document.getElementById('glass-tuner-toggle');
+  const tunerCard = document.getElementById('glass-tuner-card');
+  const tunerClose = document.getElementById('glass-tuner-close');
+  
+  const rangeBgOpacity = document.getElementById('range-bg-opacity');
+  const rangeBlur = document.getElementById('range-blur');
+  const rangeBorderOpacity = document.getElementById('range-border-opacity');
+  const rangeSaturate = document.getElementById('range-saturate');
+  const rangeShadowOpacity = document.getElementById('range-shadow-opacity');
+  const rangeInnerReflection = document.getElementById('range-inner-reflection');
+  const rangeGlowSize = document.getElementById('range-glow-size');
+  const rangeGlowOpacity = document.getElementById('range-glow-opacity');
+  const rangeGlowColor = document.getElementById('range-glow-color');
+
+  const valBgOpacity = document.getElementById('val-bg-opacity');
+  const valBlur = document.getElementById('val-blur');
+  const valBorderOpacity = document.getElementById('val-border-opacity');
+  const valSaturate = document.getElementById('val-saturate');
+  const valShadowOpacity = document.getElementById('val-shadow-opacity');
+  const valInnerReflection = document.getElementById('val-inner-reflection');
+  const valGlowSize = document.getElementById('val-glow-size');
+  const valGlowOpacity = document.getElementById('val-glow-opacity');
+  const valGlowColor = document.getElementById('val-glow-color');
+
+  const cssPreview = document.getElementById('css-preview');
+  const btnCopyCss = document.getElementById('btn-copy-css');
+  const btnResetTuner = document.getElementById('btn-reset-tuner');
+  const btnSaveSettings = document.getElementById('btn-save-settings');
+
+  const defaultValues = {
+    bgOpacity: '0.00',
+    blur: '5.0',
+    borderOpacity: '0.09',
+    saturate: '95',
+    shadowOpacity: '0.31',
+    innerReflection: '0.15',
+    glowSize: '0',
+    glowOpacity: '0.20',
+    glowColor: '#8b5cf6'
+  };
+
+  function hexToRgba(hex, alpha) {
+    hex = hex.replace('#', '');
+    if (hex.length === 3) {
+      hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+
+  if (tunerToggle && tunerCard) {
+    // Toggle card visibility
+    tunerToggle.addEventListener('click', () => {
+      tunerCard.classList.toggle('hidden');
+    });
+
+    if (tunerClose) {
+      tunerClose.addEventListener('click', () => {
+        tunerCard.classList.add('hidden');
+      });
+    }
+
+    // Update variables function
+    function updateGlassProperties() {
+      const bgOpacity = parseFloat(rangeBgOpacity.value).toFixed(2);
+      const blur = parseFloat(rangeBlur.value).toFixed(1);
+      const borderOpacity = parseFloat(rangeBorderOpacity.value).toFixed(2);
+      const saturate = parseInt(rangeSaturate.value, 10);
+      const shadowOpacity = parseFloat(rangeShadowOpacity.value).toFixed(2);
+      
+      const innerReflection = rangeInnerReflection ? parseFloat(rangeInnerReflection.value).toFixed(2) : defaultValues.innerReflection;
+      const glowSize = rangeGlowSize ? parseFloat(rangeGlowSize.value).toFixed(1) : defaultValues.glowSize;
+      const glowOpacity = rangeGlowOpacity ? parseFloat(rangeGlowOpacity.value).toFixed(2) : defaultValues.glowOpacity;
+      const glowColorHex = rangeGlowColor ? rangeGlowColor.value : defaultValues.glowColor;
+      
+      const glowColorRgba = hexToRgba(glowColorHex, glowOpacity);
+
+      // Set CSS Variables on document root
+      htmlEl.style.setProperty('--glass-bg-opacity', bgOpacity);
+      htmlEl.style.setProperty('--glass-blur', `${blur}px`);
+      htmlEl.style.setProperty('--glass-border-opacity', borderOpacity);
+      htmlEl.style.setProperty('--glass-saturate', `${saturate}%`);
+      htmlEl.style.setProperty('--glass-shadow-opacity', shadowOpacity);
+      htmlEl.style.setProperty('--glass-inner-reflection', innerReflection);
+      htmlEl.style.setProperty('--glass-glow-size', `${glowSize}px`);
+      htmlEl.style.setProperty('--glass-glow-color', glowColorRgba);
+
+      // Update text indicators
+      if (valBgOpacity) valBgOpacity.textContent = bgOpacity;
+      if (valBlur) valBlur.textContent = `${blur}px`;
+      if (valBorderOpacity) valBorderOpacity.textContent = borderOpacity;
+      if (valSaturate) valSaturate.textContent = `${saturate}%`;
+      if (valShadowOpacity) valShadowOpacity.textContent = shadowOpacity;
+      
+      if (valInnerReflection) valInnerReflection.textContent = innerReflection;
+      if (valGlowSize) valGlowSize.textContent = `${glowSize}px`;
+      if (valGlowOpacity) valGlowOpacity.textContent = glowOpacity;
+      if (valGlowColor) valGlowColor.textContent = glowColorHex;
+
+      // Update code preview
+      if (cssPreview) {
+        cssPreview.textContent = `:root {
+  --glass-bg-opacity: ${bgOpacity};
+  --glass-blur: ${blur}px;
+  --glass-border-opacity: ${borderOpacity};
+  --glass-saturate: ${saturate}%;
+  --glass-shadow-opacity: ${shadowOpacity};
+  --glass-inner-reflection: ${innerReflection};
+  --glass-glow-size: ${glowSize}px;
+  --glass-glow-color: ${glowColorRgba};
+}`;
+      }
+    }
+
+    // Load saved settings from localStorage
+    function loadSavedSettings() {
+      try {
+        const saved = localStorage.getItem('glass-tuner-settings');
+        if (saved) {
+          const settings = JSON.parse(saved);
+          if (rangeBgOpacity && settings.bgOpacity !== undefined) rangeBgOpacity.value = settings.bgOpacity;
+          if (rangeBlur && settings.blur !== undefined) rangeBlur.value = settings.blur;
+          if (rangeBorderOpacity && settings.borderOpacity !== undefined) rangeBorderOpacity.value = settings.borderOpacity;
+          if (rangeSaturate && settings.saturate !== undefined) rangeSaturate.value = settings.saturate;
+          if (rangeShadowOpacity && settings.shadowOpacity !== undefined) rangeShadowOpacity.value = settings.shadowOpacity;
+          if (rangeInnerReflection && settings.innerReflection !== undefined) rangeInnerReflection.value = settings.innerReflection;
+          if (rangeGlowSize && settings.glowSize !== undefined) rangeGlowSize.value = settings.glowSize;
+          if (rangeGlowOpacity && settings.glowOpacity !== undefined) rangeGlowOpacity.value = settings.glowOpacity;
+          if (rangeGlowColor && settings.glowColor !== undefined) rangeGlowColor.value = settings.glowColor;
+        }
+      } catch (e) {
+        console.error('Error loading saved glass settings:', e);
+      }
+    }
+
+    // Save settings to localStorage
+    if (btnSaveSettings) {
+      btnSaveSettings.addEventListener('click', () => {
+        try {
+          const settings = {
+            bgOpacity: rangeBgOpacity.value,
+            blur: rangeBlur.value,
+            borderOpacity: rangeBorderOpacity.value,
+            saturate: rangeSaturate.value,
+            shadowOpacity: rangeShadowOpacity.value,
+            innerReflection: rangeInnerReflection ? rangeInnerReflection.value : defaultValues.innerReflection,
+            glowSize: rangeGlowSize ? rangeGlowSize.value : defaultValues.glowSize,
+            glowOpacity: rangeGlowOpacity ? rangeGlowOpacity.value : defaultValues.glowOpacity,
+            glowColor: rangeGlowColor ? rangeGlowColor.value : defaultValues.glowColor
+          };
+          localStorage.setItem('glass-tuner-settings', JSON.stringify(settings));
+          
+          // Visual confirmation
+          const originalHTML = btnSaveSettings.innerHTML;
+          btnSaveSettings.innerHTML = `<i data-lucide="check" class="h-3.5 w-3.5"></i> Đã lưu thành công!`;
+          btnSaveSettings.classList.remove('bg-emerald-600', 'hover:bg-emerald-500');
+          btnSaveSettings.classList.add('bg-teal-600');
+          if (window.lucide) window.lucide.createIcons();
+          
+          setTimeout(() => {
+            btnSaveSettings.innerHTML = originalHTML;
+            btnSaveSettings.classList.remove('bg-teal-600');
+            btnSaveSettings.classList.add('bg-emerald-600', 'hover:bg-emerald-500');
+            if (window.lucide) window.lucide.createIcons();
+          }, 2000);
+        } catch (e) {
+          console.error('Error saving glass settings:', e);
+        }
+      });
+    }
+
+    // Add listeners to ranges
+    const inputs = [
+      rangeBgOpacity, rangeBlur, rangeBorderOpacity, rangeSaturate, rangeShadowOpacity,
+      rangeInnerReflection, rangeGlowSize, rangeGlowOpacity, rangeGlowColor
+    ];
+    inputs.forEach(input => {
+      if (input) {
+        input.addEventListener('input', updateGlassProperties);
+      }
+    });
+
+    // Reset button functionality
+    if (btnResetTuner) {
+      btnResetTuner.addEventListener('click', () => {
+        if (rangeBgOpacity) rangeBgOpacity.value = defaultValues.bgOpacity;
+        if (rangeBlur) rangeBlur.value = defaultValues.blur;
+        if (rangeBorderOpacity) rangeBorderOpacity.value = defaultValues.borderOpacity;
+        if (rangeSaturate) rangeSaturate.value = defaultValues.saturate;
+        if (rangeShadowOpacity) rangeShadowOpacity.value = defaultValues.shadowOpacity;
+        if (rangeInnerReflection) rangeInnerReflection.value = defaultValues.innerReflection;
+        if (rangeGlowSize) rangeGlowSize.value = defaultValues.glowSize;
+        if (rangeGlowOpacity) rangeGlowOpacity.value = defaultValues.glowOpacity;
+        if (rangeGlowColor) rangeGlowColor.value = defaultValues.glowColor;
+        
+        updateGlassProperties();
+      });
+    }
+
+    // Copy to clipboard functionality
+    if (btnCopyCss) {
+      btnCopyCss.addEventListener('click', () => {
+        if (cssPreview) {
+          navigator.clipboard.writeText(cssPreview.textContent).then(() => {
+            const originalHTML = btnCopyCss.innerHTML;
+            btnCopyCss.innerHTML = `<i data-lucide="check" class="h-3 w-3"></i> Copied!`;
+            if (window.lucide) window.lucide.createIcons();
+            
+            setTimeout(() => {
+              btnCopyCss.innerHTML = originalHTML;
+              if (window.lucide) window.lucide.createIcons();
+            }, 1500);
+          }).catch(err => {
+            console.error('Failed to copy text: ', err);
+          });
+        }
+      });
+    }
+
+    // Boot-up initialization sequence
+    loadSavedSettings();
+    updateGlassProperties();
+  }
 });
