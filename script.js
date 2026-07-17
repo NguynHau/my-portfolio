@@ -341,7 +341,10 @@ document.addEventListener('DOMContentLoaded', () => {
     size: 8,
     density: 80,
     speed: 0.5,
-    radius: 220
+    radius: 220,
+    r: 139,
+    g: 92,
+    b: 246
   };
   
   let initParticlesFn = null;
@@ -423,6 +426,18 @@ document.addEventListener('DOMContentLoaded', () => {
       starConfig.density = starDensity;
       starConfig.speed = parseFloat(starSpeed);
       starConfig.radius = linkRadius;
+
+      // Parse and cache RGB colors to optimize animation loops
+      const cleanHex = glowColorHex.replace('#', '');
+      if (cleanHex.length === 6) {
+        starConfig.r = parseInt(cleanHex.substring(0, 2), 16);
+        starConfig.g = parseInt(cleanHex.substring(2, 4), 16);
+        starConfig.b = parseInt(cleanHex.substring(4, 6), 16);
+      } else {
+        starConfig.r = 139;
+        starConfig.g = 92;
+        starConfig.b = 246;
+      }
 
       // Reinitialize particles if density changes
       if (initParticlesFn) {
@@ -659,8 +674,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set callback to sync with tuning slider updates
     initParticlesFn = initParticles;
 
-    // Track mouse coordinates over the window instantly
-    window.addEventListener('mousemove', (e) => {
+    // Track mouse coordinates over the window instantly with high-precision pointermove
+    window.addEventListener('pointermove', (e) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
       mouse.active = true;
@@ -692,37 +707,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Constellation network rendering
       if (mouse.active && mouse.x !== null) {
-        const distances = [];
+        const candidates = [];
+        const radiusSq = starConfig.radius * starConfig.radius;
+        const starSize = starConfig.size;
+        const starRadius = starConfig.radius;
+
+        // Step 1: Pre-filter by squared distance (extremely fast, avoids Math.sqrt)
         for (let i = 0; i < particles.length; i++) {
           const p = particles[i];
           const dx = p.x - mouse.x;
           const dy = p.y - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          distances.push({ particle: p, dist: dist });
-        }
-
-        // Sort ascending to get closest stars
-        distances.sort((a, b) => a.dist - b.dist);
-
-        // Pick nearest points within user's Link Radius
-        const nearestPoints = [];
-        for (let i = 0; i < distances.length; i++) {
-          if (nearestPoints.length >= starConfig.size) break;
-          const item = distances[i];
-          if (item.dist < starConfig.radius) {
-            nearestPoints.push(item);
+          const distSq = dx * dx + dy * dy;
+          if (distSq < radiusSq) {
+            candidates.push({ particle: p, distSq: distSq });
           }
         }
 
-        // Generate line color from the selected glow picker
-        const glowColorHex = rangeGlowColor ? rangeGlowColor.value : '#8b5cf6';
-        let r = 139, g = 92, b = 246; // default violet rgb
-        const hex = glowColorHex.replace('#', '');
-        if (hex.length === 6) {
-          r = parseInt(hex.substring(0, 2), 16);
-          g = parseInt(hex.substring(2, 4), 16);
-          b = parseInt(hex.substring(4, 6), 16);
+        // Step 2: Sort only the close candidates (usually < 15 items, extremely fast)
+        candidates.sort((a, b) => a.distSq - b.distSq);
+
+        // Step 3: Lazy-evaluate Math.sqrt only for the selected nearest stars
+        const nearestPoints = [];
+        const limit = Math.min(candidates.length, starSize);
+        for (let i = 0; i < limit; i++) {
+          const item = candidates[i];
+          nearestPoints.push({
+            particle: item.particle,
+            dist: Math.sqrt(item.distSq)
+          });
         }
+
+        // Use cached, high-performance pre-parsed RGB values
+        const r = starConfig.r;
+        const g = starConfig.g;
+        const b = starConfig.b;
 
         // If we found candidates for the constellation
         if (nearestPoints.length > 0) {
@@ -745,7 +763,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fill();
 
             // Link from mouse to active star
-            const alpha = (1 - (item.dist / starConfig.radius)).toFixed(2);
+            const alpha = (1 - (item.dist / starRadius)).toFixed(2);
             ctx.beginPath();
             ctx.moveTo(mouse.x, mouse.y);
             ctx.lineTo(p.x, p.y);
@@ -758,13 +776,15 @@ document.addEventListener('DOMContentLoaded', () => {
               if (otherIdx > index) { // Avoid duplicate lines
                 const ndx = other.particle.x - p.x;
                 const ndy = other.particle.y - p.y;
-                const ndist = Math.sqrt(ndx * ndx + ndy * ndy);
+                const ndistSq = ndx * ndx + ndy * ndy;
+                const thresholdSq = radiusSq * 0.64; // threshold = (radius * 0.8)^2
                 
                 // If they are within each other's field, connect them
-                if (ndist < starConfig.radius * 0.8) {
+                if (ndistSq < thresholdSq) {
+                  const ndist = Math.sqrt(ndistSq);
                   // Calculate opacity based on both points' distances and proximity to each other
-                  const otherAlpha = (1 - (other.dist / starConfig.radius));
-                  const lineAlpha = parseFloat(alpha) * otherAlpha * (1 - (ndist / (starConfig.radius * 0.8)));
+                  const otherAlpha = (1 - (other.dist / starRadius));
+                  const lineAlpha = parseFloat(alpha) * otherAlpha * (1 - (ndist / (starRadius * 0.8)));
                   
                   ctx.beginPath();
                   ctx.moveTo(p.x, p.y);
