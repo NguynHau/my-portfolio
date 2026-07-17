@@ -1,6 +1,6 @@
 # Nguyễn Tấn Hậu - Personal Portfolio
 
-Dự án Portfolio cá nhân trực quan, hiện đại, tối giản và chuyên nghiệp của **Nguyễn Tấn Hậu**, được tối ưu hóa để giới thiệu về hành trình học tập, nghiên cứu khoa học, kỹ năng và các công bố khoa học.
+Dự án Portfolio cá nhân trực quan, hiện đại, tối giản, được tối ưu hóa để giới thiệu về hành trình học tập, nghiên cứu khoa học, kỹ năng và các công bố khoa học.
 
 🔗 **Địa chỉ xem trực tuyến:** [nguynhau.github.io/my-portfolio](https://nguynhau.github.io/my-portfolio/)
 
