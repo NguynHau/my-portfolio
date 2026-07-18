@@ -1,5 +1,53 @@
 // 1. Wait for document load
 document.addEventListener('DOMContentLoaded', () => {
+  // Inject Disable Effects Styles
+  const styleEl = document.createElement('style');
+  styleEl.id = 'disable-effects-styles';
+  styleEl.textContent = `
+    .disable-effects,
+    .disable-effects * {
+      animation: none !important;
+      animation-delay: 0s !important;
+      animation-duration: 0s !important;
+      transition: none !important;
+      transition-delay: 0s !important;
+      transition-duration: 0s !important;
+    }
+    .disable-effects .reveal-entry,
+    .disable-effects .reveal-child {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .disable-effects #constellation-canvas {
+      display: none !important;
+    }
+    .disable-effects #nav-indicator {
+      display: none !important;
+    }
+    .disable-effects .liquid-glass,
+    .disable-effects .glass-island {
+      background: rgba(15, 23, 42, 0.95) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+    .disable-effects.light-mode .liquid-glass,
+    .disable-effects.light-mode .glass-island,
+    html.light-mode .disable-effects .liquid-glass,
+    html.light-mode .disable-effects .glass-island {
+      background: #f8fafc !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border-color: rgba(0, 0, 0, 0.1) !important;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+  `;
+  document.head.appendChild(styleEl);
+
   // Initialize Lucide Icons
   if (window.lucide) {
     window.lucide.createIcons();
@@ -137,19 +185,32 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 7. Initializing Smooth Scrolling (Lenis) if available
-  if (window.Lenis) {
-    const lenis = new window.Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+  let lenisInstance = null;
+  function initLenis() {
+    if (window.Lenis && !document.documentElement.classList.contains('disable-effects')) {
+      if (!lenisInstance) {
+        lenisInstance = new window.Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+        });
+        
+        function raf(time) {
+          if (lenisInstance && !document.documentElement.classList.contains('disable-effects')) {
+            lenisInstance.raf(time);
+            requestAnimationFrame(raf);
+          }
+        }
+        requestAnimationFrame(raf);
+      }
+    } else {
+      if (lenisInstance) {
+        lenisInstance.destroy();
+        lenisInstance = null;
+      }
     }
-    requestAnimationFrame(raf);
   }
+  initLenis();
 
   // 8. Navigation Active Section Tracker with Smooth Liquid Glass Slider
   const navLinks = document.querySelectorAll('nav a');
@@ -617,9 +678,45 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // 0. Effects Switch Toggle Event Handler
+    const btnToggleEffects = document.getElementById('btn-toggle-effects');
+    const effectsToggleKnob = document.getElementById('effects-toggle-knob');
+    
+    let effectsDisabled = localStorage.getItem('disable-effects') === 'true';
+    
+    function updateEffectsUI() {
+      if (effectsDisabled) {
+        document.documentElement.classList.add('disable-effects');
+        if (btnToggleEffects && effectsToggleKnob) {
+          btnToggleEffects.classList.remove('bg-white/10');
+          btnToggleEffects.classList.add('bg-rose-600');
+          effectsToggleKnob.classList.remove('translate-x-0', 'bg-slate-400');
+          effectsToggleKnob.classList.add('translate-x-5', 'bg-white');
+        }
+      } else {
+        document.documentElement.classList.remove('disable-effects');
+        if (btnToggleEffects && effectsToggleKnob) {
+          btnToggleEffects.classList.remove('bg-rose-600');
+          btnToggleEffects.classList.add('bg-white/10');
+          effectsToggleKnob.classList.remove('translate-x-5', 'bg-white');
+          effectsToggleKnob.classList.add('translate-x-0', 'bg-slate-400');
+        }
+      }
+      initLenis();
+    }
+
+    if (btnToggleEffects) {
+      btnToggleEffects.addEventListener('click', () => {
+        effectsDisabled = !effectsDisabled;
+        localStorage.setItem('disable-effects', effectsDisabled);
+        updateEffectsUI();
+      });
+    }
+
     // Boot-up initialization sequence
     loadSavedSettings();
     updateGlassProperties();
+    updateEffectsUI();
   }
 
   // --- CONSTELLATION BACKGROUND CANVAS ENGINE ---
@@ -686,8 +783,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
       update() {
         // Standard continuous random moving direction
-        this.x += this.vx * starConfig.speed;
-        this.y += this.vy * starConfig.speed;
+        let currentVx = this.vx * starConfig.speed;
+        let currentVy = this.vy * starConfig.speed;
+
+        // High-speed magnetic attraction pull (provides latency-free tactile feedback)
+        if (mouse.active && mouse.x !== null) {
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const distSq = dx * dx + dy * dy;
+          const interactionRadius = starConfig.radius;
+          const interactionRadiusSq = interactionRadius * interactionRadius;
+          
+          if (distSq < interactionRadiusSq) {
+            const dist = Math.sqrt(distSq);
+            if (dist > 0) {
+              const force = (1 - dist / interactionRadius) * 0.8;
+              currentVx += (dx / dist) * force;
+              currentVy += (dy / dist) * force;
+            }
+          }
+        }
+
+        this.x += currentVx;
+        this.y += currentVy;
 
         // Wrap-around margins
         if (this.x < -20) this.x = width + 20;
@@ -734,7 +852,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
       mouse.active = true;
-    });
+    }, { passive: true });
 
     window.addEventListener('mouseleave', () => {
       mouse.active = false;
@@ -868,7 +986,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fill();
 
             // Link from mouse to active star
-            const alpha = (1 - (dist / starRadius)).toFixed(2);
+            const alpha = 1 - (dist / starRadius);
             ctx.beginPath();
             ctx.moveTo(mouse.x, mouse.y);
             ctx.lineTo(p.x, p.y);
@@ -888,13 +1006,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
               if (ndistSq < thresholdSq) {
                 const ndist = Math.sqrt(ndistSq);
-                const otherAlpha = (1 - (otherDist / starRadius));
-                const lineAlpha = parseFloat(alpha) * otherAlpha * (1 - (ndist / (starRadius * 0.8)));
+                const otherAlpha = 1 - (otherDist / starRadius);
+                const lineAlpha = alpha * otherAlpha * (1 - (ndist / (starRadius * 0.8)));
 
                 ctx.beginPath();
                 ctx.moveTo(p.x, p.y);
                 ctx.lineTo(otherP.x, otherP.y);
-                ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${(lineAlpha * 0.45).toFixed(2)})`;
+                ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${lineAlpha * 0.45})`;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               }
