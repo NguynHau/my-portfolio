@@ -188,4 +188,10 @@ html.light-mode .liquid-glass:hover {
   opacity: 0;
 }
 
+.stack-item.is-front {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  z-index: 30 !important;
+}
+
 

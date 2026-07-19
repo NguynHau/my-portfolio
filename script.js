@@ -1276,8 +1276,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const nextItem = items[currentIndex];
             // Remove faint/offset classes and make front clear
-            nextItem.classList.remove('opacity-70', 'opacity-40', 'translate-x-2', 'translate-x-4');
-            nextItem.classList.add('z-30', 'opacity-100');
+            nextItem.classList.add('is-front');
         }, 600);
     }
   });
