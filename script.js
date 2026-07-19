@@ -25,8 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .disable-effects #nav-indicator {
       display: none !important;
     }
-    .disable-effects .liquid-glass,
-    .disable-effects .glass-island {
+    .disable-effects .liquid-glass {
       background: rgba(15, 23, 42, 0.95) !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
@@ -34,16 +33,31 @@ document.addEventListener('DOMContentLoaded', () => {
       box-shadow: none !important;
       transform: none !important;
     }
+    .disable-effects .glass-island {
+      background: rgba(15, 23, 42, 0.95) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      box-shadow: none !important;
+      transform: scale(0.9) !important;
+    }
     .disable-effects.light-mode .liquid-glass,
-    .disable-effects.light-mode .glass-island,
-    html.light-mode .disable-effects .liquid-glass,
-    html.light-mode .disable-effects .glass-island {
+    html.light-mode .disable-effects .liquid-glass {
       background: #f8fafc !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
       border-color: rgba(0, 0, 0, 0.1) !important;
       box-shadow: none !important;
       transform: none !important;
+    }
+    .disable-effects.light-mode .glass-island,
+    html.light-mode .disable-effects .glass-island {
+      background: #f8fafc !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border-color: rgba(0, 0, 0, 0.1) !important;
+      box-shadow: none !important;
+      transform: scale(0.9) !important;
     }
   `;
   document.head.appendChild(styleEl);
@@ -783,29 +797,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       update() {
         // Standard continuous random moving direction
-        let currentVx = this.vx * starConfig.speed;
-        let currentVy = this.vy * starConfig.speed;
-
-        // High-speed magnetic attraction pull (provides latency-free tactile feedback)
-        if (mouse.active && mouse.x !== null) {
-          const dx = mouse.x - this.x;
-          const dy = mouse.y - this.y;
-          const distSq = dx * dx + dy * dy;
-          const interactionRadius = starConfig.radius;
-          const interactionRadiusSq = interactionRadius * interactionRadius;
-          
-          if (distSq < interactionRadiusSq) {
-            const dist = Math.sqrt(distSq);
-            if (dist > 0) {
-              const force = (1 - dist / interactionRadius) * 0.8;
-              currentVx += (dx / dist) * force;
-              currentVy += (dy / dist) * force;
-            }
-          }
-        }
-
-        this.x += currentVx;
-        this.y += currentVy;
+        this.x += this.vx * starConfig.speed;
+        this.y += this.vy * starConfig.speed;
 
         // Wrap-around margins
         if (this.x < -20) this.x = width + 20;

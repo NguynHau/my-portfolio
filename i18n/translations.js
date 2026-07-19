@@ -81,6 +81,7 @@ export const translations = {
   "Graduated with an excellent GPA of": "Tốt nghiệp với GPA xuất sắc",
   "Granted Can Tho University scientific research funding for the student project investigating configurations of set-valued mappings.": "Được Đại học Cần Thơ cấp kinh phí nghiên cứu khoa học cho dự án sinh viên nghiên cứu các cấu hình của ánh xạ đa trị.",
   "Granted Can Tho University scientific research funding for the student research project ": "Được Đại học Cần Thơ cấp kinh phí nghiên cứu khoa học cho dự án nghiên cứu khoa học sinh viên ",
+  "Granted Can Tho University scientific research funding for the student research project": "Được Đại học Cần Thơ cấp kinh phí nghiên cứu khoa học cho dự án nghiên cứu khoa học sinh viên",
   "\"Regularity of Collections of Set-Valued Mappings.\"": "\"Tính chính quy của các họ ánh xạ đa trị.\"",
   "Green Stewardship Certificate": "Chứng chỉ Quản lý Xanh",
   "HTML5": "HTML5",
