@@ -63,12 +63,15 @@ body {  background-color: #0a0a0a;  color: #f1f5f9;  font-family: 'Lora', serif;
   --glass-border-opacity: 0.09;
   --glass-saturate: 95%;
   --glass-shadow-opacity: 0.31;
-  
-  /* Premium Border & Glow Effects */
   --glass-inner-reflection: 0.15;
-  --glass-glow-size: 0px;
-  --glass-glow-color: #8b5cf6;
-  --glass-glow-opacity: 0.20;
+  --glass-glow-size: 0.0px;
+  --glass-glow-color: rgba(139, 92, 246, 0.20);
+  --island-scale: 1.04;
+  --lang-shift: -15px;
+  --theme-shift: -22px;
+  --nav-shift: 27px;
+  --orcid-shift: 12px;
+  --mobile-shift: 2px;
 }
 
 .glass-island {
@@ -102,7 +105,7 @@ body {  background-color: #0a0a0a;  color: #f1f5f9;  font-family: 'Lora', serif;
 }
 
 #mobile-menu-btn {
-  transform: scale(var(--island-scale, 0.9)) translateX(var(--mobile-shift, 0px)) translateY(24px) !important;
+  transform: scale(calc(var(--island-scale, 0.9) * 1.25)) translateX(var(--mobile-shift, 0px)) translateY(24px) !important;
 }
 
 /* Glass Island highlight frame for Light Mode */

@@ -517,15 +517,15 @@ document.addEventListener('DOMContentLoaded', () => {
     saturate: '95',
     shadowOpacity: '0.31',
     innerReflection: '0.15',
-    glowSize: '0',
+    glowSize: '0.0',
     glowOpacity: '0.20',
     glowColor: '#8b5cf6',
-    islandScale: '0.90',
-    shiftLang: '0',
-    shiftTheme: '0',
-    shiftNav: '0',
-    shiftOrcid: '0',
-    shiftMobile: '0'
+    islandScale: '1.04',
+    shiftLang: '-15',
+    shiftTheme: '-22',
+    shiftNav: '27',
+    shiftOrcid: '12',
+    shiftMobile: '2'
   };
 
   // Shared Animation Config State
