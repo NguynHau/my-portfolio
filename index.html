@@ -110,6 +110,7 @@
         <div class="hidden lg:flex justify-center z-10 w-[50%] shrink-0">
           <!-- Desktop Navigation Menu -->
           <nav
+            id="nav-menu-island"
             class="glass-island relative flex items-center bg-white/5 border border-white/10 backdrop-blur-2xl backdrop-saturate-150 p-1.5 rounded-full gap-1 text-xs font-sans font-medium tracking-wide pointer-events-auto shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
           >
             <!-- Liquid Glass Active Indicator -->
@@ -159,6 +160,7 @@
         <!-- Right Group: ORCID Island -->
         <div class="hidden lg:flex relative justify-end z-10 w-[30%] shrink-0">
           <div
+            id="orcid-island"
             class="glass-island flex items-center bg-white/5 border border-white/10 backdrop-blur-2xl backdrop-saturate-150 p-1.5 rounded-full pointer-events-auto shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
           >
             <a
@@ -550,10 +552,7 @@
               <p
                 class="font-serif text-xs text-slate-400 leading-relaxed max-w-sm"
               >
-                Graduated with an excellent GPA of
-                <strong class="text-white">3.71 / 4.0</strong> (Excellent).
-                Defense of Bachelor Thesis graded with a perfect score:
-                <strong class="text-white">9.7 / 10.0</strong>.
+                Bachelor of Applied Mathematics. Graduated with an Excellent GPA of 3.71/4.00. Completed the Bachelor's thesis with a defense score of 9.7/10.0, demonstrating a strong foundation in mathematical analysis, optimization, and applied mathematical modeling
               </p>
             </div>
           </div>
@@ -566,7 +565,7 @@
               class="absolute left-4 md:left-1/2 -translate-x-1.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-4 border-[#0a0a0a] z-10"
             ></div>
             <div
-              class="w-full md:w-1/2 pl-10 md:pl-0 md:pr-10 text-left md:text-right flex flex-col md:items-end md:order-1 md:pl-10 md:pr-0 md:text-left md:items-start"
+              class="w-full md:w-1/2 pl-10 md:pl-0 md:pr-10 text-left md:text-right flex flex-col md:items-end justify-center"
             >
               <span
                 class="font-mono text-xs text-emerald-400 font-semibold mb-2"
@@ -578,17 +577,53 @@
               <p class="font-serif text-xs text-slate-400 mt-1">
                 Universiti Brunei Darussalam
               </p>
+              <p
+                class="font-serif text-xs text-slate-400 leading-relaxed max-w-md text-left md:text-right mt-3"
+              >
+                UBD–AUN Summer Camp 2025 Student Exchange Program at Universiti Brunei Darussalam (UBD). Selected to participate in an international exchange program for students from AUN-QA-accredited programs. Joined participants from ASEAN+3 countries in exploring Brunei's cultural heritage, local communities, cuisine, and traditions.
+              </p>
             </div>
             <div
-              class="w-full md:w-1/2 pl-10 md:pl-10 text-left flex flex-col justify-center md:order-2 md:text-left md:items-start"
+              class="w-full md:w-1/2 pl-10 md:pl-10 text-left flex flex-col justify-center"
             >
-              <p
-                class="font-serif text-xs text-slate-400 leading-relaxed max-w-sm text-left"
-              >
-                Fully funded discovery study on mathematical modeling of
-                socio-ecological environments, computational models, and
-                international collaboration dynamics.
-              </p>
+              <!-- Creative Brunei Exchange Photo block -->
+              <div class="w-full max-w-sm relative">
+                <div
+                  class="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-900 border border-white/10 shadow-lg group"
+                >
+                  <img
+                    src="./anh_brunei.jpg"
+                    alt="Student Exchange Brunei"
+                    class="brunei-image w-full h-full object-cover transition-all duration-700 ease-out scale-100 group-hover:scale-105"
+                    referrerpolicy="no-referrer"
+                  />
+                  <!-- Dark gradient overlay to enhance visual richness -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+                  
+                  <!-- Floating Location Tag -->
+                  <div class="absolute bottom-3 left-3 flex items-center gap-1.5 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 pointer-events-none">
+                    <i data-lucide="map-pin" class="h-3 w-3 text-emerald-400 animate-bounce"></i>
+                    <span>Bandar Seri Begawan, Brunei</span>
+                  </div>
+
+                  <!-- Fallback Placeholder when image is empty or invalid -->
+                  <div
+                    class="brunei-placeholder absolute inset-0 hidden flex flex-col items-center justify-center p-4 text-center bg-gradient-to-br from-slate-900/95 via-[#0c1523]/95 to-emerald-950/30 border border-white/10 rounded-xl"
+                  >
+                    <div
+                      class="p-3 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-2"
+                    >
+                      <i data-lucide="globe" class="h-6 w-6 text-emerald-400"></i>
+                    </div>
+                    <h5 class="font-sans text-xs font-bold text-white tracking-wider uppercase">
+                      Universiti Brunei Darussalam Exchange Photo
+                    </h5>
+                    <p class="font-sans text-[10px] text-slate-400 mt-2 max-w-[260px] leading-relaxed">
+                      Upload or drag your exchange photo over 'anh_brunei.jpg' in the workspace folder to display it here!
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -616,8 +651,7 @@
               <p
                 class="font-serif text-xs text-slate-400 leading-relaxed max-w-sm"
               >
-                Focusing on advanced optimization algorithms, variational
-                analysis, and dynamic screening rules under sparse structures.
+                The program covers advanced optimization theory, numerical computation, sparse optimization, and modern computational techniques, with applications to artificial intelligence, machine learning, and deep neural network models.
               </p>
             </div>
           </div>
@@ -1009,11 +1043,11 @@
                 > -->
                 <span
                   class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
-                  >VS Code</span
+                  >Git/GitHub</span
                 >
                 <span
                   class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
-                  >Git/GitHub</span
+                  >VS Code</span
                 >
                 <span
                   class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-sans text-xs text-slate-300"
@@ -1598,6 +1632,18 @@
                 <div class="flex flex-wrap gap-1.5">
                   <span
                     class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-xs font-mono font-semibold text-slate-400 uppercase"
+                    >HTML5</span
+                  >
+                  <span
+                    class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-xs font-mono font-semibold text-slate-400 uppercase"
+                    >CSS3</span
+                  >
+                  <span
+                    class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-xs font-mono font-semibold text-slate-400 uppercase"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-xs font-mono font-semibold text-slate-400 uppercase"
                     >Python / SymPy</span
                   >
                   <span
@@ -2082,9 +2128,10 @@
       class="py-12 border-t border-white/5 text-center text-slate-500 text-xs font-mono"
     >
       <div
-        class="max-w-[1600px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4"
+        class="max-w-[1600px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4 w-full"
       >
         <p>&copy; 2026 Nguyen Tan Hau. All rights reserved.</p>
+        <p class="text-slate-500">Last updated: July 2026</p>
       </div>
     </footer>
 
@@ -2120,299 +2167,479 @@
 
     <!-- Glassmorphism Tuning Panel -->
     <div id="glass-tuner" class="fixed bottom-6 right-6 z-[99] flex flex-col items-end gap-3 font-sans text-xs pointer-events-none">
-      <!-- Tuner Toggle Button -->
-      <button
-        id="glass-tuner-toggle"
-        class="w-12 h-12 rounded-full bg-slate-900/85 border border-white/10 hover:border-[#8b5cf6]/50 text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto"
-        title="Tùy chỉnh Đảo Bay / Tune Glass Islands"
-      >
-        <i data-lucide="sliders" class="h-5 w-5"></i>
-      </button>
-
-      <!-- Tuning Card -->
-      <div
-        id="glass-tuner-card"
-        class="hidden w-80 max-w-[calc(100vw-2rem)] max-h-[80vh] overflow-y-auto bg-slate-950/95 border border-white/10 p-5 rounded-2xl shadow-2xl backdrop-blur-xl flex flex-col gap-4 text-slate-300 transition-all duration-300 animate-fade-in pointer-events-auto custom-scrollbar"
-      >
-        <div class="flex items-center justify-between border-b border-white/5 pb-2">
-          <h4 class="font-bold text-sm tracking-wider text-white uppercase flex items-center gap-2">
-            <i data-lucide="sliders" class="h-4 w-4 text-[#8b5cf6]"></i>
-            TÙY CHỈNH ĐẢO BAY
-          </h4>
-          <button id="glass-tuner-close" class="text-slate-400 hover:text-white">
-            <i data-lucide="x" class="h-4 w-4"></i>
-          </button>
-        </div>
-
-        <!-- Sliders -->
-        <div class="max-h-[200px] sm:max-h-[300px] overflow-y-auto pr-1.5 flex flex-col gap-3.5 custom-scrollbar">
-          <!-- 0. Disable Animations/Effects Toggle -->
-          <div class="flex items-center justify-between gap-3 bg-white/5 p-2.5 rounded-xl border border-white/5 shrink-0">
-            <div class="flex flex-col">
-              <span class="text-xs font-bold text-white">Vô hiệu hóa hiệu ứng</span>
-              <span class="text-[10px] text-slate-400">Disable All Effects</span>
-            </div>
-            <button
-              id="btn-toggle-effects"
-              class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-white/10"
-              title="Vô hiệu hóa hiệu ứng / Disable Animations & Effects"
-            >
-              <span
-                id="effects-toggle-knob"
-                class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-slate-400 shadow ring-0 transition duration-200 ease-in-out translate-x-0"
-              ></span>
+      
+      <!-- Panels Container (positioned above toggle buttons) -->
+      <div class="flex flex-col md:flex-row gap-4 items-end pointer-events-auto">
+        <!-- 1. Star Background Tuning Card -->
+        <div
+          id="bg-tuner-card"
+          class="hidden w-80 max-w-[calc(100vw-2rem)] max-h-[85vh] overflow-y-auto bg-[#0a0a0a]/90 border border-white/15 p-5 rounded-2xl shadow-2xl backdrop-blur-2xl flex flex-col gap-4 text-slate-300 transition-all duration-300 animate-fade-in custom-scrollbar"
+        >
+          <div class="flex items-center justify-between border-b border-white/5 pb-2">
+            <h4 class="font-bold text-sm tracking-wider text-white uppercase flex items-center gap-2">
+              <i data-lucide="sparkles" class="h-4 w-4 text-blue-400"></i>
+              CẤU HÌNH NỀN SAO
+            </h4>
+            <button id="bg-tuner-close" class="text-slate-400 hover:text-white">
+              <i data-lucide="x" class="h-4 w-4"></i>
             </button>
           </div>
 
-          <!-- 1. Background Opacity -->
-          <div class="flex flex-col gap-1.5">
-            <div class="flex justify-between text-xs font-medium">
-              <span>Độ trong suốt nền / Bg Opacity</span>
-              <span id="val-bg-opacity" class="text-emerald-400 font-mono">0.00</span>
+          <!-- Background Sliders -->
+          <div class="max-h-[300px] overflow-y-auto pr-1.5 flex flex-col gap-3.5 custom-scrollbar">
+            <!-- Star/Constellation Switch ON/OFF -->
+            <div class="flex items-center justify-between gap-3 bg-white/5 p-2.5 rounded-xl border border-white/5 shrink-0">
+              <div class="flex flex-col">
+                <span class="text-xs font-bold text-white">Hiệu ứng nền sao</span>
+                <span class="text-[10px] text-slate-400">Star Background Effect</span>
+              </div>
+              <button
+                id="btn-toggle-stars"
+                class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-blue-600"
+                title="Bật/Tắt Nền Sao"
+              >
+                <span
+                  id="stars-toggle-knob"
+                  class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-5"
+                ></span>
+              </button>
             </div>
-            <input
-              type="range"
-              id="range-bg-opacity"
-              min="0"
-              max="1"
-              step="0.01"
-              value="0.00"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
-            />
-          </div>
 
-          <!-- 2. Backdrop Blur -->
-          <div class="flex flex-col gap-1.5">
-            <div class="flex justify-between text-xs font-medium">
-              <span>Độ mờ nền / Backdrop Blur</span>
-              <span id="val-blur" class="text-emerald-400 font-mono">5.0px</span>
-            </div>
-            <input
-              type="range"
-              id="range-blur"
-              min="0"
-              max="30"
-              step="0.5"
-              value="5.0"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
-            />
-          </div>
-
-          <!-- 3. Border Opacity -->
-          <div class="flex flex-col gap-1.5">
-            <div class="flex justify-between text-xs font-medium">
-              <span>Độ trong suốt viền / Border Opacity</span>
-              <span id="val-border-opacity" class="text-emerald-400 font-mono">0.09</span>
-            </div>
-            <input
-              type="range"
-              id="range-border-opacity"
-              min="0"
-              max="1"
-              step="0.01"
-              value="0.09"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
-            />
-          </div>
-
-          <!-- 4. Saturation -->
-          <div class="flex flex-col gap-1.5">
-            <div class="flex justify-between text-xs font-medium">
-              <span>Độ bão hòa màu / Saturation</span>
-              <span id="val-saturate" class="text-emerald-400 font-mono">95%</span>
-            </div>
-            <input
-              type="range"
-              id="range-saturate"
-              min="50"
-              max="300"
-              step="5"
-              value="95"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
-            />
-          </div>
-
-          <!-- 5. Shadow Opacity -->
-          <div class="flex flex-col gap-1.5">
-            <div class="flex justify-between text-xs font-medium">
-              <span>Độ đậm bóng đổ / Shadow Opacity</span>
-              <span id="val-shadow-opacity" class="text-emerald-400 font-mono">0.31</span>
-            </div>
-            <input
-              type="range"
-              id="range-shadow-opacity"
-              min="0"
-              max="1"
-              step="0.01"
-              value="0.31"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
-            />
-          </div>
-
-          <!-- 6. Inner Reflection (NEW) -->
-          <div class="flex flex-col gap-1.5">
-            <div class="flex justify-between text-xs font-medium">
-              <span>Độ sáng bóng viền / Inner Shine</span>
-              <span id="val-inner-reflection" class="text-emerald-400 font-mono">0.15</span>
-            </div>
-            <input
-              type="range"
-              id="range-inner-reflection"
-              min="0"
-              max="1"
-              step="0.01"
-              value="0.15"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
-            />
-          </div>
-
-          <!-- 7. Glow Size (NEW) -->
-          <div class="flex flex-col gap-1.5">
-            <div class="flex justify-between text-xs font-medium">
-              <span>Độ phủ sáng viền / Glow Size</span>
-              <span id="val-glow-size" class="text-emerald-400 font-mono">0px</span>
-            </div>
-            <input
-              type="range"
-              id="range-glow-size"
-              min="0"
-              max="25"
-              step="0.5"
-              value="0"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
-            />
-          </div>
-
-          <!-- 8. Glow Opacity (NEW) -->
-          <div class="flex flex-col gap-1.5">
-            <div class="flex justify-between text-xs font-medium">
-              <span>Độ sáng viền / Glow Opacity</span>
-              <span id="val-glow-opacity" class="text-emerald-400 font-mono">0.20</span>
-            </div>
-            <input
-              type="range"
-              id="range-glow-opacity"
-              min="0"
-              max="1"
-              step="0.01"
-              value="0.20"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
-            />
-          </div>
-
-          <!-- 9. Glow Color Picker (NEW) -->
-          <div class="flex items-center justify-between gap-3 bg-white/5 p-2 rounded-xl border border-white/5">
-            <span class="text-xs font-medium">Màu sáng viền / Glow Color</span>
-            <div class="flex items-center gap-2">
-              <span id="val-glow-color" class="text-emerald-400 font-mono text-xs">#8b5cf6</span>
+            <!-- Constellation Size -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Số điểm chòm sao / Constellation Size</span>
+                <span id="val-constellation-size" class="text-blue-400 font-mono">8</span>
+              </div>
               <input
-                type="color"
-                id="range-glow-color"
-                value="#8b5cf6"
-                class="w-7 h-7 rounded border border-white/20 cursor-pointer bg-transparent"
+                type="range"
+                id="range-constellation-size"
+                min="4"
+                max="15"
+                step="1"
+                value="8"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
               />
             </div>
+
+            <!-- Star Density -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Mật độ sao / Star Density</span>
+                <span id="val-star-density" class="text-blue-400 font-mono">80</span>
+              </div>
+              <input
+                type="range"
+                id="range-star-density"
+                min="20"
+                max="180"
+                step="5"
+                value="80"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
+              />
+            </div>
+
+            <!-- Move Speed -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Tốc độ sao / Star Speed</span>
+                <span id="val-star-speed" class="text-blue-400 font-mono">0.5</span>
+              </div>
+              <input
+                type="range"
+                id="range-star-speed"
+                min="0.1"
+                max="2.5"
+                step="0.05"
+                value="0.5"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
+              />
+            </div>
+
+            <!-- Link Radius -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Bán kính liên kết / Link Radius</span>
+                <span id="val-link-radius" class="text-blue-400 font-mono">220px</span>
+              </div>
+              <input
+                type="range"
+                id="range-link-radius"
+                min="100"
+                max="450"
+                step="10"
+                value="220"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
+              />
+            </div>
+
+            <!-- 9. Glow Color Picker -->
+            <div class="flex items-center justify-between gap-3 bg-white/5 p-2 rounded-xl border border-white/5 mt-1">
+              <span class="text-xs font-medium">Màu sáng viền / Glow Color</span>
+              <div class="flex items-center gap-2">
+                <span id="val-glow-color" class="text-blue-400 font-mono text-xs">#8b5cf6</span>
+                <input
+                  type="color"
+                  id="range-glow-color"
+                  value="#8b5cf6"
+                  class="w-7 h-7 rounded border border-white/20 cursor-pointer bg-transparent"
+                />
+              </div>
+            </div>
           </div>
 
-          <!-- 10. Constellation Size -->
-          <div class="flex flex-col gap-1.5">
-            <div class="flex justify-between text-xs font-medium">
-              <span>Số điểm chòm sao / Constellation Size</span>
-              <span id="val-constellation-size" class="text-emerald-400 font-mono">8</span>
-            </div>
-            <input
-              type="range"
-              id="range-constellation-size"
-              min="4"
-              max="15"
-              step="1"
-              value="8"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
-            />
-          </div>
+          <!-- Star Actions -->
+          <div class="flex flex-col gap-2.5 pt-2 border-t border-white/5">
+            <button
+              id="btn-save-stars"
+              class="w-full py-2 px-3 rounded bg-blue-600 hover:bg-blue-500 text-white font-semibold flex items-center justify-center gap-1.5 transition-colors text-xs"
+            >
+              <i data-lucide="save" class="h-3.5 w-3.5"></i> Lưu cấu hình / Save Background
+            </button>
 
-          <!-- 11. Star Density -->
-          <div class="flex flex-col gap-1.5">
-            <div class="flex justify-between text-xs font-medium">
-              <span>Mật độ sao / Star Density</span>
-              <span id="val-star-density" class="text-emerald-400 font-mono">80</span>
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                id="btn-copy-stars"
+                class="py-1.5 px-3 rounded bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 font-semibold flex items-center justify-center gap-1 border border-blue-500/20 transition-colors text-xs"
+              >
+                <i data-lucide="copy" class="h-3 w-3"></i> Copy Config
+              </button>
+              <button
+                id="btn-reset-stars"
+                class="py-1.5 px-3 rounded bg-white/5 hover:bg-white/10 text-white font-semibold flex items-center justify-center gap-1 border border-white/10 transition-colors text-xs"
+              >
+                <i data-lucide="rotate-ccw" class="h-3 w-3"></i> Reset
+              </button>
             </div>
-            <input
-              type="range"
-              id="range-star-density"
-              min="20"
-              max="180"
-              step="5"
-              value="80"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
-            />
-          </div>
-
-          <!-- 12. Move Speed -->
-          <div class="flex flex-col gap-1.5">
-            <div class="flex justify-between text-xs font-medium">
-              <span>Tốc độ sao / Star Speed</span>
-              <span id="val-star-speed" class="text-emerald-400 font-mono">0.5</span>
-            </div>
-            <input
-              type="range"
-              id="range-star-speed"
-              min="0.1"
-              max="2.5"
-              step="0.05"
-              value="0.5"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
-            />
-          </div>
-
-          <!-- 13. Link Radius -->
-          <div class="flex flex-col gap-1.5">
-            <div class="flex justify-between text-xs font-medium">
-              <span>Bán kính liên kết / Link Radius</span>
-              <span id="val-link-radius" class="text-emerald-400 font-mono">220px</span>
-            </div>
-            <input
-              type="range"
-              id="range-link-radius"
-              min="100"
-              max="450"
-              step="10"
-              value="220"
-              class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
-            />
           </div>
         </div>
 
-        <!-- Generated CSS and Buttons -->
-        <div class="flex flex-col gap-2.5 pt-2 border-t border-white/5">
-          <div class="flex flex-col gap-1">
-            <span class="text-xs text-slate-400 font-semibold tracking-wider uppercase">CSS code:</span>
-            <pre id="css-preview" class="p-2.5 rounded bg-black/40 text-xs text-slate-300 font-mono overflow-x-auto whitespace-pre select-all border border-white/5 leading-tight max-h-24"></pre>
+        <!-- 2. Glass Island Tuning Card -->
+        <div
+          id="island-tuner-card"
+          class="hidden w-80 max-w-[calc(100vw-2rem)] max-h-[85vh] overflow-y-auto bg-[#0a0a0a]/90 border border-white/15 p-5 rounded-2xl shadow-2xl backdrop-blur-2xl flex flex-col gap-4 text-slate-300 transition-all duration-300 animate-fade-in custom-scrollbar"
+        >
+          <div class="flex items-center justify-between border-b border-white/5 pb-2">
+            <h4 class="font-bold text-sm tracking-wider text-white uppercase flex items-center gap-2">
+              <i data-lucide="layers" class="h-4 w-4 text-[#8b5cf6]"></i>
+              TÙY CHỈNH ĐẢO BAY
+            </h4>
+            <button id="island-tuner-close" class="text-slate-400 hover:text-white">
+              <i data-lucide="x" class="h-4 w-4"></i>
+            </button>
           </div>
 
-          <!-- Action Buttons -->
-          <button
-            id="btn-save-settings"
-            class="w-full py-2 px-3 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-semibold flex items-center justify-center gap-1.5 transition-colors text-xs"
-          >
-            <i data-lucide="save" class="h-3.5 w-3.5"></i> Lưu cấu hình / Save Settings
-          </button>
+          <!-- Island Sliders -->
+          <div class="max-h-[300px] overflow-y-auto pr-1.5 flex flex-col gap-3.5 custom-scrollbar">
+            <!-- Island Effect Switch ON/OFF -->
+            <div class="flex items-center justify-between gap-3 bg-white/5 p-2.5 rounded-xl border border-white/5 shrink-0">
+              <div class="flex flex-col">
+                <span class="text-xs font-bold text-white">Hiệu ứng đảo bay</span>
+                <span class="text-[10px] text-slate-400">Glass Islands Effect</span>
+              </div>
+              <button
+                id="btn-toggle-islands"
+                class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-[#8b5cf6]"
+                title="Bật/Tắt Hiệu ứng Đảo Bay"
+              >
+                <span
+                  id="islands-toggle-knob"
+                  class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-5"
+                ></span>
+              </button>
+            </div>
 
-          <div class="grid grid-cols-2 gap-2">
+            <!-- 1. Background Opacity -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Đo trong suốt nền / Bg Opacity</span>
+                <span id="val-bg-opacity" class="text-emerald-400 font-mono">0.00</span>
+              </div>
+              <input
+                type="range"
+                id="range-bg-opacity"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.00"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+              />
+            </div>
+
+            <!-- 2. Backdrop Blur -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Độ mờ nền / Backdrop Blur</span>
+                <span id="val-blur" class="text-emerald-400 font-mono">5.0px</span>
+              </div>
+              <input
+                type="range"
+                id="range-blur"
+                min="0"
+                max="30"
+                step="0.5"
+                value="5.0"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+              />
+            </div>
+
+            <!-- 3. Border Opacity -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Độ trong suốt viền / Border Opacity</span>
+                <span id="val-border-opacity" class="text-emerald-400 font-mono">0.09</span>
+              </div>
+              <input
+                type="range"
+                id="range-border-opacity"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.09"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+              />
+            </div>
+
+            <!-- 4. Saturation -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Độ bão hòa màu / Saturation</span>
+                <span id="val-saturate" class="text-emerald-400 font-mono">95%</span>
+              </div>
+              <input
+                type="range"
+                id="range-saturate"
+                min="50"
+                max="300"
+                step="5"
+                value="95"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+              />
+            </div>
+
+            <!-- 5. Shadow Opacity -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Độ đậm bóng đổ / Shadow Opacity</span>
+                <span id="val-shadow-opacity" class="text-emerald-400 font-mono">0.31</span>
+              </div>
+              <input
+                type="range"
+                id="range-shadow-opacity"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.31"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+              />
+            </div>
+
+            <!-- 6. Inner Reflection -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Độ sáng bóng viền / Inner Shine</span>
+                <span id="val-inner-reflection" class="text-emerald-400 font-mono">0.15</span>
+              </div>
+              <input
+                type="range"
+                id="range-inner-reflection"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.15"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+              />
+            </div>
+
+            <!-- 7. Glow Size -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Độ phủ sáng viền / Glow Size</span>
+                <span id="val-glow-size" class="text-emerald-400 font-mono">0px</span>
+              </div>
+              <input
+                type="range"
+                id="range-glow-size"
+                min="0"
+                max="25"
+                step="0.5"
+                value="0"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+              />
+            </div>
+
+            <!-- 8. Glow Opacity -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Độ sáng viền / Glow Opacity</span>
+                <span id="val-glow-opacity" class="text-emerald-400 font-mono">0.20</span>
+              </div>
+              <input
+                type="range"
+                id="range-glow-opacity"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.20"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+              />
+            </div>
+
+            <!-- NEW: Island Scale Factor -->
+            <div class="flex flex-col gap-1.5 pt-2 border-t border-white/5">
+              <div class="flex justify-between text-xs font-medium text-purple-300">
+                <span>Thu phóng tỷ lệ đảo / Island Scale</span>
+                <span id="val-island-scale" class="text-emerald-400 font-mono">0.90x</span>
+              </div>
+              <input
+                type="range"
+                id="range-island-scale"
+                min="0.5"
+                max="1.5"
+                step="0.02"
+                value="0.90"
+                class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+              />
+            </div>
+
+            <!-- NEW: Individual Island Left/Right Shifts -->
+            <div class="flex flex-col gap-1.5 pt-2 border-t border-white/5">
+              <span class="text-xs font-bold text-purple-300">Dịch chuyển trái/phải / Translate X:</span>
+              
+              <!-- 1. Language Switcher -->
+              <div class="flex flex-col gap-1 bg-white/5 p-2 rounded-lg border border-white/5">
+                <div class="flex justify-between text-[11px] font-medium text-slate-300">
+                  <span>Đảo Ngôn ngữ / Lang Island</span>
+                  <span id="val-shift-lang" class="text-emerald-400 font-mono">0px</span>
+                </div>
+                <input
+                  type="range"
+                  id="range-shift-lang"
+                  min="-150"
+                  max="150"
+                  step="1"
+                  value="0"
+                  class="w-full h-1 bg-white/10 rounded cursor-pointer accent-[#8b5cf6]"
+                />
+              </div>
+
+              <!-- 2. Theme Switcher -->
+              <div class="flex flex-col gap-1 bg-white/5 p-2 rounded-lg border border-white/5">
+                <div class="flex justify-between text-[11px] font-medium text-slate-300">
+                  <span>Đảo Chủ đề / Theme Island</span>
+                  <span id="val-shift-theme" class="text-emerald-400 font-mono">0px</span>
+                </div>
+                <input
+                  type="range"
+                  id="range-shift-theme"
+                  min="-150"
+                  max="150"
+                  step="1"
+                  value="0"
+                  class="w-full h-1 bg-white/10 rounded cursor-pointer accent-[#8b5cf6]"
+                />
+              </div>
+
+              <!-- 3. Navigation Menu -->
+              <div class="flex flex-col gap-1 bg-white/5 p-2 rounded-lg border border-white/5">
+                <div class="flex justify-between text-[11px] font-medium text-slate-300">
+                  <span>Đảo Menu Chính / Nav Menu</span>
+                  <span id="val-shift-nav" class="text-emerald-400 font-mono">0px</span>
+                </div>
+                <input
+                  type="range"
+                  id="range-shift-nav"
+                  min="-150"
+                  max="150"
+                  step="1"
+                  value="0"
+                  class="w-full h-1 bg-white/10 rounded cursor-pointer accent-[#8b5cf6]"
+                />
+              </div>
+
+              <!-- 4. ORCID Island -->
+              <div class="flex flex-col gap-1 bg-white/5 p-2 rounded-lg border border-white/5">
+                <div class="flex justify-between text-[11px] font-medium text-slate-300">
+                  <span>Đảo ORCID / ORCID Island</span>
+                  <span id="val-shift-orcid" class="text-emerald-400 font-mono">0px</span>
+                </div>
+                <input
+                  type="range"
+                  id="range-shift-orcid"
+                  min="-150"
+                  max="150"
+                  step="1"
+                  value="0"
+                  class="w-full h-1 bg-white/10 rounded cursor-pointer accent-[#8b5cf6]"
+                />
+              </div>
+
+              <!-- 5. Mobile Menu Button -->
+              <div class="flex flex-col gap-1 bg-white/5 p-2 rounded-lg border border-white/5">
+                <div class="flex justify-between text-[11px] font-medium text-slate-300">
+                  <span>Đảo Menu Di động / Mobile Menu</span>
+                  <span id="val-shift-mobile" class="text-emerald-400 font-mono">0px</span>
+                </div>
+                <input
+                  type="range"
+                  id="range-shift-mobile"
+                  min="-150"
+                  max="150"
+                  step="1"
+                  value="0"
+                  class="w-full h-1 bg-white/10 rounded cursor-pointer accent-[#8b5cf6]"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Island Actions -->
+          <div class="flex flex-col gap-2.5 pt-2 border-t border-white/5">
+            <pre id="css-preview-islands" class="hidden"></pre>
+
             <button
-              id="btn-copy-css"
-              class="py-1.5 px-3 rounded bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-semibold flex items-center justify-center gap-1 transition-colors text-xs"
+              id="btn-save-islands"
+              class="w-full py-2 px-3 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-semibold flex items-center justify-center gap-1.5 transition-colors text-xs"
             >
-              <i data-lucide="copy" class="h-3 w-3"></i> Copy CSS
+              <i data-lucide="save" class="h-3.5 w-3.5"></i> Lưu cấu hình / Save Islands
             </button>
-            <button
-              id="btn-reset-tuner"
-              class="py-1.5 px-3 rounded bg-white/5 hover:bg-white/10 text-white font-semibold flex items-center justify-center gap-1 border border-white/10 transition-colors text-xs"
-            >
-              <i data-lucide="rotate-ccw" class="h-3 w-3"></i> Reset
-            </button>
+
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                id="btn-copy-islands"
+                class="py-1.5 px-3 rounded bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-semibold flex items-center justify-center gap-1 transition-colors text-xs"
+              >
+                <i data-lucide="copy" class="h-3 w-3"></i> Copy CSS
+              </button>
+              <button
+                id="btn-reset-islands"
+                class="py-1.5 px-3 rounded bg-white/5 hover:bg-white/10 text-white font-semibold flex items-center justify-center gap-1 border border-white/10 transition-colors text-xs"
+              >
+                <i data-lucide="rotate-ccw" class="h-3 w-3"></i> Reset
+              </button>
+            </div>
           </div>
         </div>
+      </div>
+
+      <!-- Toggle Buttons Row -->
+      <div class="flex gap-3 pointer-events-auto mt-2">
+        <!-- Toggle Star Background -->
+        <button
+          id="bg-tuner-toggle"
+          class="w-12 h-12 rounded-full bg-slate-900/85 border border-white/10 hover:border-blue-500/50 text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-105"
+          title="Tùy chỉnh Nền Sao / Star Background Settings"
+        >
+          <i data-lucide="sparkles" class="h-5 w-5 text-blue-400"></i>
+        </button>
+        <!-- Toggle Glass Islands -->
+        <button
+          id="island-tuner-toggle"
+          class="w-12 h-12 rounded-full bg-slate-900/85 border border-white/10 hover:border-[#8b5cf6]/50 text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-105"
+          title="Tùy chỉnh Đảo Bay / Glass Islands Settings"
+        >
+          <i data-lucide="layers" class="h-5 w-5 text-[#8b5cf6]"></i>
+        </button>
       </div>
     </div>
 
