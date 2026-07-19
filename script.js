@@ -1244,42 +1244,42 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeCanvas();
     animate();
   }
-  
-  window.initGallery = () => {
-    const container = document.getElementById('flip-stack-container');
-    if (!container) return;
-    container.innerHTML = '';
-    window.galleryData.forEach((item) => {
-      const card = document.createElement('div');
-      card.className = 'flip-card';
-      card.innerHTML = `
-        <img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover" referrerpolicy="no-referrer" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 pointer-events-none rounded-xl"></div>
-        <div class="absolute bottom-3 left-3 flex items-center gap-1.5 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 pointer-events-none">
-          <i data-lucide="map-pin" class="h-3 w-3 text-emerald-400"></i>
-          <span>${item.location}</span>
-        </div>
-      `;
-      container.appendChild(card);
-    });
-    if (window.lucide) window.lucide.createIcons();
-  };
-
-  window.handleFlip = () => {
-    const container = document.getElementById('flip-stack-container');
-    const cards = container.querySelectorAll('.flip-card');
-    if (cards.length === 0) {
-      window.initGallery();
-      return;
-    }
-    
-    const topCard = cards[0];
-    topCard.classList.add('flipping');
-    
-    setTimeout(() => {
-      topCard.remove();
-    }, 500);
-  };
-
-  window.initGallery();
 });
+
+// Image Stack Interaction
+document.addEventListener('DOMContentLoaded', () => {
+  const stack = document.getElementById('brunei-image-stack');
+  if (!stack) return;
+
+  const items = Array.from(stack.querySelectorAll('.stack-item'));
+  let currentIndex = 0;
+  // Store initial classes for reset
+  const initialClasses = items.map(item => item.className);
+
+  stack.addEventListener('click', () => {
+    const currentItem = items[currentIndex];
+    currentItem.classList.add('flipping');
+
+    currentIndex = (currentIndex + 1) % items.length;
+
+    if (currentIndex === 0) {
+        // Reset everything
+        setTimeout(() => {
+            items.forEach((item, index) => {
+                item.className = initialClasses[index];
+            });
+        }, 600);
+    } else {
+        // Hide current, make next clear
+        setTimeout(() => {
+            currentItem.classList.add('hidden');
+
+            const nextItem = items[currentIndex];
+            // Remove faint/offset classes and make front clear
+            nextItem.classList.remove('opacity-70', 'opacity-40', 'translate-x-2', 'translate-x-4');
+            nextItem.classList.add('z-30', 'opacity-100');
+        }, 600);
+    }
+  });
+});
+

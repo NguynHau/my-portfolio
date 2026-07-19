@@ -349,7 +349,7 @@
           >
             <!-- Image Tag Loading anh2.jpg with custom fallbacks -->
             <img
-              src="/anh2.jpg"
+              src="./anh2.jpg"
               alt="Nguyen Tan Hau"
               class="profile-image w-full h-full object-cover transition-all duration-700 ease-out scale-100 group-hover:scale-105"
             />
@@ -587,9 +587,40 @@
               class="w-full md:w-1/2 pl-10 md:pl-10 text-left flex flex-col justify-center"
             >
               <!-- Creative Brunei Exchange Photo block -->
-              <div class="flip-stack" id="flip-stack-container" onclick="handleFlip()">
-                <!-- Populated by JS -->
-              </div>
+              <div class="w-full max-w-sm relative">
+                <div class="image-stack" id="brunei-image-stack">
+                  <div class="stack-item z-30 opacity-100" data-index="0">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-900 border border-white/10 shadow-lg">
+                      <img src="./anh_brunei.jpg" alt="Bandar Seri Begawan, Brunei" class="w-full h-full object-cover" referrerpolicy="no-referrer" />
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+                      <div class="absolute bottom-3 left-3 flex items-center gap-1.5 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 pointer-events-none">
+                        <i data-lucide="map-pin" class="h-3 w-3 text-emerald-400"></i>
+                        <span>Bandar Seri Begawan, Brunei</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="stack-item z-20 opacity-70 translate-x-2" data-index="1">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-900 border border-white/10 shadow-lg">
+                      <img src="./embassy.jpg" alt="Embassy of Vietnam in Brunei" class="w-full h-full object-cover" referrerpolicy="no-referrer" />
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+                      <div class="absolute bottom-3 left-3 flex items-center gap-1.5 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 pointer-events-none">
+                        <i data-lucide="map-pin" class="h-3 w-3 text-emerald-400"></i>
+                        <span>Embassy of Vietnam in Brunei</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="stack-item z-10 opacity-40 translate-x-4" data-index="2">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-900 border border-white/10 shadow-lg">
+                      <img src="./teamvn.jpg" alt="Team Vietnam in Brunei" class="w-full h-full object-cover" referrerpolicy="no-referrer" />
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+                      <div class="absolute bottom-3 left-3 flex items-center gap-1.5 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 pointer-events-none">
+                        <i data-lucide="map-pin" class="h-3 w-3 text-emerald-400"></i>
+                        <span>Team Vietnam in Brunei</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                   <!-- Fallback Placeholder when image is empty or invalid -->
                   <div
                     class="brunei-placeholder absolute inset-0 hidden flex flex-col items-center justify-center p-4 text-center bg-gradient-to-br from-slate-900/95 via-[#0c1523]/95 to-emerald-950/30 border border-white/10 rounded-xl"
@@ -2630,8 +2661,6 @@
     <!-- Lucide Icons and Smooth Scrolling CDN dependencies -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-    <!-- Data dependencies -->
-    <script src="./galleryData.js"></script>
     <!-- Main Script -->
     <script type="module" src="./script.js"></script>
     <script type="module" src="i18n/i18n.js"></script>
