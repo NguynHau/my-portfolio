@@ -74,10 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
   profileImages.forEach(img => {
     // Sequential fallback paths to handle local build, raw repository structure, and subpath deployment
     const fallbacks = [
-      'anh2.jpg',
-      'public/anh2.jpg',
-      './public/anh2.jpg',
-      './anh2.jpg'
+      'https://res.cloudinary.com/zaowbcqq/image/upload/v1784529112/anh2_rkqquc.jpg'
     ];
     let attemptIndex = 0;
 
@@ -1273,6 +1270,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hide current, make next clear
         setTimeout(() => {
             currentItem.classList.add('hidden');
+            
+            // Remove is-front from the item that just finished being front
+            currentItem.classList.remove('is-front');
 
             const nextItem = items[currentIndex];
             // Remove faint/offset classes and make front clear
