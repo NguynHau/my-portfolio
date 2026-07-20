@@ -20,6 +20,7 @@ html {
 /* Light Mode Global Inversion Strategy */
 html.light-mode {  filter: invert(1) hue-rotate(180deg);  background-color: #110700; }
 html.light-mode body {  background-color: #110700;}
+html.light-mode .hero-bg-container { display: none !important; }
 
 /* Revert images, videos, svgs to preserve their original colors */
 html.light-mode img,
@@ -41,6 +42,15 @@ body {  background-color: #0a0a0a;  color: #f1f5f9;  font-family: 'Lora', serif;
 /* Shimmer shine animation on images */
 @keyframes shimmer {  0% { transform: translateX(-100%); }  100% { transform: translateX(100%); }}
 .animate-shimmer {  animation: shimmer 3s infinite linear;}
+
+/* Hero Background Animation */
+@keyframes heroBgReveal {
+  0% { opacity: 0; transform: scale(1.1); filter: blur(5px); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0px); }
+}
+.animate-hero-bg {
+  animation: heroBgReveal 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
 /* Radial spotlight cursor wrapper */
 .cursor-spotlight {
