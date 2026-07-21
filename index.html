@@ -36,6 +36,12 @@
     <!-- Constellation Particles Background Canvas -->
     <canvas id="constellation-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
+    <!-- Global Image Background (when stars are off) -->
+    <div id="global-hero-bg" class="fixed inset-0 z-0 hidden pointer-events-none hero-bg-container">
+      <div class="absolute inset-0 bg-[url('https://res.cloudinary.com/zaowbcqq/image/upload/v1784560594/pine-watt-2Hzmz15wGik-unsplash_iqtlpr.jpg')] bg-cover bg-center bg-fixed animate-hero-bg"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/90 via-[#0a0a0a]/70 to-[#0a0a0a]"></div>
+    </div>
+
 
 
     <!-- Background Glowing Orbs -->
@@ -287,7 +293,7 @@
     <!-- Hero Section -->
     <section class="relative min-h-[90vh] flex items-center justify-center pt-24 pb-12 px-4 sm:px-6 overflow-hidden">
       <!-- Fixed Background with fade and scale effect -->
-      <div class="absolute inset-0 z-0 hero-bg-container">
+      <div id="local-hero-bg" class="absolute inset-0 z-0 hero-bg-container">
         <div class="absolute inset-0 bg-[url('https://res.cloudinary.com/zaowbcqq/image/upload/v1784560594/pine-watt-2Hzmz15wGik-unsplash_iqtlpr.jpg')] bg-cover bg-center bg-fixed animate-hero-bg"></div>
         <!-- Gradient overlay to ensure text readability -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/90 via-[#0a0a0a]/60 to-[#0a0a0a]"></div>

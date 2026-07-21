@@ -887,8 +887,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let starsDisabled = localStorage.getItem('disable-stars') === 'true';
   function updateStarsUI() {
     const canvas = document.getElementById('constellation-canvas');
+    const globalHeroBg = document.getElementById('global-hero-bg');
+    const localHeroBg = document.getElementById('local-hero-bg');
     if (starsDisabled) {
       if (canvas) canvas.style.display = 'none';
+      if (globalHeroBg) globalHeroBg.classList.remove('hidden');
+      if (localHeroBg) localHeroBg.classList.add('hidden');
       if (btnToggleStars && starsToggleKnob) {
         btnToggleStars.classList.remove('bg-blue-600');
         btnToggleStars.classList.add('bg-white/10');
@@ -897,6 +901,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } else {
       if (canvas) canvas.style.display = 'block';
+      if (globalHeroBg) globalHeroBg.classList.add('hidden');
+      if (localHeroBg) localHeroBg.classList.remove('hidden');
       if (btnToggleStars && starsToggleKnob) {
         btnToggleStars.classList.remove('bg-white/10');
         btnToggleStars.classList.add('bg-blue-600');
